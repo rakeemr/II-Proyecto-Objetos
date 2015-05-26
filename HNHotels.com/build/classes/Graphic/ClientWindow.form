@@ -219,16 +219,18 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jPasswordFieldPasswordModify" min="-2" pref="136" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jPasswordFieldPasswordConfirmationModify" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jPasswordFieldPasswordModify" alignment="0" pref="136" max="32767" attributes="0"/>
+                                      </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabelWarningInfoPassword" min="-2" pref="229" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jComboBoxCountriesModify" alignment="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="jTextFieldPhoneNumberModify" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextFieldCountryModify" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jPasswordFieldPasswordConfirmationModify" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldPreferenceMoneyModify" alignment="0" pref="136" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jTextFieldPreferenceMoneyModify" min="-2" pref="136" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jButtonSave" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -282,7 +284,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCountryModify" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxCountriesModify" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -384,11 +386,6 @@
                 <Property name="text" type="java.lang.String" value="Preference Money:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldCountryModify">
-              <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldCountryModifyKeyTyped"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldPhoneNumberModify">
               <Events>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldPhoneNumberModifyKeyTyped"/>
@@ -406,13 +403,251 @@
             <Component class="javax.swing.JButton" name="jButtonSave">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Images/SaveIcon.png"/>
+                  <Image iconType="3" name="/Img/SaveIcon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Save"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSaveActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBoxCountriesModify">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="230">
+                    <StringItem index="0" value="Unspecified"/>
+                    <StringItem index="1" value="Afganistan"/>
+                    <StringItem index="2" value="Albania"/>
+                    <StringItem index="3" value="Algeria"/>
+                    <StringItem index="4" value="American Samoa"/>
+                    <StringItem index="5" value="Andorra"/>
+                    <StringItem index="6" value="Angola"/>
+                    <StringItem index="7" value="Anguilla"/>
+                    <StringItem index="8" value="Antarctica"/>
+                    <StringItem index="9" value="Antigua and Barbuda"/>
+                    <StringItem index="10" value="Argentina"/>
+                    <StringItem index="11" value="Armenia"/>
+                    <StringItem index="12" value="Aruba"/>
+                    <StringItem index="13" value="Australia"/>
+                    <StringItem index="14" value="Austria"/>
+                    <StringItem index="15" value="Azerbaijan"/>
+                    <StringItem index="16" value="Bahamas"/>
+                    <StringItem index="17" value="Bahrain"/>
+                    <StringItem index="18" value="Bangladesh"/>
+                    <StringItem index="19" value="Barbados"/>
+                    <StringItem index="20" value="Belarus"/>
+                    <StringItem index="21" value="Belgium"/>
+                    <StringItem index="22" value="Belize"/>
+                    <StringItem index="23" value="Benin"/>
+                    <StringItem index="24" value="Bermuda"/>
+                    <StringItem index="25" value="Bhutan"/>
+                    <StringItem index="26" value="Bolivia"/>
+                    <StringItem index="27" value="Bosnia and Herzegovina"/>
+                    <StringItem index="28" value="Botswana"/>
+                    <StringItem index="29" value="Brazil"/>
+                    <StringItem index="30" value="Brunei Darussalam"/>
+                    <StringItem index="31" value="Bulgaria"/>
+                    <StringItem index="32" value="Burkina Faso"/>
+                    <StringItem index="33" value="Burundi"/>
+                    <StringItem index="34" value="Cambodia"/>
+                    <StringItem index="35" value="Cameroon"/>
+                    <StringItem index="36" value="Canada"/>
+                    <StringItem index="37" value="Cape Verde"/>
+                    <StringItem index="38" value="Cayman Islands"/>
+                    <StringItem index="39" value="Central African Republic"/>
+                    <StringItem index="40" value="Chad"/>
+                    <StringItem index="41" value="Chile"/>
+                    <StringItem index="42" value="China"/>
+                    <StringItem index="43" value="Christmas Island"/>
+                    <StringItem index="44" value="Cocos Islands"/>
+                    <StringItem index="45" value="Colombia"/>
+                    <StringItem index="46" value="Comoros"/>
+                    <StringItem index="47" value="Congo"/>
+                    <StringItem index="48" value="Cook Islands"/>
+                    <StringItem index="49" value="Costa Rica"/>
+                    <StringItem index="50" value="Ivory Coast"/>
+                    <StringItem index="51" value="Croatia"/>
+                    <StringItem index="52" value="Cuba"/>
+                    <StringItem index="53" value="Cyprus"/>
+                    <StringItem index="54" value="Czech Republic"/>
+                    <StringItem index="55" value="Denmark"/>
+                    <StringItem index="56" value="Djibouti"/>
+                    <StringItem index="57" value="Dominica"/>
+                    <StringItem index="58" value="Dominican Republic"/>
+                    <StringItem index="59" value="East Timor"/>
+                    <StringItem index="60" value="Ecuador"/>
+                    <StringItem index="61" value="Egypt"/>
+                    <StringItem index="62" value="El Salvador"/>
+                    <StringItem index="63" value="Equatorial Guinea"/>
+                    <StringItem index="64" value="Eritrea"/>
+                    <StringItem index="65" value="Estonia"/>
+                    <StringItem index="66" value="Ethiopia"/>
+                    <StringItem index="67" value="Falkland Islands"/>
+                    <StringItem index="68" value="Faroe Islands"/>
+                    <StringItem index="69" value="Fiji"/>
+                    <StringItem index="70" value="Finland"/>
+                    <StringItem index="71" value="France"/>
+                    <StringItem index="72" value="Gabon"/>
+                    <StringItem index="73" value="Gambia"/>
+                    <StringItem index="74" value="Georgia"/>
+                    <StringItem index="75" value="Germany"/>
+                    <StringItem index="76" value="Ghana"/>
+                    <StringItem index="77" value="Gibraltar"/>
+                    <StringItem index="78" value="Great Britain"/>
+                    <StringItem index="79" value="Greece"/>
+                    <StringItem index="80" value="Greenland"/>
+                    <StringItem index="81" value="Grenada"/>
+                    <StringItem index="82" value="Guadeloupe"/>
+                    <StringItem index="83" value="Guam"/>
+                    <StringItem index="84" value="Guatemala"/>
+                    <StringItem index="85" value="Guinea"/>
+                    <StringItem index="86" value="Guinea-Bissau"/>
+                    <StringItem index="87" value="Guyana"/>
+                    <StringItem index="88" value="Haiti"/>
+                    <StringItem index="89" value="Holy See"/>
+                    <StringItem index="90" value="Honduras"/>
+                    <StringItem index="91" value="Hong Kong"/>
+                    <StringItem index="92" value="Hungary"/>
+                    <StringItem index="93" value="Iceland"/>
+                    <StringItem index="94" value="India"/>
+                    <StringItem index="95" value="Indonesia"/>
+                    <StringItem index="96" value="Iran"/>
+                    <StringItem index="97" value="Iraq"/>
+                    <StringItem index="98" value="Ireland"/>
+                    <StringItem index="99" value="Israel"/>
+                    <StringItem index="100" value="Italy"/>
+                    <StringItem index="101" value="Jamaica"/>
+                    <StringItem index="102" value="Japan"/>
+                    <StringItem index="103" value="Jordan"/>
+                    <StringItem index="104" value="Kazakhstan"/>
+                    <StringItem index="105" value="Kenya"/>
+                    <StringItem index="106" value="Kiribati"/>
+                    <StringItem index="107" value="North Korea"/>
+                    <StringItem index="108" value="South Korea"/>
+                    <StringItem index="109" value="Kosovo"/>
+                    <StringItem index="110" value="Kuwait"/>
+                    <StringItem index="111" value="Kyrgyzstan"/>
+                    <StringItem index="112" value="Laos"/>
+                    <StringItem index="113" value="Latvia"/>
+                    <StringItem index="114" value="Lebanon"/>
+                    <StringItem index="115" value="Lesotho"/>
+                    <StringItem index="116" value="Liberia"/>
+                    <StringItem index="117" value="Libya"/>
+                    <StringItem index="118" value="Liechtenstein"/>
+                    <StringItem index="119" value="Lithuania"/>
+                    <StringItem index="120" value="Luxembourg"/>
+                    <StringItem index="121" value="Macao"/>
+                    <StringItem index="122" value="Macedonia"/>
+                    <StringItem index="123" value="Madagascar"/>
+                    <StringItem index="124" value="Malawi"/>
+                    <StringItem index="125" value="Malaysia"/>
+                    <StringItem index="126" value="Maldives"/>
+                    <StringItem index="127" value="Mali"/>
+                    <StringItem index="128" value="Malta"/>
+                    <StringItem index="129" value="Marshall Islands"/>
+                    <StringItem index="130" value="Martinique"/>
+                    <StringItem index="131" value="Mauritania"/>
+                    <StringItem index="132" value="Mauritius"/>
+                    <StringItem index="133" value="Mayotte"/>
+                    <StringItem index="134" value="Mexico"/>
+                    <StringItem index="135" value="Micronesia"/>
+                    <StringItem index="136" value="Moldova"/>
+                    <StringItem index="137" value="Monaco"/>
+                    <StringItem index="138" value="Mongolia"/>
+                    <StringItem index="139" value="Montenegro"/>
+                    <StringItem index="140" value="Montserrat"/>
+                    <StringItem index="141" value="Morocco"/>
+                    <StringItem index="142" value="Mozambique"/>
+                    <StringItem index="143" value="Myanmar"/>
+                    <StringItem index="144" value="Burma"/>
+                    <StringItem index="145" value="Namibia"/>
+                    <StringItem index="146" value="Nauru"/>
+                    <StringItem index="147" value="Nepal"/>
+                    <StringItem index="148" value="Netherlands"/>
+                    <StringItem index="149" value="Netherlands Antilles"/>
+                    <StringItem index="150" value="New Caledonia"/>
+                    <StringItem index="151" value="New Zealand"/>
+                    <StringItem index="152" value="Nicaragua"/>
+                    <StringItem index="153" value="Niger"/>
+                    <StringItem index="154" value="Nigeria"/>
+                    <StringItem index="155" value="Niue"/>
+                    <StringItem index="156" value="Norway"/>
+                    <StringItem index="157" value="Oman"/>
+                    <StringItem index="158" value="Pakistan"/>
+                    <StringItem index="159" value="Palau"/>
+                    <StringItem index="160" value="Panama"/>
+                    <StringItem index="161" value="Papua New Guinea"/>
+                    <StringItem index="162" value="Paraguay"/>
+                    <StringItem index="163" value="Peru"/>
+                    <StringItem index="164" value="Philippines"/>
+                    <StringItem index="165" value="Pitcairn Island"/>
+                    <StringItem index="166" value="Poland"/>
+                    <StringItem index="167" value="Portugal"/>
+                    <StringItem index="168" value="Puerto Rico"/>
+                    <StringItem index="169" value="Qatar"/>
+                    <StringItem index="170" value="Reunion Island"/>
+                    <StringItem index="171" value="Romania"/>
+                    <StringItem index="172" value="Russian Federation"/>
+                    <StringItem index="173" value="Rwanda"/>
+                    <StringItem index="174" value="Saint Kitts and Nevis"/>
+                    <StringItem index="175" value="Saint Lucia"/>
+                    <StringItem index="176" value="Samoa"/>
+                    <StringItem index="177" value="San Marino"/>
+                    <StringItem index="178" value="Sao Tome and Pr&#xed;ncipe"/>
+                    <StringItem index="179" value="Saudi Arabia"/>
+                    <StringItem index="180" value="Senegal"/>
+                    <StringItem index="181" value="Serbia"/>
+                    <StringItem index="182" value="Seychelles"/>
+                    <StringItem index="183" value="Sierra Leone"/>
+                    <StringItem index="184" value="Singapore"/>
+                    <StringItem index="185" value="Slovakia"/>
+                    <StringItem index="186" value="Slovenia"/>
+                    <StringItem index="187" value="Solomon Islands"/>
+                    <StringItem index="188" value="Somalia"/>
+                    <StringItem index="189" value="South Africa"/>
+                    <StringItem index="190" value="South Sudan"/>
+                    <StringItem index="191" value="Spain"/>
+                    <StringItem index="192" value="Sri Lanka"/>
+                    <StringItem index="193" value="Sudan"/>
+                    <StringItem index="194" value="Suriname"/>
+                    <StringItem index="195" value="Swaziland"/>
+                    <StringItem index="196" value="Sweden"/>
+                    <StringItem index="197" value="Switzerland"/>
+                    <StringItem index="198" value="Syria"/>
+                    <StringItem index="199" value="Taiwan"/>
+                    <StringItem index="200" value="Tajikistan"/>
+                    <StringItem index="201" value="Tanzania"/>
+                    <StringItem index="202" value="Thailand"/>
+                    <StringItem index="203" value="Tibet"/>
+                    <StringItem index="204" value="Timor-Leste"/>
+                    <StringItem index="205" value="Togo"/>
+                    <StringItem index="206" value="Tokelau"/>
+                    <StringItem index="207" value="Tonga"/>
+                    <StringItem index="208" value="Trinidad and Tobago"/>
+                    <StringItem index="209" value="Tunisia"/>
+                    <StringItem index="210" value="Turkey"/>
+                    <StringItem index="211" value="Turkmenistan"/>
+                    <StringItem index="212" value="Turks and Caicos Islands"/>
+                    <StringItem index="213" value="Tuvalu"/>
+                    <StringItem index="214" value="Uganda"/>
+                    <StringItem index="215" value="Ukraine"/>
+                    <StringItem index="216" value="United Arab Emirates"/>
+                    <StringItem index="217" value="United Kingdom"/>
+                    <StringItem index="218" value="United States"/>
+                    <StringItem index="219" value="Uruguay"/>
+                    <StringItem index="220" value="Uzbekistan"/>
+                    <StringItem index="221" value="Vanuatu"/>
+                    <StringItem index="222" value="Venezuela"/>
+                    <StringItem index="223" value="Vietnam"/>
+                    <StringItem index="224" value="Virgin Islands (Britain)"/>
+                    <StringItem index="225" value="Virgin Islands (U.S.)"/>
+                    <StringItem index="226" value="Western Sahara"/>
+                    <StringItem index="227" value="Yemen"/>
+                    <StringItem index="228" value="Zambia"/>
+                    <StringItem index="229" value="Zimbabwe"/>
+                  </StringArray>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -421,7 +656,7 @@
     <Component class="javax.swing.JButton" name="jButtonCloseSession">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/CloseIcon.png"/>
+          <Image iconType="3" name="/Img/CloseIcon.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Close session"/>
       </Properties>

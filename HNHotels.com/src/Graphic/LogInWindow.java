@@ -17,10 +17,10 @@ public class LogInWindow extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.setIconImage(new ImageIcon(getClass().getResource("/Images/HotelIcon.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/Img/HotelIcon.png")).getImage());
         this.global = Global.getInstance();
-        this.warningIcon = new ImageIcon(getClass().getResource("/Images/WarningIcon.png"));
-        this.exclamationIcon = new ImageIcon(getClass().getResource("/Images/ExclamationIcon.png"));
+        this.warningIcon = new ImageIcon(getClass().getResource("/Img/WarningIcon.png"));
+        this.exclamationIcon = new ImageIcon(getClass().getResource("/Img/ExclamationIcon.png"));
     }
 
     /**
@@ -283,14 +283,14 @@ public class LogInWindow extends javax.swing.JFrame {
     private void jTextFieldNameSignInKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNameSignInKeyTyped
         char scan = evt.getKeyChar();
         if((scan < 'a' || scan > 'z') && (scan < 'A' || scan > 'Z') && (scan != 
-        (char)KeyEvent.VK_SPACE))
+        (char)KeyEvent.VK_SPACE) || (scan == ' ' && jTextFieldNameSignIn.getText().length() == 0))
             evt.consume();
     }//GEN-LAST:event_jTextFieldNameSignInKeyTyped
 
     private void jTextFieldLastNameSignInKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldLastNameSignInKeyTyped
         char scan = evt.getKeyChar();
         if((scan < 'a' || scan > 'z') && (scan < 'A' || scan > 'Z') && (scan != 
-        (char)KeyEvent.VK_SPACE))
+        (char)KeyEvent.VK_SPACE) || (scan == ' ' && jTextFieldLastNameSignIn.getText().length() == 0))
             evt.consume();
     }//GEN-LAST:event_jTextFieldLastNameSignInKeyTyped
 
@@ -340,7 +340,7 @@ public class LogInWindow extends javax.swing.JFrame {
         .getPassword().length != 0 && jPasswordFieldPasswordConfirmation.getPassword().length != 0){
             if(Arrays.equals(jPasswordFieldPasswordSignIn.getPassword(),jPasswordFieldPasswordConfirmation
             .getPassword())){
-                Client newClient = new Client("","","",jTextFieldNameSignIn.getText(),
+                Client newClient = new Client(jTextFieldNameSignIn.getText(),
                 jTextFieldLastNameSignIn.getText(),jComboBoxGenderSignIn.getSelectedItem().toString(),
                 jTextFieldEmailSignIn.getText(),jPasswordFieldPasswordSignIn.getPassword());
                 global.addUser(newClient);

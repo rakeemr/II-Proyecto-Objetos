@@ -8,20 +8,21 @@ import java.util.ArrayList;
 public class Client extends User{
     private final int partnerNumber;
     private String country;
+    private int indexSelectedCountry;
     private String phoneNumber;
     private String preferenceMoney;
     private final ArrayList<Card> cardList;
     private final ArrayList<Reservation> reservationList;
 
-    public Client(String country, String phoneNumber, String preferenceMoney, 
-    String name, String lastName, String gender, String email, char[] password) {
+    public Client(String name, String lastName, String gender, String email, char[] password) {
         super(name, lastName, gender, email, password);
         Global global = Global.getInstance();
         global.addToPartnerCount();
         this.partnerNumber = global.getPartnerCount();
-        this.country = country;
-        this.phoneNumber = phoneNumber;
-        this.preferenceMoney = preferenceMoney;
+        this.country = "Unspecified";
+        this.indexSelectedCountry = 0;
+        this.phoneNumber = "Unspecified";
+        this.preferenceMoney = "Unspecified";
         this.cardList = new ArrayList();
         this.reservationList = new ArrayList();
     }    
@@ -32,6 +33,14 @@ public class Client extends User{
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public int getIndexSelectedCountry() {
+        return indexSelectedCountry;
+    }
+
+    public void setIndexSelectedCountry(int indexSelectedCountry) {
+        this.indexSelectedCountry = indexSelectedCountry;
     }
 
     public String getPhoneNumber() {

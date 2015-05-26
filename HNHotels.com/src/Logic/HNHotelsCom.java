@@ -19,7 +19,6 @@ public class HNHotelsCom {
         char[] password = {'1','2','3'};
         global.addUser(new Administrator("David","Vargas","Male","dva",password));
         global.addUser(new Administrator("Raquel","Mora","Female","raquemora@gmail.com",password));
-        global.addUser(new Client("Costa Rica","12354323","","Michael","Mendez",
-        "Male","michael",password));
+        global.addUser(new Client("Michael","Mendez","Male","michael",password));
     }
 }
