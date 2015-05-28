@@ -5,7 +5,8 @@ public class Service {
     private final String name;
 
     public Service(int code, String name) {
-        this.code = code;
+        this.code = Global.getInstance().getServiceCount();
+        Global.getInstance().addToServiceCount();
         this.name = name;
     }
 
