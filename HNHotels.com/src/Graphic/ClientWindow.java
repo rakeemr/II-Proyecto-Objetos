@@ -8,8 +8,7 @@ import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public class ClientWindow extends javax.swing.JFrame {
-    
+public class ClientWindow extends javax.swing.JFrame {  
     private final LogInWindow ancestor;
     private final Client currentUser;
     private final Global global;
@@ -21,13 +20,13 @@ public class ClientWindow extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(ancestor);
-        this.setIconImage(new ImageIcon(getClass().getResource("/Images/HotelIcon.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/Img/HotelIcon.png")).getImage());
         this.ancestor = ancestor;
         this.currentUser = currentUser;
         this.global = Global.getInstance();
-        this.warningIcon = new ImageIcon(getClass().getResource("/Images/WarningIcon.png"));
-        this.exclamationIcon = new ImageIcon(getClass().getResource("/Images/ExclamationIcon.png"));
-        this.checkIcon = new ImageIcon(getClass().getResource("/Images/CheckIcon.png"));
+        this.warningIcon = new ImageIcon(getClass().getResource("/Img/WarningIcon.png"));
+        this.exclamationIcon = new ImageIcon(getClass().getResource("/Img/ExclamationIcon.png"));
+        this.checkIcon = new ImageIcon(getClass().getResource("/Img/CheckIcon.png"));
     }
 
     @SuppressWarnings("unchecked")
@@ -57,12 +56,12 @@ public class ClientWindow extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldCountryModify = new javax.swing.JTextField();
         jTextFieldPhoneNumberModify = new javax.swing.JTextField();
         jTextFieldPreferenceMoneyModify = new javax.swing.JTextField();
         jLabelWarningInfoEmail = new javax.swing.JLabel();
         jLabelWarningInfoPassword = new javax.swing.JLabel();
         jButtonSave = new javax.swing.JButton();
+        jComboBoxCountriesModify = new javax.swing.JComboBox();
         jButtonCloseSession = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -184,12 +183,6 @@ public class ClientWindow extends javax.swing.JFrame {
 
         jLabel3.setText("Preference Money:");
 
-        jTextFieldCountryModify.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldCountryModifyKeyTyped(evt);
-            }
-        });
-
         jTextFieldPhoneNumberModify.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldPhoneNumberModifyKeyTyped(evt);
@@ -202,13 +195,15 @@ public class ClientWindow extends javax.swing.JFrame {
             }
         });
 
-        jButtonSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SaveIcon.png"))); // NOI18N
+        jButtonSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/SaveIcon.png"))); // NOI18N
         jButtonSave.setText("Save");
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSaveActionPerformed(evt);
             }
         });
+
+        jComboBoxCountriesModify.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Unspecified", "Afganistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos Islands", "Colombia", "Comoros", "Congo", "Cook Islands", "Costa Rica", "Ivory Coast", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Great Britain", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "North Korea", "South Korea", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Burma", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn Island", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion Island", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Samoa", "San Marino", "Sao Tome and Príncipe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Tibet", "Timor-Leste", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (Britain)", "Virgin Islands (U.S.)", "Western Sahara", "Yemen", "Zambia", "Zimbabwe" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -244,14 +239,15 @@ public class ClientWindow extends javax.swing.JFrame {
                                             .addComponent(jComboBoxGenderModify, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(1, 1, 1)))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jPasswordFieldPasswordModify, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jPasswordFieldPasswordConfirmationModify, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPasswordFieldPasswordModify, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelWarningInfoPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jComboBoxCountriesModify, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE)
                                 .addComponent(jTextFieldPhoneNumberModify, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldCountryModify, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPasswordFieldPasswordConfirmationModify, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextFieldPreferenceMoneyModify, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextFieldPreferenceMoneyModify, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))))
                     .addComponent(jButtonSave))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -293,7 +289,7 @@ public class ClientWindow extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldCountryModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxCountriesModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -309,7 +305,7 @@ public class ClientWindow extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Modify Profile", jPanel2);
 
-        jButtonCloseSession.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CloseIcon.png"))); // NOI18N
+        jButtonCloseSession.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CloseIcon.png"))); // NOI18N
         jButtonCloseSession.setText("Close session");
         jButtonCloseSession.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -411,7 +407,6 @@ public class ClientWindow extends javax.swing.JFrame {
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         if(!jTextFieldNameModify.getText().isEmpty() && !jTextFieldLastNameModify
         .getText().isEmpty() && !jTextFieldEmailModify.getText().isEmpty() && 
-        !jTextFieldCountryModify.getText().isEmpty() && 
         !jTextFieldPhoneNumberModify.getText().isEmpty() && 
         !jTextFieldPreferenceMoneyModify.getText().isEmpty()){
             if(jPasswordFieldPasswordModify.getPassword().length > 0){
@@ -429,7 +424,8 @@ public class ClientWindow extends javax.swing.JFrame {
             currentUser.setLastName(jTextFieldLastNameModify.getText());
             currentUser.setGender(jComboBoxGenderModify.getSelectedItem().toString());
             currentUser.setEmail(jTextFieldEmailModify.getText());
-            currentUser.setCountry(jTextFieldCountryModify.getText());
+            currentUser.setCountry(jComboBoxCountriesModify.getModel()
+            .getElementAt(jComboBoxCountriesModify.getSelectedIndex()).toString());
             currentUser.setPhoneNumber(jTextFieldPhoneNumberModify.getText());
             currentUser.setPreferenceMoney(jTextFieldPreferenceMoneyModify.getText());
             JOptionPane.showMessageDialog(this,"Your new data are succesfully saved",
@@ -457,13 +453,6 @@ public class ClientWindow extends javax.swing.JFrame {
             evt.consume();
     }//GEN-LAST:event_jTextFieldPhoneNumberModifyKeyTyped
 
-    private void jTextFieldCountryModifyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCountryModifyKeyTyped
-        char scan = evt.getKeyChar();
-        if((scan < 'a' || scan > 'z') && (scan < 'A' || scan > 'Z') && (scan !=
-        (char)KeyEvent.VK_SPACE))
-            evt.consume();
-    }//GEN-LAST:event_jTextFieldCountryModifyKeyTyped
-
     private void chargeClientData(){
         jTextFieldNameModify.setText(currentUser.getName());
         jTextFieldLastNameModify.setText(currentUser.getLastName());
@@ -474,7 +463,7 @@ public class ClientWindow extends javax.swing.JFrame {
         jTextFieldEmailModify.setText(currentUser.getEmail());
         jPasswordFieldPasswordModify.setText("");
         jPasswordFieldPasswordConfirmationModify.setText("");
-        jTextFieldCountryModify.setText(currentUser.getCountry());
+        jComboBoxCountriesModify.setSelectedIndex(currentUser.getIndexSelectedCountry());
         jTextFieldPhoneNumberModify.setText(currentUser.getPhoneNumber());
         jTextFieldPreferenceMoneyModify.setText(currentUser.getPreferenceMoney());
     }
@@ -541,6 +530,7 @@ public class ClientWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCloseSession;
     private javax.swing.JButton jButtonSave;
+    private javax.swing.JComboBox jComboBoxCountriesModify;
     private javax.swing.JComboBox jComboBoxGenderModify;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
@@ -563,7 +553,6 @@ public class ClientWindow extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTableHotelView;
-    private javax.swing.JTextField jTextFieldCountryModify;
     private javax.swing.JTextField jTextFieldEmailModify;
     private javax.swing.JTextField jTextFieldLastNameModify;
     private javax.swing.JTextField jTextFieldNameModify;
