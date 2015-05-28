@@ -28,9 +28,7 @@ public class Hotel {
 
     public Hotel(String name, String address, String country, String phoneNumber, 
     int starsNumber, String lodgingType, String hotelSize, String builtYear, 
-    String checkInTime, String checkOutTime, ArrayList<String> checkInRequirementsList,
-    ArrayList<Attraction> nearbyAttractionList, ArrayList<Service> servicesList,
-    ArrayList<ImageIcon> photographsList) {
+    String checkInTime, String checkOutTime) {
         this.name = name;
         this.address = address;
         this.country = country;
@@ -43,10 +41,10 @@ public class Hotel {
         this.checkOutTime = checkOutTime;
         this.reservationCount = 0;
         this.roomCount = 0;
-        this.checkInRequirementsList = checkInRequirementsList;
-        this.nearbyAttractionList = nearbyAttractionList;
-        this.servicesList = servicesList;
-        this.photographsList = photographsList;
+        this.checkInRequirementsList = new ArrayList();
+        this.nearbyAttractionList = new ArrayList();
+        this.servicesList = new ArrayList();
+        this.photographsList = new ArrayList();
         this.roomList = new ArrayList();
         this.roomTypesAvailablesList = new ArrayList();
         this.seasonList = new ArrayList();
