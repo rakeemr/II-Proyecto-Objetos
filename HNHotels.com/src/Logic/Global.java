@@ -2,6 +2,7 @@ package Logic;
 
 import Logic.User.User;
 import java.util.ArrayList;
+import java.util.Random;
 
 //Singleton design pattern.
 public class Global {
@@ -12,6 +13,7 @@ public class Global {
     private int partnerCount;
     private int serviceCount;
     private static Cryptography crypto;
+    private ArrayList<String> codes;
     
     private Global(){}
     
@@ -24,6 +26,7 @@ public class Global {
             instance.partnerCount = 1000;
             instance.serviceCount = 0;
             crypto = new Cryptography();
+            instance.codes = new ArrayList();
         }
         return instance;
     }
@@ -36,19 +39,19 @@ public class Global {
         instance.generalUserList = generalUserList;
     }
     
-    private ArrayList<Hotel> getGeneralHotelList(){
+    public ArrayList<Hotel> getGeneralHotelList(){
         return instance.generalHotelList;
     }
     
-    private void setGeneralHotelList(ArrayList<Hotel> generalHotelList){
+    public void setGeneralHotelList(ArrayList<Hotel> generalHotelList){
         instance.generalHotelList = generalHotelList;
     }
     
-    private ArrayList<Service> getGeneralServiceList(){
+    public ArrayList<Service> getGeneralServiceList(){
         return instance.generalServiceList;
     }
     
-    private void setGeneralServiceList(ArrayList<Service> generalServiceList){
+    public void setGeneralServiceList(ArrayList<Service> generalServiceList){
         instance.generalServiceList = generalServiceList;
     }
 
@@ -61,19 +64,19 @@ public class Global {
     }
 
     public int getServiceCount() {
-        return serviceCount;
+        return instance.serviceCount;
     }
 
     public void setServiceCount(int serviceCount) {
-        this.serviceCount = serviceCount;
+        instance.serviceCount = serviceCount;
     }
 
-    public static Cryptography getCrypto() {
-        return instance.crypto;
+    public ArrayList<String> getCodes(){
+        return instance.codes;
     }
-
-    public static void setCrypto(Cryptography crypto) {
-        instance.crypto = crypto;
+    
+    public void setCodes(ArrayList<String> codes){
+        instance.codes = codes;
     }
     
     //Whenever a partner is added.
@@ -96,5 +99,35 @@ public class Global {
     
     public void addService(Service newService){
         instance.generalServiceList.add(newService);
+        instance.addToServiceCount();
+    }
+    
+    public void addCode(String code){
+        instance.codes.add(code);
+    }
+    
+    public String generateCode(){
+        Random random = new Random();
+        String code = "#";
+        String options = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789";
+        for(int i = 0;i < 10;i++){
+            code += options.charAt((int)(random.nextDouble() * (options.length()) + 0));
+        }
+        for(String temporalString : instance.getCodes()){
+            if(temporalString.equals(code))
+                return generateCode();
+        }
+        instance.addCode(code);
+        return code;
+    }
+    
+    public Service searchService(String serviceName){
+        for(Service temporalService : instance.generalServiceList){
+            if(temporalService.getName().equals(serviceName))
+                return temporalService;
+        }
+        Service newService = new Service(serviceName);
+        instance.addService(newService);
+        return newService;
     }
 }

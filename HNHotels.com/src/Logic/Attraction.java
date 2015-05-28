@@ -4,8 +4,8 @@ public class Attraction {
     private String code;
     private String name;
 
-    public Attraction(String code, String name) {
-        this.code = code;
+    public Attraction(String name) {
+        this.code = Global.getInstance().generateCode();
         this.name = name;
     }
 
