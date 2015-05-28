@@ -4,8 +4,8 @@ public class Service {
     private final int code;
     private final String name;
 
-    public Service(int code, String name) {
-        this.code = code;
+    public Service(String name) {
+        this.code = Global.getInstance().getServiceCount();
         this.name = name;
     }
 

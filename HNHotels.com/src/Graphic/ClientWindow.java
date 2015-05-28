@@ -64,8 +64,11 @@ public class ClientWindow extends javax.swing.JFrame {
         jComboBoxCountriesModify = new javax.swing.JComboBox();
         jButtonCloseSession = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -183,12 +186,22 @@ public class ClientWindow extends javax.swing.JFrame {
 
         jLabel3.setText("Preference Money:");
 
+        jTextFieldPhoneNumberModify.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldPhoneNumberModifyMouseClicked(evt);
+            }
+        });
         jTextFieldPhoneNumberModify.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldPhoneNumberModifyKeyTyped(evt);
             }
         });
 
+        jTextFieldPreferenceMoneyModify.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldPreferenceMoneyModifyMouseClicked(evt);
+            }
+        });
         jTextFieldPreferenceMoneyModify.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldPreferenceMoneyModifyKeyTyped(evt);
@@ -406,9 +419,7 @@ public class ClientWindow extends javax.swing.JFrame {
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         if(!jTextFieldNameModify.getText().isEmpty() && !jTextFieldLastNameModify
-        .getText().isEmpty() && !jTextFieldEmailModify.getText().isEmpty() && 
-        !jTextFieldPhoneNumberModify.getText().isEmpty() && 
-        !jTextFieldPreferenceMoneyModify.getText().isEmpty()){
+        .getText().isEmpty() && !jTextFieldEmailModify.getText().isEmpty()){
             if(jPasswordFieldPasswordModify.getPassword().length > 0){
                 if(Arrays.equals(jPasswordFieldPasswordModify.getPassword(),
                 jPasswordFieldPasswordConfirmationModify.getPassword()))
@@ -426,8 +437,10 @@ public class ClientWindow extends javax.swing.JFrame {
             currentUser.setEmail(jTextFieldEmailModify.getText());
             currentUser.setCountry(jComboBoxCountriesModify.getModel()
             .getElementAt(jComboBoxCountriesModify.getSelectedIndex()).toString());
-            currentUser.setPhoneNumber(jTextFieldPhoneNumberModify.getText());
-            currentUser.setPreferenceMoney(jTextFieldPreferenceMoneyModify.getText());
+            currentUser.setPhoneNumber((jTextFieldPhoneNumberModify.getText().length()
+            > 0) ? jTextFieldPhoneNumberModify.getText() : "Unspecified");
+            currentUser.setPreferenceMoney((jTextFieldPreferenceMoneyModify.getText().length()
+            > 0) ? jTextFieldPreferenceMoneyModify.getText() : "Unspecified");
             JOptionPane.showMessageDialog(this,"Your new data are succesfully saved",
             "Message",JOptionPane.INFORMATION_MESSAGE,checkIcon);
             chargeClientData();
@@ -443,15 +456,28 @@ public class ClientWindow extends javax.swing.JFrame {
 
     private void jTextFieldPreferenceMoneyModifyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPreferenceMoneyModifyKeyTyped
         char scan = evt.getKeyChar();
-        if((scan < 'a' || scan > 'z') && (scan < 'A' || scan > 'Z'))
+        if((scan < 'a' || scan > 'z') && (scan < 'A' || scan > 'Z') && (scan != ' ' 
+        || jTextFieldPreferenceMoneyModify.getText().length() == 0))
             evt.consume();
     }//GEN-LAST:event_jTextFieldPreferenceMoneyModifyKeyTyped
 
     private void jTextFieldPhoneNumberModifyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPhoneNumberModifyKeyTyped
         char scan = evt.getKeyChar();
-        if(scan < '0' && scan > '9')
+        if((scan < '0' || scan > '9') && (scan != '+' || jTextFieldPhoneNumberModify.getText().length() != 0))
             evt.consume();
     }//GEN-LAST:event_jTextFieldPhoneNumberModifyKeyTyped
+
+    private void jTextFieldPhoneNumberModifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPhoneNumberModifyMouseClicked
+        jTextFieldPhoneNumberModify.setText("");
+    }//GEN-LAST:event_jTextFieldPhoneNumberModifyMouseClicked
+
+    private void jTextFieldPreferenceMoneyModifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPreferenceMoneyModifyMouseClicked
+        jTextFieldPreferenceMoneyModify.setText("");
+    }//GEN-LAST:event_jTextFieldPreferenceMoneyModifyMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        new LogInWindow().setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     private void chargeClientData(){
         jTextFieldNameModify.setText(currentUser.getName());
