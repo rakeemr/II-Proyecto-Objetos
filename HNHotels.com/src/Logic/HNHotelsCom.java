@@ -3,6 +3,8 @@ package Logic;
 import Graphic.LogInWindow;
 import Logic.User.Administrator;
 import Logic.User.Client;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 public class HNHotelsCom {
 
@@ -27,5 +29,27 @@ public class HNHotelsCom {
         global.addService(new Service("Restaurant"));
         global.addService(new Service("Conditioned air"));
         global.addService(new Service("Spa"));
+        //Hotels.
+        ArrayList<String> checkInRequirementsList = new ArrayList();
+        checkInRequirementsList.add("ID");
+        checkInRequirementsList.add("Previous Paid");
+        checkInRequirementsList.add("Reservation");
+        
+        ArrayList<Attraction> nearbyAttractionList = new ArrayList();
+        nearbyAttractionList.add(new Attraction("Beach"));
+        nearbyAttractionList.add(new Attraction("Supermarkets"));
+        nearbyAttractionList.add(new Attraction("NightClubs"));
+        
+        ArrayList<Service> servicesList = new ArrayList();
+        servicesList.add(global.getGeneralServiceList().get(0));
+        servicesList.add(global.getGeneralServiceList().get(1));
+        servicesList.add(global.getGeneralServiceList().get(2));
+        
+        ArrayList<ImageIcon> photographsList = new ArrayList();
+        photographsList.add(new ImageIcon("/Img/RIU_Hotel.jpg"));
+        
+        global.addHotel(new Hotel("RIU", "Guanacaste", "Costa Rica", "1234", 5, 
+        "Habitaciones", "12000m2", "1979", "12:15","13:00", checkInRequirementsList,
+        nearbyAttractionList, servicesList, photographsList));
     }
 }
