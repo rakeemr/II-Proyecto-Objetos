@@ -94,7 +94,28 @@ public class Global {
     }
     
     public void addHotel(Hotel newHotel){
-        instance.generalHotelList.add(newHotel);
+        if(instance.generalHotelList.size() > 0){
+            //It is first.
+            if(instance.generalHotelList.get(0).getName().compareToIgnoreCase(newHotel
+            .getName()) > 0)
+                instance.generalHotelList.add(0,newHotel);
+            //It is the last.
+            else if(instance.generalHotelList.get(instance.generalHotelList.size()-1)
+            .getName().compareToIgnoreCase(newHotel.getName()) < 0)
+                instance.generalHotelList.add(newHotel);
+            else{
+                for(int i = 0;i<instance.generalHotelList.size();i++){
+                    if(instance.generalHotelList.get(i).getName().compareToIgnoreCase(newHotel
+                    .getName()) > 0){
+                        instance.generalHotelList.add(i,newHotel);
+                        break;
+                    }
+                }
+            }
+        }
+        //If the list is empty.
+        else
+            instance.generalHotelList.add(newHotel);
     }
     
     public void addService(Service newService){

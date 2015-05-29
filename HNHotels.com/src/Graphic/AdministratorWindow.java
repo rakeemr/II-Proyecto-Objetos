@@ -23,7 +23,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private final ArrayList<Service> servicesList;
     private final ArrayList<ImageIcon> photographsList;
     private final Global global;
-    int indexImage;
+    int indexImage = 0;
     
     public AdministratorWindow(LogInWindow ancestor, Administrator currentUser) {
         initComponents();
@@ -602,8 +602,10 @@ public class AdministratorWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNextImageActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new PictureViewer((ImageIcon)jLabelImage.getIcon(),this).setVisible(true);
-        this.setEnabled(false);
+        if(jLabelImage.getIcon() != null){
+            new PictureViewer((ImageIcon)jLabelImage.getIcon(),this).setVisible(true);
+            this.setEnabled(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -625,6 +627,8 @@ public class AdministratorWindow extends javax.swing.JFrame {
         jComboBoxCheckOutHours.setSelectedIndex(0);
         jComboBoxCheckOutMin.setSelectedIndex(0);
         jComboBoxServices.setSelectedIndex(0);
+        jLabelImage.setIcon(null);
+        indexImage = 0;
         this.checkInRequirementsList.clear();
         this.nearbyAttractionList.clear();
         this.servicesList.clear();
