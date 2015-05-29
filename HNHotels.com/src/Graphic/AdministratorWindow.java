@@ -5,6 +5,7 @@ import Logic.Global;
 import Logic.Hotel;
 import Logic.Service;
 import Logic.User.Administrator;
+import java.awt.Image;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
@@ -49,6 +50,8 @@ public class AdministratorWindow extends javax.swing.JFrame {
         jButtonCloseSession = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jComboBoxSelectHotel = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -87,13 +90,12 @@ public class AdministratorWindow extends javax.swing.JFrame {
         jButtonAddServices = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jButtonAddPhotograpy = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jLabelImage = new javax.swing.JLabel();
         jComboBoxServices = new javax.swing.JComboBox();
         jButtonCreateHotel = new javax.swing.JButton();
         jButtonPreviousImage = new javax.swing.JButton();
         jButtonNextImage = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabelImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -113,15 +115,29 @@ public class AdministratorWindow extends javax.swing.JFrame {
             }
         });
 
+        jLabel19.setText("Select the hotel:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 653, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(287, Short.MAX_VALUE)
+                .addComponent(jLabel19)
+                .addContainerGap(287, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBoxSelectHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxSelectHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(388, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Manage hotels", jPanel2);
@@ -225,9 +241,6 @@ public class AdministratorWindow extends javax.swing.JFrame {
             }
         });
 
-        jLabelImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, java.awt.Color.lightGray, null));
-        jScrollPane2.setViewportView(jLabelImage);
-
         jButtonCreateHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/AddIcon.png"))); // NOI18N
         jButtonCreateHotel.setText("Create");
         jButtonCreateHotel.addActionListener(new java.awt.event.ActionListener() {
@@ -257,6 +270,8 @@ public class AdministratorWindow extends javax.swing.JFrame {
             }
         });
 
+        jLabelImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -276,7 +291,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBoxCountry, 0, 154, Short.MAX_VALUE)
+                    .addComponent(jComboBoxCountry, 0, 164, Short.MAX_VALUE)
                     .addComponent(jTextFieldName)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,10 +319,10 @@ public class AdministratorWindow extends javax.swing.JFrame {
                                 .addComponent(jComboBoxCheckInMin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel12)))
-                        .addGap(0, 23, Short.MAX_VALUE)))
+                        .addGap(0, 15, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,20 +341,19 @@ public class AdministratorWindow extends javax.swing.JFrame {
                                 .addComponent(jButtonAddRequirements, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButtonAddAttractions, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButtonAddServices, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jButtonPreviousImage)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButtonNextImage)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonCreateHotel))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonAddPhotograpy))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButtonPreviousImage)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonNextImage)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addComponent(jButtonCreateHotel))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAddPhotograpy))
+                    .addComponent(jLabelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -411,18 +425,17 @@ public class AdministratorWindow extends javax.swing.JFrame {
                                 .addComponent(jTextFieldNearAttractions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButtonAddAttractions, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel17)
-                                .addComponent(jComboBoxServices, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(jComboBoxServices, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonAddServices, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(45, 45, 45)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
                             .addComponent(jButtonAddPhotograpy))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -464,6 +477,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         chargeYears();
         chargeComboBoxService();
+        chargeComboBoxSelectHotel();
     }//GEN-LAST:event_formWindowOpened
 
     private void chargeYears(){
@@ -481,6 +495,13 @@ public class AdministratorWindow extends javax.swing.JFrame {
         });        
     }
     
+    private void chargeComboBoxSelectHotel(){
+        jComboBoxSelectHotel.removeAllItems();
+        global.getGeneralHotelList().stream().forEach((temporalHotel) -> {
+            jComboBoxSelectHotel.addItem(temporalHotel.getName() + "--->" + temporalHotel.getCountry());
+        });
+    }
+    
     private void jButtonAddPhotograpyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddPhotograpyActionPerformed
         JFileChooser selector = new JFileChooser();
         selector.setFileFilter(new FileNameExtensionFilter("Image files",
@@ -489,8 +510,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
         if(state == JFileChooser.APPROVE_OPTION){
             try{
                 ImageIcon image = new ImageIcon(ImageIO.read(selector.getSelectedFile()));
-                jLabelImage.setSize(image.getIconWidth(),image.getIconHeight());
-                jLabelImage.setIcon(image);
+                setGraphicImage(image);
                 this.photographsList.add(image);
                 indexImage = this.photographsList.size()-1;
             }
@@ -501,6 +521,11 @@ public class AdministratorWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonAddPhotograpyActionPerformed
 
+    private void setGraphicImage(ImageIcon image){
+        jLabelImage.setIcon(new ImageIcon(image.getImage().getScaledInstance(jLabelImage.getWidth(),
+        jLabelImage.getHeight(),Image.SCALE_DEFAULT)));
+    }
+    
     private void jButtonAddRequirementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddRequirementsActionPerformed
         if(!jTextFieldRequirements.getText().isEmpty()){
             this.checkInRequirementsList.add(jTextFieldRequirements.getText());
@@ -626,7 +651,6 @@ public class AdministratorWindow extends javax.swing.JFrame {
         jComboBoxCheckInMin.setSelectedIndex(0);
         jComboBoxCheckOutHours.setSelectedIndex(0);
         jComboBoxCheckOutMin.setSelectedIndex(0);
-        jComboBoxServices.setSelectedIndex(0);
         jLabelImage.setIcon(null);
         indexImage = 0;
         this.checkInRequirementsList.clear();
@@ -688,6 +712,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxCheckOutMin;
     private javax.swing.JComboBox jComboBoxCountry;
     private javax.swing.JComboBox jComboBoxLodgingType;
+    private javax.swing.JComboBox jComboBoxSelectHotel;
     private javax.swing.JComboBox jComboBoxServices;
     private javax.swing.JComboBox jComboBoxStarsNumber;
     private javax.swing.JLabel jLabel1;
@@ -700,6 +725,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -711,7 +737,6 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelImage;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextFieldAddress;
