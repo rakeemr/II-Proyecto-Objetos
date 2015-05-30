@@ -188,16 +188,32 @@ public class Hotel {
         this.checkInRequirementsList.add(newRequierement);
     }
     
+    public void deleteCheckInRequierement(int index){
+        this.checkInRequirementsList.remove(index);
+    }
+    
     public void addNearbyAttraction(Attraction newAttraction){
         this.nearbyAttractionList.add(newAttraction);
+    }
+    
+    public void deleteNearbyAttaction(int index){
+        this.nearbyAttractionList.remove(index);
     }
     
     public void addService(Service newService){
         this.servicesList.add(newService);
     }
     
+    public void deleteService(int index){
+        this.servicesList.remove(index);
+    }
+    
     public void addPhotography(ImageIcon newPhotography){
         this.photographsList.add(newPhotography);
+    }
+    
+    public void deletePhotography(int index){
+        this.photographsList.remove(index);
     }
     
     public void addRoom(Room newRoom){
@@ -210,5 +226,13 @@ public class Hotel {
     
     public void addSeason(Season newSeason){
         this.seasonList.add(newSeason);
+    }
+    
+    public Service searchService(String serviceName){
+        for(Service temporalService : this.servicesList){
+            if(temporalService.getName().equals(serviceName))
+                return temporalService;
+        }
+        return null;
     }
 }

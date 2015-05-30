@@ -151,4 +151,12 @@ public class Global {
         instance.addService(newService);
         return newService;
     }
+    
+    public Hotel searchHotel(String hotelName){
+        for(Hotel temporalHotel : instance.generalHotelList){
+            if(temporalHotel.getName().equals(hotelName))
+                return temporalHotel;
+        }
+        return null;
+    }
 }

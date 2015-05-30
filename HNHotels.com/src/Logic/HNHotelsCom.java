@@ -49,7 +49,7 @@ public class HNHotelsCom {
         photographsList.add(new ImageIcon("/Img/RIU_Hotel.jpg"));
         
         global.addHotel(new Hotel("RIU", "Guanacaste", "Costa Rica", "1234", 5, 
-        "Habitaciones", "12000m2", "1979", "12:15","13:00", checkInRequirementsList,
+        "Rooms", "12000m2", "1979", "12:15","13:00", checkInRequirementsList,
         nearbyAttractionList, servicesList, photographsList));
     }
 }
