@@ -27,7 +27,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private final ArrayList<ImageIcon> photographsList;
     private final Global global;
     private Hotel actualHotel;
-    int indexImageCreate = 0;
+    int indexImageCreate = 0, indexImageManage = 0;
     
     public AdministratorWindow(LogInWindow ancestor, Administrator currentUser) {
         initComponents();
@@ -104,6 +104,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
         jButtonDeleteNearAttractionManage = new javax.swing.JButton();
         jComboBoxDeleteServicesManage = new javax.swing.JComboBox();
         jButtonDeleteServiceManage = new javax.swing.JButton();
+        jButtonDeleteImageManage = new javax.swing.JButton();
         jPanelCreateHotels = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -148,7 +149,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
         jButtonNextImageCreate = new javax.swing.JButton();
         jButtonSeeCreate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jLabelImage = new javax.swing.JLabel();
+        jLabelImageCreate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -356,6 +357,14 @@ public class AdministratorWindow extends javax.swing.JFrame {
             }
         });
 
+        jButtonDeleteImageManage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/DeleteIcon.png"))); // NOI18N
+        jButtonDeleteImageManage.setText("Delete");
+        jButtonDeleteImageManage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteImageManageActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelManageHotelsLayout = new javax.swing.GroupLayout(jPanelManageHotels);
         jPanelManageHotels.setLayout(jPanelManageHotelsLayout);
         jPanelManageHotelsLayout.setHorizontalGroup(
@@ -383,9 +392,8 @@ public class AdministratorWindow extends javax.swing.JFrame {
                                 .addComponent(jTextFieldNameManage, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                                 .addComponent(jTextFieldAddressManage)
                                 .addComponent(jComboBoxSelectHotel, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextFieldHotelSizeManage, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBoxLodgingTypeManage, javax.swing.GroupLayout.Alignment.LEADING, 0, 127, Short.MAX_VALUE))
+                                .addComponent(jTextFieldHotelSizeManage)
+                                .addComponent(jComboBoxLodgingTypeManage, 0, 161, Short.MAX_VALUE)
                                 .addComponent(jComboBoxCountryManage, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jTextFieldPhoneNumberManage, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelManageHotelsLayout.createSequentialGroup()
@@ -450,16 +458,19 @@ public class AdministratorWindow extends javax.swing.JFrame {
                                 .addGap(7, 7, 7)
                                 .addComponent(jLabelImageManage, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelManageHotelsLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
+                                .addGap(6, 6, 6)
                                 .addComponent(jButtonPreviousImageManage)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(3, 3, 3)
                                 .addComponent(jButtonNextImageManage)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonSeeManage)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonActualizeHotel)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                                .addComponent(jButtonDeleteImageManage)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonActualizeHotel)
+                                .addGap(4, 4, 4)))
+                        .addGap(0, 4, Short.MAX_VALUE)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanelManageHotelsLayout.setVerticalGroup(
             jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,12 +479,13 @@ public class AdministratorWindow extends javax.swing.JFrame {
                 .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator2)
                     .addGroup(jPanelManageHotelsLayout.createSequentialGroup()
-                        .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(jComboBoxSelectHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel34)
-                            .addComponent(jTextFieldRequirementsManage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAddRequirementsManage, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonAddRequirementsManage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel19)
+                                .addComponent(jComboBoxSelectHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel34)
+                                .addComponent(jTextFieldRequirementsManage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(11, 11, 11)
                         .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelManageHotelsLayout.createSequentialGroup()
@@ -511,14 +523,16 @@ public class AdministratorWindow extends javax.swing.JFrame {
                                 .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelManageHotelsLayout.createSequentialGroup()
                                         .addGap(142, 142, 142)
-                                        .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jButtonPreviousImageManage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButtonNextImageManage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButtonSeeManage)))
+                                        .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jButtonSeeManage)
+                                            .addComponent(jButtonDeleteImageManage)
+                                            .addComponent(jButtonActualizeHotel)))
                                     .addGroup(jPanelManageHotelsLayout.createSequentialGroup()
                                         .addComponent(jLabelImageManage, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButtonActualizeHotel))))
+                                        .addGap(12, 12, 12)
+                                        .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButtonNextImageManage)
+                                            .addComponent(jButtonPreviousImageManage)))))
                             .addGroup(jPanelManageHotelsLayout.createSequentialGroup()
                                 .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelManageHotelsLayout.createSequentialGroup()
@@ -719,7 +733,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(jLabelImage);
+        jScrollPane1.setViewportView(jLabelImageCreate);
 
         javax.swing.GroupLayout jPanelCreateHotelsLayout = new javax.swing.GroupLayout(jPanelCreateHotels);
         jPanelCreateHotels.setLayout(jPanelCreateHotelsLayout);
@@ -778,7 +792,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
                         .addComponent(jButtonNextImageCreate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonSeeCreate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                         .addComponent(jButtonCreateHotel))
                     .addComponent(jScrollPane1)
                     .addGroup(jPanelCreateHotelsLayout.createSequentialGroup()
@@ -790,7 +804,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelCreateHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldNearAttractionsCreate)
-                            .addComponent(jComboBoxServicesCreate, 0, 164, Short.MAX_VALUE)
+                            .addComponent(jComboBoxServicesCreate, 0, 165, Short.MAX_VALUE)
                             .addComponent(jTextFieldRequirementsCreate))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelCreateHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -810,10 +824,11 @@ public class AdministratorWindow extends javax.swing.JFrame {
                 .addGroup(jPanelCreateHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCreateHotelsLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addGroup(jPanelCreateHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(jTextFieldRequirementsCreate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAddRequirementsCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelCreateHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonAddRequirementsCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelCreateHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel15)
+                                .addComponent(jTextFieldRequirementsCreate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelCreateHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
@@ -955,7 +970,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
         if(state == JFileChooser.APPROVE_OPTION){
             try{
                 ImageIcon image = new ImageIcon(ImageIO.read(selector.getSelectedFile()));
-                setGraphicImage(image);
+                setGraphicImageCreate(image);
                 this.photographsList.add(image);
                 indexImageCreate = this.photographsList.size()-1;
             }
@@ -966,9 +981,16 @@ public class AdministratorWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonAddPhotograpyCreateActionPerformed
 
-    private void setGraphicImage(ImageIcon image){
-        jLabelImage.setIcon(new ImageIcon(image.getImage().getScaledInstance(jLabelImage.getWidth()-1,
-        jLabelImage.getHeight()-1,Image.SCALE_DEFAULT)));
+    private void setGraphicImageCreate(ImageIcon image){
+        jLabelImageCreate.setIcon(new ImageIcon(image.getImage()
+        .getScaledInstance(jLabelImageCreate.getWidth()-1,
+        jLabelImageCreate.getHeight()-1,Image.SCALE_DEFAULT)));
+    }
+    
+    private void setGraphicImageManage(ImageIcon image){
+        jLabelImageManage.setIcon(new ImageIcon(image.getImage()
+        .getScaledInstance(jLabelImageManage.getWidth()-1,
+        jLabelImageManage.getHeight()-1,Image.SCALE_DEFAULT)));
     }
     
     private void jButtonAddRequirementsCreateCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddRequirementsCreateCreateActionPerformed
@@ -1011,23 +1033,25 @@ public class AdministratorWindow extends javax.swing.JFrame {
             //Instance of hotel.
             global.addHotel(new Hotel(jTextFieldNameCreate.getText(),jTextFieldAddressCreate.getText(),
             jComboBoxCountryCreate.getSelectedItem().toString(),jTextFieldPhoneNumberCreate.getText(),
-            Integer.parseInt(jComboBoxStarsNumberCreate.getSelectedItem().toString()),jComboBoxLodgingTypeCreate.
-            getSelectedItem().toString(),jTextFieldHotelSizeCreate.getText(),jComboBoxBuiltYearCreate.
-            getSelectedItem().toString(),jComboBoxCheckInHoursCreate.getSelectedItem().
+            Integer.parseInt(jComboBoxStarsNumberCreate.getSelectedItem().toString()),
+            jComboBoxLodgingTypeCreate.getSelectedItem().toString(),
+            jTextFieldHotelSizeCreate.getText(),jComboBoxBuiltYearCreate.getSelectedItem()
+            .toString(),jComboBoxCheckInHoursCreate.getSelectedItem().
             toString() + ":" + jComboBoxCheckInMinCreate.getSelectedItem().toString(),
             jComboBoxCheckOutHoursCreate.getSelectedItem().toString() + ":" + 
-            jComboBoxCheckOutMinCreate.getSelectedItem().toString(),checkInRequirementsList,
-            nearbyAttractionList,servicesList,photographsList));
+            jComboBoxCheckOutMinCreate.getSelectedItem().toString(),(ArrayList<String>)
+            checkInRequirementsList.clone(),(ArrayList<Attraction>)nearbyAttractionList.clone(),
+            (ArrayList<Service>)servicesList.clone(),(ArrayList<ImageIcon>)photographsList.clone()));
             //Information to the user.
-            JOptionPane.showMessageDialog(this, "Data saved succesfully!", "Notification",
+            JOptionPane.showMessageDialog(this,"Data saved succesfully!","Notification",
             JOptionPane.INFORMATION_MESSAGE, checkIcon);
-            jComboBoxSelectHotel.addItem(jTextFieldNameCreate.getText() + "--->" + jComboBoxCountryCreate
-            .getSelectedItem().toString());
+            jComboBoxSelectHotel.addItem(jTextFieldNameCreate.getText() + "--->" + 
+            jComboBoxCountryCreate.getSelectedItem().toString());
             //Reset components and variables.
             resetComponentsAndVariablesCreateHotel();
         }
         else
-            JOptionPane.showMessageDialog(this, "Missing Data!", "Warning!",
+            JOptionPane.showMessageDialog(this,"Missing Data!","Warning!",
             JOptionPane.INFORMATION_MESSAGE, warningIcon);
     }//GEN-LAST:event_jButtonCreateHotelActionPerformed
 
@@ -1054,19 +1078,19 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private void jButtonPreviousImageCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPreviousImageCreateActionPerformed
         if(indexImageCreate > 0){
             indexImageCreate--;
-            setGraphicImage(this.photographsList.get(indexImageCreate));
+            setGraphicImageCreate(this.photographsList.get(indexImageCreate));
         }
     }//GEN-LAST:event_jButtonPreviousImageCreateActionPerformed
 
     private void jButtonNextImageCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNextImageCreateActionPerformed
-        if(indexImageCreate < this.photographsList.size()-1){
+        if(indexImageCreate < this.photographsList.size() - 1){
            indexImageCreate++;
-           setGraphicImage(this.photographsList.get(indexImageCreate));
+           setGraphicImageCreate(this.photographsList.get(indexImageCreate));
         }
     }//GEN-LAST:event_jButtonNextImageCreateActionPerformed
 
     private void jButtonSeeCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeCreateActionPerformed
-        if(jLabelImage.getIcon() != null){
+        if(jLabelImageCreate.getIcon() != null){
             new PictureViewer(photographsList.get(indexImageCreate),this).setVisible(true);
             this.setEnabled(false);
         }
@@ -1120,23 +1144,68 @@ public class AdministratorWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddServicesManageActionPerformed
 
     private void jButtonAddPhotograpyManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddPhotograpyManageActionPerformed
-        // TODO add your handling code here:
+        JFileChooser selector = new JFileChooser();
+        selector.setFileFilter(new FileNameExtensionFilter("Image files",
+        "jpg","jpeg","png"));
+        int state = selector.showOpenDialog(this);
+        if(state == JFileChooser.APPROVE_OPTION){
+            try{
+                ImageIcon image = new ImageIcon(ImageIO.read(selector.getSelectedFile()));
+                setGraphicImageManage(image);
+                actualHotel.addPhotography(image);
+                indexImageManage = actualHotel.getPhotographsList().size()-1;
+            }
+            catch(IOException ex){
+                JOptionPane.showMessageDialog(this, "Image not supported, please choose another one",
+                "Error!", JOptionPane.INFORMATION_MESSAGE, warningIcon);
+            }
+        }
     }//GEN-LAST:event_jButtonAddPhotograpyManageActionPerformed
 
     private void jButtonPreviousImageManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPreviousImageManageActionPerformed
-        // TODO add your handling code here:
+        if(indexImageManage > 0 && actualHotel != null){
+            indexImageManage--;
+            setGraphicImageManage(actualHotel.getPhotographsList().get(indexImageManage));
+        }
     }//GEN-LAST:event_jButtonPreviousImageManageActionPerformed
 
     private void jButtonNextImageManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNextImageManageActionPerformed
-        // TODO add your handling code here:
+        if(actualHotel != null){
+            if(indexImageManage < actualHotel.getPhotographsList().size() - 1){
+                indexImageManage++;
+                setGraphicImageManage(actualHotel.getPhotographsList().get(indexImageManage));
+            }
+        }
     }//GEN-LAST:event_jButtonNextImageManageActionPerformed
 
     private void jButtonSeeManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeManageActionPerformed
-        // TODO add your handling code here:
+        new PictureViewer(actualHotel.getPhotographsList().get(indexImageManage),
+        this).setVisible(true);
+        this.setEnabled(false);
     }//GEN-LAST:event_jButtonSeeManageActionPerformed
 
     private void jButtonActualizeHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizeHotelActionPerformed
-        // TODO add your handling code here:
+        if(!jTextFieldNameManage.getText().isEmpty() && !jTextFieldAddressManage
+        .getText().isEmpty() && !jTextFieldPhoneNumberManage.getText().isEmpty() &&
+        !jTextFieldHotelSizeManage.getText().isEmpty()){
+            actualHotel.setName(jTextFieldNameManage.getText());
+            actualHotel.setAddress(jTextFieldAddressManage.getText());
+            actualHotel.setCountry(jComboBoxCountryManage.getSelectedItem().toString());
+            actualHotel.setPhoneNumber(jTextFieldPhoneNumberManage.getText());
+            actualHotel.setBuiltYear(jComboBoxBuiltYearManage.getSelectedItem().toString());
+            actualHotel.setHotelSize(jTextFieldHotelSizeManage.getText());
+            actualHotel.setCheckInTime(jComboBoxCheckInHoursManage.getSelectedItem()
+            .toString() + ":" + jComboBoxCheckInMinManage.getSelectedItem().toString());
+            actualHotel.setCheckOutTime(jComboBoxCheckOutHoursManage.getSelectedItem()
+            .toString() + ":" + jComboBoxCheckOutMinManage.getSelectedItem().toString());
+            JOptionPane.showMessageDialog(this, "Information update sucefully", "Message",
+            JOptionPane.INFORMATION_MESSAGE,checkIcon);
+            chargeComboBoxSelectHotel();
+            
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Missing some data", "Warning",
+            JOptionPane.INFORMATION_MESSAGE,warningIcon);
     }//GEN-LAST:event_jButtonActualizeHotelActionPerformed
 
     private void jTextFieldHotelSizeManageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldHotelSizeManageKeyTyped
@@ -1175,54 +1244,58 @@ public class AdministratorWindow extends javax.swing.JFrame {
 
     private void jComboBoxSelectHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelectHotelActionPerformed
         //Loading hotel information requested.
-        Hotel selectedHotel = global.searchHotel(jComboBoxSelectHotel.getSelectedItem()
-        .toString().split("--->")[0]);
-        actualHotel = selectedHotel;
-        jTextFieldNameManage.setText(selectedHotel.getName());
-        jTextFieldAddressManage.setText(selectedHotel.getAddress());
-        //For the countries jComboBox.
-        int cont = 0;
-        while(!jComboBoxCountryManage.getItemAt(cont).toString().equals(selectedHotel
-        .getCountry()))
-            cont++;
-        jComboBoxCountryManage.setSelectedIndex(cont);
-        jTextFieldPhoneNumberManage.setText(selectedHotel.getPhoneNumber());
-        jComboBoxStarsNumberManage.setSelectedIndex(selectedHotel.getStarsNumber()-1);
-        //For the loading type jComboBox.
-        cont = 0;
-        while(!jComboBoxLodgingTypeManage.getItemAt(cont).toString()
-        .equals(selectedHotel.getLodgingType()))
-            cont++;
-        jComboBoxLodgingTypeManage.setSelectedIndex(cont);
-        jTextFieldHotelSizeManage.setText(selectedHotel.getHotelSize());
-        jComboBoxBuiltYearManage.setSelectedIndex(2015 - Integer.parseInt(selectedHotel
-        .getBuiltYear()));
-        //For check in hour.
-        jComboBoxCheckInHoursManage.setSelectedIndex(Integer.parseInt(selectedHotel
-        .getCheckInTime().split(":")[0]) - 10);
-        //For check in minutes.
-        jComboBoxCheckInMinManage.setSelectedIndex(Integer.parseInt(selectedHotel
-        .getCheckInTime().split(":")[1]) / 15);
-        //For check out hour.
-        jComboBoxCheckOutHoursManage.setSelectedIndex(Integer.parseInt(selectedHotel
-        .getCheckOutTime().split(":")[0]) - 10);
-        //For check out minutes.
-        jComboBoxCheckOutMinManage.setSelectedIndex(Integer.parseInt(selectedHotel
-        .getCheckOutTime().split(":")[1]) / 15);
-        //For check in requirements.
-        jComboBoxCheckInRequirementsManage.removeAllItems();
-        actualHotel.getCheckInRequirementsList().stream().forEach((temporalRequirement) -> {
-            jComboBoxCheckInRequirementsManage.addItem(temporalRequirement);
-        });
-        //For near attractions.
-        jComboBoxDeleteNearAttraction.removeAllItems();
-        actualHotel.getNearbyAttractionList().stream().forEach((temporalAttraction) -> {
-            jComboBoxDeleteNearAttraction.addItem(temporalAttraction.getName() +
-            "-" + temporalAttraction.getCode());
-        });
-        //For services.
-        chargeComboBoxServicesManage();
-        chargeComboBoxDeleteServiceManage();
+        if(jComboBoxSelectHotel.getSelectedItem() != null){
+            Hotel selectedHotel = global.searchHotel(jComboBoxSelectHotel.getSelectedItem()
+            .toString().split("--->")[0]);
+            actualHotel = selectedHotel;
+            jTextFieldNameManage.setText(selectedHotel.getName());
+            jTextFieldAddressManage.setText(selectedHotel.getAddress());
+            //For the countries jComboBox.
+            int cont = 0;
+            while(!jComboBoxCountryManage.getItemAt(cont).toString().equals(selectedHotel
+            .getCountry()))
+                cont++;
+            jComboBoxCountryManage.setSelectedIndex(cont);
+            jTextFieldPhoneNumberManage.setText(selectedHotel.getPhoneNumber());
+            jComboBoxStarsNumberManage.setSelectedIndex(selectedHotel.getStarsNumber()-1);
+            //For the loading type jComboBox.
+            cont = 0;
+            while(!jComboBoxLodgingTypeManage.getItemAt(cont).toString()
+            .equals(selectedHotel.getLodgingType()))
+                cont++;
+            jComboBoxLodgingTypeManage.setSelectedIndex(cont);
+            jTextFieldHotelSizeManage.setText(selectedHotel.getHotelSize());
+            jComboBoxBuiltYearManage.setSelectedIndex(2015 - Integer.parseInt(selectedHotel
+            .getBuiltYear()));
+            //For check in hour.
+            jComboBoxCheckInHoursManage.setSelectedIndex(Integer.parseInt(selectedHotel
+            .getCheckInTime().split(":")[0]) - 10);
+            //For check in minutes.
+            jComboBoxCheckInMinManage.setSelectedIndex(Integer.parseInt(selectedHotel
+            .getCheckInTime().split(":")[1]) / 15);
+            //For check out hour.
+            jComboBoxCheckOutHoursManage.setSelectedIndex(Integer.parseInt(selectedHotel
+            .getCheckOutTime().split(":")[0]) - 10);
+            //For check out minutes.
+            jComboBoxCheckOutMinManage.setSelectedIndex(Integer.parseInt(selectedHotel
+            .getCheckOutTime().split(":")[1]) / 15);
+            //For check in requirements.
+            jComboBoxCheckInRequirementsManage.removeAllItems();
+            actualHotel.getCheckInRequirementsList().stream().forEach((temporalRequirement) -> {
+                jComboBoxCheckInRequirementsManage.addItem(temporalRequirement);
+            });
+            //For near attractions.
+            jComboBoxDeleteNearAttraction.removeAllItems();
+            actualHotel.getNearbyAttractionList().stream().forEach((temporalAttraction) -> {
+                jComboBoxDeleteNearAttraction.addItem(temporalAttraction.getName() +
+                "-" + temporalAttraction.getCode());
+            });
+            //For services.
+            chargeComboBoxServicesManage();
+            chargeComboBoxDeleteServiceManage();
+            indexImageManage = 0;
+            setGraphicImageManage(actualHotel.getPhotographsList().get(indexImageManage));
+        }
     }//GEN-LAST:event_jComboBoxSelectHotelActionPerformed
     
     private void chargeComboBoxServicesManage(){
@@ -1261,6 +1334,17 @@ public class AdministratorWindow extends javax.swing.JFrame {
         .getSelectedIndex());
     }//GEN-LAST:event_jButtonDeleteServiceManageActionPerformed
 
+    private void jButtonDeleteImageManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteImageManageActionPerformed
+        if(actualHotel.getPhotographsList().size() > 1){
+            actualHotel.deletePhotography(indexImageManage);
+            setGraphicImageManage(actualHotel.getPhotographsList().get(0));
+            indexImageManage = 0;
+        }
+        else
+            JOptionPane.showMessageDialog(this, "The hotel must have at least one image.", "Warning",
+            JOptionPane.INFORMATION_MESSAGE,warningIcon);
+    }//GEN-LAST:event_jButtonDeleteImageManageActionPerformed
+
     private void resetComponentsAndVariablesCreateHotel(){
         jTextFieldNameCreate.setText("");
         jTextFieldNameCreate.setText("");
@@ -1275,7 +1359,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
         jComboBoxCheckInMinCreate.setSelectedIndex(0);
         jComboBoxCheckOutHoursCreate.setSelectedIndex(0);
         jComboBoxCheckOutMinCreate.setSelectedIndex(0);
-        jLabelImage.setIcon(null);
+        jLabelImageCreate.setIcon(null);
         indexImageCreate = 0;
         this.checkInRequirementsList.clear();
         this.nearbyAttractionList.clear();
@@ -1354,6 +1438,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCloseSession;
     private javax.swing.JButton jButtonCreateHotel;
     private javax.swing.JButton jButtonDeleteCheckInRequirementManage;
+    private javax.swing.JButton jButtonDeleteImageManage;
     private javax.swing.JButton jButtonDeleteNearAttractionManage;
     private javax.swing.JButton jButtonDeleteServiceManage;
     private javax.swing.JButton jButtonNextImageCreate;
@@ -1421,7 +1506,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelImage;
+    private javax.swing.JLabel jLabelImageCreate;
     private javax.swing.JLabel jLabelImageManage;
     private javax.swing.JPanel jPanelCreateHotels;
     private javax.swing.JPanel jPanelManageHotels;
