@@ -104,7 +104,7 @@ public class Global {
             .getName().compareToIgnoreCase(newHotel.getName()) < 0)
                 instance.generalHotelList.add(newHotel);
             else{
-                for(int i = 0;i<instance.generalHotelList.size();i++){
+                for(int i = 0;i < instance.generalHotelList.size();i++){
                     if(instance.generalHotelList.get(i).getName().compareToIgnoreCase(newHotel
                     .getName()) > 0){
                         instance.generalHotelList.add(i,newHotel);

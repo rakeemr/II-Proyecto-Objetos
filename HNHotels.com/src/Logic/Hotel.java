@@ -216,8 +216,29 @@ public class Hotel {
         this.photographsList.remove(index);
     }
     
+    //Sorted by number of plant insertion, from highest to lowest.
     public void addRoom(Room newRoom){
-        this.roomList.add(newRoom);
+        if(this.roomList.size() > 0){
+            //It is first.
+            if(this.roomList.get(0).getType().getFloor() <= newRoom.getType().getFloor())
+                this.roomList.add(0,newRoom);
+            //It is the last.
+            else if(this.roomList.get(this.roomList.size()-1).getType().getFloor()
+            > newRoom.getType().getFloor())
+                this.roomList.add(newRoom);
+            else{
+                for(int i = 0;i < this.roomList.size();i++){
+                    if(this.roomList.get(i).getType().getFloor() <= newRoom.getType()
+                    .getFloor()){
+                        this.roomList.add(i,newRoom);
+                        break;
+                    }
+                }
+            }
+        }
+        //If the list is empty.
+        else
+            this.roomList.add(newRoom);
     }
     
     public void addRoomType(RoomType newRoomType){

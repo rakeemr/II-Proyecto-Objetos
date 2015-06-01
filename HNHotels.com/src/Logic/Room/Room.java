@@ -1,7 +1,6 @@
 package Logic.Room;
 
 import Logic.Hotel;
-import Logic.Register;
 import java.util.ArrayList;
 
 public class Room {

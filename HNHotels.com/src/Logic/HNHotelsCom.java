@@ -1,6 +1,8 @@
 package Logic;
 
 import Graphic.LogInWindow;
+import Logic.Room.Room;
+import Logic.Room.RoomType;
 import Logic.User.Administrator;
 import Logic.User.Client;
 import java.util.ArrayList;
@@ -48,8 +50,26 @@ public class HNHotelsCom {
         ArrayList<ImageIcon> photographsList = new ArrayList();
         photographsList.add(new ImageIcon("/Img/RIU_Hotel.jpg"));
         
-        global.addHotel(new Hotel("RIU", "Guanacaste", "Costa Rica", "1234", 5, 
+        Hotel newHotel = new Hotel("RIU", "Guanacaste", "Costa Rica", "1234", 5, 
         "Rooms", "12000m2", "1979", "12:15","13:00", checkInRequirementsList,
-        nearbyAttractionList, servicesList, photographsList));
+        nearbyAttractionList, servicesList, photographsList);
+        
+        RoomType type1 = new RoomType("Suite",5,"Matrinomial",2,"25m2","Perfect"
+        + " for people who prefer the luxurious things.",true,true,true,true,false);
+        RoomType type2 = new RoomType("Single",1,"Matrinomial and Single",4,"20m2",
+        "Perfect for people who want to spend a nice vacation without spending much.",
+        true,false,false,false,false);
+        
+        newHotel.addRoomType(type1);
+        newHotel.addRoomType(type2);
+        
+        newHotel.addRoom(new Room(newHotel,type1));
+        newHotel.addRoom(new Room(newHotel,type1));
+        newHotel.addRoom(new Room(newHotel,type2));
+        newHotel.addRoom(new Room(newHotel,type2));
+        newHotel.addRoom(new Room(newHotel,type2));
+        newHotel.addRoom(new Room(newHotel,type2));
+        
+        global.addHotel(newHotel);
     }
 }
