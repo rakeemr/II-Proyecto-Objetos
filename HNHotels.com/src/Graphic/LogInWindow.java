@@ -107,6 +107,11 @@ public class LogInWindow extends javax.swing.JFrame {
 
         jComboBoxGenderSignIn.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
 
+        jTextFieldNameSignIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNameSignInActionPerformed(evt);
+            }
+        });
         jTextFieldNameSignIn.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldNameSignInKeyTyped(evt);
@@ -386,6 +391,10 @@ public class LogInWindow extends javax.swing.JFrame {
             manageComponentsPasswordSignIn(false,"Required at least one number");
         }
     }//GEN-LAST:event_jPasswordFieldPasswordSignInKeyReleased
+
+    private void jTextFieldNameSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNameSignInActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNameSignInActionPerformed
     
     private void manageComponentsPasswordSignIn(boolean accion, String message){
         if(accion == true){
