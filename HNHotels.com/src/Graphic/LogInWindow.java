@@ -381,6 +381,8 @@ public class LogInWindow extends javax.swing.JFrame {
     private void jPasswordFieldPasswordSignInKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordSignInKeyReleased
         if(jPasswordFieldPasswordSignIn.getPassword().length < 6)
             manageComponentsPasswordSignIn(false,"Password too short");
+        else if(jPasswordFieldPasswordSignIn.getPassword().length > 20)
+            manageComponentsPasswordSignIn(false,"Password too large");
         else{
             for(char c : jPasswordFieldPasswordSignIn.getPassword()){
                 if(c >= '0' && c <= '9'){

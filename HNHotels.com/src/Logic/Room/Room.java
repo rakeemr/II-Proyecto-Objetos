@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Room {
     private final int number;
-    private final RoomType type;
+    private RoomType type;
     private final ArrayList<Register> registerList;
 
     public Room(Hotel holder, RoomType type) {
@@ -21,6 +21,12 @@ public class Room {
 
     public RoomType getType() {
         return type;
+    }
+    
+    public void setType(RoomType type, Hotel actualHotel, int index){
+        actualHotel.deleteRoom(index);
+        this.type = type;
+        actualHotel.addRoom(this);
     }
 
     public ArrayList<Register> getRegisterList() {

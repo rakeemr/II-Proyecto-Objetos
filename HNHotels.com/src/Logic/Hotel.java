@@ -227,7 +227,7 @@ public class Hotel {
             > newRoom.getType().getFloor())
                 this.roomList.add(newRoom);
             else{
-                for(int i = 0;i < this.roomList.size();i++){
+                for(int i = 1;i < this.roomList.size();i++){
                     if(this.roomList.get(i).getType().getFloor() <= newRoom.getType()
                     .getFloor()){
                         this.roomList.add(i,newRoom);
@@ -239,6 +239,11 @@ public class Hotel {
         //If the list is empty.
         else
             this.roomList.add(newRoom);
+    }
+    
+    public void deleteRoom(int index){
+        this.roomList.remove(index);
+        this.roomCount -= 1;
     }
     
     public void addRoomType(RoomType newRoomType){
@@ -253,6 +258,14 @@ public class Hotel {
         for(Service temporalService : this.servicesList){
             if(temporalService.getName().equals(serviceName))
                 return temporalService;
+        }
+        return null;
+    }
+    
+    public RoomType searchRoomType(String roomTypeName){
+        for(RoomType temporalRoomType : this.roomTypesAvailablesList){
+            if(temporalRoomType.getRoomType().equals(roomTypeName))
+                return temporalRoomType;
         }
         return null;
     }

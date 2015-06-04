@@ -1,5 +1,6 @@
 package Logic.Room;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Register {
@@ -8,6 +9,7 @@ public class Register {
     private final String responsiblePerson;
     private int adultsCount;
     private int childrenCount;
+    private final String dateCode;
 
     public Register(GregorianCalendar checkInDate, GregorianCalendar checkOutDate,
     String responsiblePerson) {
@@ -16,6 +18,7 @@ public class Register {
         this.responsiblePerson = responsiblePerson;
         this.adultsCount = 0;
         this.childrenCount = 0;
+        this.dateCode = generateCode(checkInDate, checkOutDate);
     }
 
     public GregorianCalendar getCheckInDate() {
@@ -44,5 +47,16 @@ public class Register {
 
     public void setChildrenCount(int childrenCount) {
         this.childrenCount = childrenCount;
+    }
+
+    public String getDateCode() {
+        return dateCode;
+    }
+    
+    private String generateCode(GregorianCalendar checkInDate, GregorianCalendar checkOutDate){
+        return checkInDate.get(Calendar.DAY_OF_MONTH) + "/" + checkInDate
+        .get(Calendar.MONTH) + "/" + checkInDate.get(Calendar.YEAR) + "-" + 
+        checkOutDate.get(Calendar.DAY_OF_MONTH) + "/" + checkOutDate.get(Calendar.MONTH) 
+        + "/" + checkOutDate.get(Calendar.YEAR);
     }
 }

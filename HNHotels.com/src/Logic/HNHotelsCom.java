@@ -1,11 +1,13 @@
 package Logic;
 
 import Graphic.LogInWindow;
+import Logic.Room.Register;
 import Logic.Room.Room;
 import Logic.Room.RoomType;
 import Logic.User.Administrator;
 import Logic.User.Client;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import javax.swing.ImageIcon;
 
 public class HNHotelsCom {
@@ -59,16 +61,26 @@ public class HNHotelsCom {
         RoomType type2 = new RoomType("Single",1,"Matrinomial and Single",4,"20m2",
         "Perfect for people who want to spend a nice vacation without spending much.",
         true,false,false,false,false);
+        RoomType type3 = new RoomType("Double",2,"Two matrinomial beds",4,"30m2",
+        "Perfect for couples of friends who want to stay in one room.",true,false,
+        true,false,true);
         
         newHotel.addRoomType(type1);
         newHotel.addRoomType(type2);
+        newHotel.addRoomType(type3);
         
+        Room room1 = new Room(newHotel,type1);
+        
+        room1.addRegister(new Register(new GregorianCalendar(2015,6,5),
+        new GregorianCalendar(2015,6,8),"Alguien"));
+        
+        newHotel.addRoom(room1);
         newHotel.addRoom(new Room(newHotel,type1));
-        newHotel.addRoom(new Room(newHotel,type1));
         newHotel.addRoom(new Room(newHotel,type2));
         newHotel.addRoom(new Room(newHotel,type2));
         newHotel.addRoom(new Room(newHotel,type2));
         newHotel.addRoom(new Room(newHotel,type2));
+        newHotel.addRoom(new Room(newHotel,type3));
         
         global.addHotel(newHotel);
     }

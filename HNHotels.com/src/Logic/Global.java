@@ -10,6 +10,8 @@ public class Global {
     private ArrayList<User> generalUserList;
     private ArrayList<Hotel> generalHotelList;
     private ArrayList<Service> generalServiceList;
+    private ArrayList<Reservation> completedReservations;
+    private ArrayList<Reservation> canceledReservations;
     private int partnerCount;
     private int serviceCount;
     private static Cryptography crypto;
@@ -23,6 +25,8 @@ public class Global {
             instance.generalUserList = new ArrayList();
             instance.generalHotelList = new ArrayList();
             instance.generalServiceList = new ArrayList();
+            instance.completedReservations = new ArrayList();
+            instance.canceledReservations = new ArrayList();
             instance.partnerCount = 1000;
             instance.serviceCount = 0;
             crypto = new Cryptography();
@@ -53,6 +57,22 @@ public class Global {
     
     public void setGeneralServiceList(ArrayList<Service> generalServiceList){
         instance.generalServiceList = generalServiceList;
+    }
+
+    public ArrayList<Reservation> getCompletedReservations() {
+        return instance.completedReservations;
+    }
+
+    public void setCompletedReservations(ArrayList<Reservation> completedReservations) {
+        instance.completedReservations = completedReservations;
+    }
+
+    public ArrayList<Reservation> getCanceledReservations() {
+        return instance.canceledReservations;
+    }
+
+    public void setCanceledReservations(ArrayList<Reservation> canceledReservations) {
+        instance.canceledReservations = canceledReservations;
     }
 
     public int getPartnerCount() {
