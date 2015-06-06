@@ -169,7 +169,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jListRoomRegistersManageRooms = new javax.swing.JList();
         jButtonUpdateRoomType = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonSee = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -970,11 +970,11 @@ public class AdministratorWindow extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/LoupeIcon.png"))); // NOI18N
-        jButton1.setText("See");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/LoupeIcon.png"))); // NOI18N
+        jButtonSee.setText("See");
+        jButtonSee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSeeActionPerformed(evt);
             }
         });
 
@@ -983,28 +983,31 @@ public class AdministratorWindow extends javax.swing.JFrame {
         jPanelManageHotelRoomsLayout.setHorizontalGroup(
             jPanelManageHotelRoomsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelManageHotelRoomsLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel38)
-                .addGap(4, 4, 4)
-                .addComponent(jComboBoxSelectHotelManageRooms, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanelManageHotelRoomsLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanelManageHotelRoomsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel39)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelManageHotelRoomsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel40)
-                    .addComponent(jButtonUpdateRoomType, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelManageHotelRoomsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel41)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(32, 32, 32)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelManageHotelRoomsLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel38)
+                        .addGap(4, 4, 4)
+                        .addComponent(jComboBoxSelectHotelManageRooms, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelManageHotelRoomsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanelManageHotelRoomsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel39)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelManageHotelRoomsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel40)
+                            .addComponent(jButtonUpdateRoomType, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelManageHotelRoomsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel41)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSee, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(32, 32, 32)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18))
         );
         jPanelManageHotelRoomsLayout.setVerticalGroup(
             jPanelManageHotelRoomsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1035,7 +1038,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelManageHotelRoomsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonUpdateRoomType)
-                            .addComponent(jButton1)))))
+                            .addComponent(jButtonSee)))))
         );
 
         jTabbedPane1.addTab("Manage hotel rooms", jPanelManageHotelRooms);
@@ -1091,7 +1094,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private void chargeComboBoxSelectHotel(JComboBox comboBox){
         comboBox.removeAllItems();
         global.getGeneralHotelList().stream().forEach((temporalHotel) -> {
-            comboBox.addItem(temporalHotel.getName() + "--->" + temporalHotel.getCountry());
+            comboBox.addItem(temporalHotel.getName() + "," + temporalHotel.getCountry());
         });
     }
     
@@ -1178,7 +1181,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
             //Information to the user.
             JOptionPane.showMessageDialog(this,"Data saved succesfully!","Notification",
             JOptionPane.INFORMATION_MESSAGE, checkIcon);
-            jComboBoxSelectHotelManageHotel.addItem(jTextFieldNameCreate.getText() + "--->" + 
+            jComboBoxSelectHotelManageHotel.addItem(jTextFieldNameCreate.getText() + "," + 
             jComboBoxCountryCreate.getSelectedItem().toString());
             //Reset components and variables.
             resetComponentsAndVariablesCreateHotel();
@@ -1379,7 +1382,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
         //Loading hotel information requested.
         if(jComboBoxSelectHotelManageHotel.getSelectedItem() != null){
             Hotel selectedHotel = global.searchHotel(jComboBoxSelectHotelManageHotel.getSelectedItem()
-            .toString().split("--->")[0]);
+            .toString().split(",")[0]);
             actualHotelManageHotel = selectedHotel;
             jTextFieldNameManage.setText(selectedHotel.getName());
             jTextFieldAddressManage.setText(selectedHotel.getAddress());
@@ -1486,7 +1489,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
         //Loading hotel information requested.
         if(jComboBoxSelectHotelManageRooms.getSelectedItem() != null){
             Hotel selectedHotel = global.searchHotel(jComboBoxSelectHotelManageRooms.getSelectedItem()
-            .toString().split("--->")[0]);
+            .toString().split(",")[0]);
             actualHotelManageRooms = selectedHotel;
             chargeJListRoomsManageRooms();
             chargeJListRoomTypeManageRooms();
@@ -1515,7 +1518,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
         chargeJListRoomRegistersManageRooms();
     }//GEN-LAST:event_jButtonUpdateRoomTypeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonSeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeeActionPerformed
         if(actualHotelManageRooms != null && jListRoomRegistersManageRooms.getSelectedIndex() != -1
         && jListRoomRegistersManageRooms.getSelectedIndex() != -1){
             new RegisterViewer(this, actualHotelManageRooms.getRoomList()
@@ -1523,14 +1526,14 @@ public class AdministratorWindow extends javax.swing.JFrame {
             .get(jListRoomRegistersManageRooms.getSelectedIndex())).setVisible(true);
             this.setEnabled(false);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSeeActionPerformed
 
     private void chargeJListRoomsManageRooms(){
         if(actualHotelManageRooms.getRoomList().size() > 0){
             DefaultListModel model = new DefaultListModel();
             actualHotelManageRooms.getRoomList().stream().forEach((temporalRoom) -> {
-                model.addElement(temporalRoom.getNumber() + "--->Floor: " + temporalRoom
-                .getType().getFloor());
+                model.addElement("Room: " + temporalRoom.getNumber() + "--->Floor: " + 
+                temporalRoom.getType().getFloor());
             });
             jListRoomsManageRooms.setModel(model);
             jListRoomsManageRooms.setSelectedIndex(0);
@@ -1654,7 +1657,6 @@ public class AdministratorWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonActualizeHotel;
     private javax.swing.JButton jButtonAddAttractionsCreate;
     private javax.swing.JButton jButtonAddAttractionsManage;
@@ -1674,6 +1676,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNextImageManage;
     private javax.swing.JButton jButtonPreviousImageCreate;
     private javax.swing.JButton jButtonPreviousImageManage;
+    private javax.swing.JButton jButtonSee;
     private javax.swing.JButton jButtonSeeCreate;
     private javax.swing.JButton jButtonSeeManage;
     private javax.swing.JButton jButtonUpdateRoomType;

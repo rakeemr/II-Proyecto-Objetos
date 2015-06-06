@@ -25,15 +25,20 @@ public class HNHotelsCom {
         //Users.
         char[] password = {'1','2','3'};
         global.addUser(new Administrator("David","Vargas","Male","dva",password));
-        global.addUser(new Administrator("Raquel","Mora","Female","raquemora@gmail.com",password));
+        global.addUser(new Administrator("Raquel","Mora","Female","rkm",password));
         global.addUser(new Client("Michael","Mendez","Male","michael",password));
+        global.addUser(new Client("Leiver", "Jimenez", "Male", "leiju@gmail.com", password));
+        global.addUser(new Client("Laura", "Piedra", "Female", "galleta@gmail.com", password));
+        global.addUser(new Client("Keilor", "Jimenez", "Male", "cache@gmail.com", password));
         //Services.
         global.addService(new Service("Swimming pool"));
         global.addService(new Service("TV"));
         global.addService(new Service("Restaurant"));
         global.addService(new Service("Conditioned air"));
         global.addService(new Service("Spa"));
-        //Hotels.
+        global.addService(new Service("Refrigerator"));
+        global.addService(new Service("Bathtub"));
+        //Hotel1.
         ArrayList<String> checkInRequirementsList = new ArrayList();
         checkInRequirementsList.add("ID");
         checkInRequirementsList.add("Previous Paid");
@@ -70,18 +75,83 @@ public class HNHotelsCom {
         newHotel.addRoomType(type3);
         
         Room room1 = new Room(newHotel,type1);
+        Room room2 = new Room(newHotel,type2);
+        Room room3 = new Room(newHotel, type3);
         
         room1.addRegister(new Register(new GregorianCalendar(2015,6,5),
         new GregorianCalendar(2015,6,8),"Alguien"));
+        room2.addRegister(new Register(new GregorianCalendar(2015,10,5),
+        new GregorianCalendar(2015,10,8),"Sujeto"));
+        room3.addRegister(new Register(new GregorianCalendar(2015,3,9),
+        new GregorianCalendar(2015,3,13),"Pepe"));
         
         newHotel.addRoom(room1);
-        newHotel.addRoom(new Room(newHotel,type1));
-        newHotel.addRoom(new Room(newHotel,type2));
+        newHotel.addRoom(room2);
+        newHotel.addRoom(room3);
         newHotel.addRoom(new Room(newHotel,type2));
         newHotel.addRoom(new Room(newHotel,type2));
         newHotel.addRoom(new Room(newHotel,type2));
         newHotel.addRoom(new Room(newHotel,type3));
         
         global.addHotel(newHotel);
+        //Hotel2
+        ArrayList<String> checkInRequirementsList2 = new ArrayList();
+        checkInRequirementsList2.add("ID");
+        checkInRequirementsList2.add("Previous Paid");
+        checkInRequirementsList2.add("Reservation");
+        checkInRequirementsList2.add("Passport");
+        checkInRequirementsList2.add("Extra-Amount");
+        
+        ArrayList<Attraction> nearbyAttractionList2 = new ArrayList();
+        nearbyAttractionList2.add(new Attraction("Beach"));
+        nearbyAttractionList2.add(new Attraction("Canopy"));
+        nearbyAttractionList2.add(new Attraction("NightClubs"));
+        nearbyAttractionList2.add(new Attraction("Rapel"));
+        
+        ArrayList<Service> servicesList2 = new ArrayList();
+        servicesList2.add(global.getGeneralServiceList().get(0));
+        servicesList2.add(global.getGeneralServiceList().get(2));
+        servicesList2.add(global.getGeneralServiceList().get(3));
+        
+        ArrayList<ImageIcon> photographsList2 = new ArrayList();
+        photographsList2.add(new ImageIcon("/Img/MontannaDeFuego_Hotel.jpg"));
+        
+        Hotel newHotel2 = new Hotel("Montaña de Fuego", "La Fortuna", "Costa Rica",
+        "2345", 4, "Rooms", "14500m2", "1987", "12:45","14:15", checkInRequirementsList2,
+        nearbyAttractionList2, servicesList2, photographsList2);
+        
+        RoomType type4 = new RoomType("Suite",5,"Matrimonial and single beds",2,"25m2","Perfect"
+        + " for people who prefer the luxurious things.",true,true,true,true,false);
+        RoomType type5 = new RoomType("Single",3,"Single bed",4,"20m2",
+        "Perfect for people who want to spend a nice vacation without spending much.",
+        true,false,false,false,false);
+        RoomType type6 = new RoomType("Single",1,"Matrimonial bed",2,"30m2",
+        "Perfect for couples of friends who want to stay in one room.",true,false,
+        true,false,true);
+        
+        newHotel2.addRoomType(type4);
+        newHotel2.addRoomType(type5);
+        newHotel2.addRoomType(type6);
+        
+        Room room4 = new Room(newHotel2,type4);
+        Room room5 = new Room(newHotel2,type5);
+        Room room6 = new Room(newHotel2, type6);
+        
+        room4.addRegister(new Register(new GregorianCalendar(2015,6,5),
+        new GregorianCalendar(2015,6,8),"Nadie"));
+        room5.addRegister(new Register(new GregorianCalendar(2015,10,5),
+        new GregorianCalendar(2015,10,8),"Pedro"));
+        room6.addRegister(new Register(new GregorianCalendar(2015,3,9),
+        new GregorianCalendar(2015,3,13),"Paco"));
+        
+        newHotel2.addRoom(room4);
+        newHotel2.addRoom(room5);
+        newHotel2.addRoom(room6);
+        newHotel2.addRoom(new Room(newHotel2,type4));
+        newHotel2.addRoom(new Room(newHotel2,type5));
+        newHotel2.addRoom(new Room(newHotel2,type4));
+        newHotel2.addRoom(new Room(newHotel2,type6));
+        
+        global.addHotel(newHotel2);
     }
 }
