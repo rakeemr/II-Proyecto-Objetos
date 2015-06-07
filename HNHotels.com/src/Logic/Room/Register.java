@@ -12,12 +12,12 @@ public class Register {
     private final String dateCode;
 
     public Register(GregorianCalendar checkInDate, GregorianCalendar checkOutDate,
-    String responsiblePerson) {
+    String responsiblePerson, int adultsCount, int childrenCount) {
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.responsiblePerson = responsiblePerson;
-        this.adultsCount = 0;
-        this.childrenCount = 0;
+        this.adultsCount = adultsCount;
+        this.childrenCount = childrenCount;
         this.dateCode = generateCode(checkInDate, checkOutDate);
     }
 

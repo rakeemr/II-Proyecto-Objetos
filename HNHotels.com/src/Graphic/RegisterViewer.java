@@ -1,7 +1,6 @@
 package Graphic;
 
 import Logic.Room.Register;
-import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -105,12 +104,8 @@ public class RegisterViewer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        jLabelCheckInDate.setText(register.getDateCode().split("-")[0] + " " + 
-        register.getCheckInDate().get(Calendar.HOUR) + ":" + register.getCheckInDate()
-        .get(Calendar.MINUTE));
-        jLabelCheckOutDate.setText(register.getDateCode().split("-")[1] + " " + 
-        register.getCheckOutDate().get(Calendar.HOUR) + ":" + register.getCheckOutDate()
-        .get(Calendar.MINUTE));
+        jLabelCheckInDate.setText(register.getDateCode().split("-")[0]);
+        jLabelCheckOutDate.setText(register.getDateCode().split("-")[1]);
         jLabelResponsiblePerson.setText(register.getResponsiblePerson());
         jLabelAdultsCount.setText(Integer.toString(this.register.getAdultsCount()));
         jLabelChildrenCount.setText(Integer.toString(this.register.getChildrenCount()));

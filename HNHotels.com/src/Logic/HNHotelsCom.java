@@ -76,14 +76,14 @@ public class HNHotelsCom {
         
         Room room1 = new Room(newHotel,type1);
         Room room2 = new Room(newHotel,type2);
-        Room room3 = new Room(newHotel, type3);
+        Room room3 = new Room(newHotel,type3);
         
         room1.addRegister(new Register(new GregorianCalendar(2015,6,5),
-        new GregorianCalendar(2015,6,8),"Alguien"));
+        new GregorianCalendar(2015,6,8),"Alguien",2,0));
         room2.addRegister(new Register(new GregorianCalendar(2015,10,5),
-        new GregorianCalendar(2015,10,8),"Sujeto"));
+        new GregorianCalendar(2015,10,8),"Sujeto",2,2));
         room3.addRegister(new Register(new GregorianCalendar(2015,3,9),
-        new GregorianCalendar(2015,3,13),"Pepe"));
+        new GregorianCalendar(2015,3,13),"Pepe",4,0));
         
         newHotel.addRoom(room1);
         newHotel.addRoom(room2);
@@ -138,11 +138,11 @@ public class HNHotelsCom {
         Room room6 = new Room(newHotel2, type6);
         
         room4.addRegister(new Register(new GregorianCalendar(2015,6,5),
-        new GregorianCalendar(2015,6,8),"Nadie"));
+        new GregorianCalendar(2015,6,8),"Nadie",1,1));
         room5.addRegister(new Register(new GregorianCalendar(2015,10,5),
-        new GregorianCalendar(2015,10,8),"Pedro"));
+        new GregorianCalendar(2015,10,8),"Pedro",2,2));
         room6.addRegister(new Register(new GregorianCalendar(2015,3,9),
-        new GregorianCalendar(2015,3,13),"Paco"));
+        new GregorianCalendar(2015,3,13),"Paco",2,0));
         
         newHotel2.addRoom(room4);
         newHotel2.addRoom(room5);
