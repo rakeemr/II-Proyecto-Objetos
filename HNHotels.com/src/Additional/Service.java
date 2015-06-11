@@ -1,4 +1,6 @@
-package Logic;
+package Additional;
+
+import Logic.Global;
 
 public class Service {
     private final int code;

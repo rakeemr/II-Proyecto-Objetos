@@ -1,5 +1,8 @@
 package Logic;
 
+import Additional.Attraction;
+import Additional.Categorie;
+import Additional.Service;
 import Graphic.LogInWindow;
 import Logic.Room.Register;
 import Logic.Room.Room;
@@ -30,6 +33,12 @@ public class HNHotelsCom {
         global.addUser(new Client("Leiver", "Jimenez", "Male", "leiju@gmail.com", password));
         global.addUser(new Client("Laura", "Piedra", "Female", "galleta@gmail.com", password));
         global.addUser(new Client("Keilor", "Jimenez", "Male", "cache@gmail.com", password));
+        //Categories.
+        global.addCategorie(new Categorie("70%","The best hotel around."));
+        global.addCategorie(new Categorie("60%","You should try this."));
+        global.addCategorie(new Categorie("55%","There's nothing that we don't have."));
+        global.addCategorie(new Categorie("50%","You won't find another."));
+        global.addCategorie(new Categorie("47%","Come here, it's a beautiful place."));
         //Services.
         global.addService(new Service("Swimming pool"));
         global.addService(new Service("TV"));
@@ -125,7 +134,7 @@ public class HNHotelsCom {
         RoomType type5 = new RoomType("Single",3,"Single bed",4,"20m2",
         "Perfect for people who want to spend a nice vacation without spending much.",
         true,false,false,false,false);
-        RoomType type6 = new RoomType("Single",1,"Matrimonial bed",2,"30m2",
+        RoomType type6 = new RoomType("Double",1,"Matrimonial bed",2,"30m2",
         "Perfect for couples of friends who want to stay in one room.",true,false,
         true,false,true);
         

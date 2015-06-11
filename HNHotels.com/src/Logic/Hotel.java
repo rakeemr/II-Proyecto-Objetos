@@ -1,5 +1,8 @@
 package Logic;
 
+import Additional.Service;
+import Additional.Attraction;
+import Additional.Categorie;
 import Logic.Room.RoomType;
 import Logic.Room.Room;
 import java.util.ArrayList;
@@ -16,6 +19,7 @@ public class Hotel {
     private String builtYear;
     private String checkInTime;
     private String checkOutTime;
+    private Categorie hotelCategorie;
     private int reservationCount;
     private int roomCount;
     private final ArrayList<String> checkInRequirementsList;
@@ -41,6 +45,7 @@ public class Hotel {
         this.builtYear = builtYear;
         this.checkInTime = checkInTime;
         this.checkOutTime = checkOutTime;
+        this.hotelCategorie = Global.getInstance().getCategorie(starsNumber);
         this.reservationCount = 0;
         this.roomCount = 0;
         this.checkInRequirementsList = checkInRequirementsList;
@@ -90,6 +95,7 @@ public class Hotel {
 
     public void setStarsNumber(int starsNumber) {
         this.starsNumber = starsNumber;
+        this.hotelCategorie = Global.getInstance().getCategorie(starsNumber);
     }
 
     public String getLodgingType() {

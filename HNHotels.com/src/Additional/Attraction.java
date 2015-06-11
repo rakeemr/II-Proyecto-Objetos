@@ -1,4 +1,6 @@
-package Logic;
+package Additional;
+
+import Logic.Global;
 
 public class Attraction {
     private String code;

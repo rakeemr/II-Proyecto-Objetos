@@ -1,5 +1,7 @@
 package Logic;
 
+import Additional.Categorie;
+import Additional.Service;
 import Logic.User.User;
 import java.util.ArrayList;
 import java.util.Random;
@@ -10,6 +12,7 @@ public class Global {
     private ArrayList<User> generalUserList;
     private ArrayList<Hotel> generalHotelList;
     private ArrayList<Service> generalServiceList;
+    private ArrayList<Categorie> generalCategorieList;
     private ArrayList<Reservation> completedReservations;
     private ArrayList<Reservation> canceledReservations;
     private int partnerCount;
@@ -25,6 +28,7 @@ public class Global {
             instance.generalUserList = new ArrayList();
             instance.generalHotelList = new ArrayList();
             instance.generalServiceList = new ArrayList();
+            instance.generalCategorieList = new ArrayList();
             instance.completedReservations = new ArrayList();
             instance.canceledReservations = new ArrayList();
             instance.partnerCount = 1000;
@@ -143,6 +147,10 @@ public class Global {
         instance.addToServiceCount();
     }
     
+    public void addCategorie(Categorie newCategorie){
+        instance.generalCategorieList.add(newCategorie);
+    }
+    
     public void addCode(String code){
         instance.codes.add(code);
     }
@@ -178,5 +186,9 @@ public class Global {
                 return temporalHotel;
         }
         return null;
+    }
+    
+    public Categorie getCategorie(int stars){
+        return instance.generalCategorieList.get(stars - 1);
     }
 }
