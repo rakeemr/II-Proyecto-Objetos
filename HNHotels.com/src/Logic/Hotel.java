@@ -138,6 +138,14 @@ public class Hotel {
         this.checkOutTime = checkOutTime;
     }
 
+    public Categorie getHotelCategorie() {
+        return hotelCategorie;
+    }
+
+    public void setHotelCategorie(Categorie hotelCategorie) {
+        this.hotelCategorie = hotelCategorie;
+    }
+
     public int getReservationCount() {
         return reservationCount;
     }
