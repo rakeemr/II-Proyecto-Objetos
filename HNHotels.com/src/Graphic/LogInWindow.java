@@ -75,7 +75,7 @@ public class LogInWindow extends javax.swing.JFrame {
         });
 
         jButtonSignIn.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButtonSignIn.setText("Sign In");
+        jButtonSignIn.setText("Sign Up");
         jButtonSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSignInActionPerformed(evt);

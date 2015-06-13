@@ -1327,6 +1327,11 @@ public class AdministratorWindow extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CheckIcon16.png"))); // NOI18N
         jButton2.setText("Update");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jTextFieldFloor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -1643,6 +1648,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
         chargeComboBoxSelectHotel(jComboBoxSelectHotelManageHotel);
         chargeComboBoxSelectHotel(jComboBoxSelectHotelManageRooms);
         chargeComboBoxSelectHotel(jComboBoxSelectHotelRoomType);
+        chargeComboBoxSelectRoomType();
         resetComponentsAndVariablesRoomType();
     }//GEN-LAST:event_formWindowOpened
 
@@ -2019,6 +2025,16 @@ public class AdministratorWindow extends javax.swing.JFrame {
         });
     }
     
+    private void chargeComboBoxSelectRoomType(){
+        if(jComboBoxSelectHotelRoomType.getSelectedItem() != null){
+            jComboBoxSelectRoomType.removeAllItems();
+            global.searchHotel(jComboBoxSelectHotelRoomType.getSelectedItem()
+            .toString().split(",")[0]).getRoomTypesAvailablesList().forEach((temporalRoomtype) -> {
+                jComboBoxSelectRoomType.addItem(temporalRoomtype.getRoomType());
+            });
+        }
+    }
+    
     private void chargeComboBoxDeleteServiceManage(){
         jComboBoxDeleteServicesManage.removeAllItems();
         actualHotelManageHotel.getServicesList().stream().forEach((temporalService) -> {
@@ -2132,7 +2148,11 @@ public class AdministratorWindow extends javax.swing.JFrame {
             resetComponentsAndVariablesRoomType();
             chargeComboBoxSelectHotel(jComboBoxSelectHotelRoomType);
             chargeComboBoxSelectHotel(jComboBoxSelectHotelManageRooms);
+            chargeComboBoxSelectRoomType();
         }
+        else
+            JOptionPane.showMessageDialog(this, "Missing some data", "Warning",
+            JOptionPane.INFORMATION_MESSAGE,warningIcon);
     }//GEN-LAST:event_jButtonCreateRoomTypeActionPerformed
 
     private void jComboBoxSelectHotelRoomTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelectHotelRoomTypeActionPerformed
@@ -2189,12 +2209,42 @@ public class AdministratorWindow extends javax.swing.JFrame {
 
     private void jComboBoxSelectRoomTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelectRoomTypeActionPerformed
         if(jComboBoxSelectHotelRoomType.getSelectedItem() != null){
-            Hotel selectedHotel = global.searchHotel(jComboBoxSelectHotelRoomType.getSelectedItem()
+            Hotel selectedHotel = global.searchHotel(jComboBoxSelectHotelManageHotel.getSelectedItem()
             .toString().split(",")[0]);
             actualHotelManageRoomType = selectedHotel;
-            
+            if(jComboBoxSelectRoomType.getSelectedItem() != null){
+                RoomType roomType = actualHotelManageRoomType.searchRoomType(
+                jComboBoxSelectRoomType.getSelectedItem().toString());
+                jTextFieldFloorModify.setText(String.valueOf(roomType.getFloor()));
+                jTextFieldBedTypeModify.setText(roomType.getBedType());
+                jTextFieldMaxOfPeopleModify.setText(String.valueOf(roomType.getMaxOfPeople()));
+                jTextFieldRoomSizeModify.setText(roomType.getRoomSize());
+                jTextFieldDescriptionModify.setText(roomType.getDescription());
+            }
         }
     }//GEN-LAST:event_jComboBoxSelectRoomTypeActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(!jTextFieldFloorModify.getText().isEmpty() && !jTextFieldBedTypeModify.getText().isEmpty()
+        && !jTextFieldMaxOfPeopleModify.getText().isEmpty() && !jTextFieldRoomSizeModify.getText().isEmpty()
+        && !jTextFieldDescriptionModify.getText().isEmpty()){
+            RoomType roomTypeModify = actualHotelManageRoomType.searchRoomType(
+            jComboBoxSelectRoomType.getSelectedItem().toString());
+            roomTypeModify.setFloor(Integer.parseInt(jTextFieldFloorModify.getText()));
+            roomTypeModify.setBedType(jTextFieldBedTypeModify.getText());
+            roomTypeModify.setMaxOfPeople(Integer.parseInt(jTextFieldMaxOfPeopleModify.getText()));
+            roomTypeModify.setDescription(jTextFieldDescriptionModify.getText());
+            roomTypeModify.setHasSalon(jRadioButtonYesSalonModify.isSelected());
+            roomTypeModify.setHasTerrace(jRadioButtonYesTerranceModify.isSelected());
+            roomTypeModify.setHasSeaview(jRadioButtonYesSeaViewModify.isSelected());
+            roomTypeModify.setAllIncluded(jRadioButtonYesAllIncludedModify.isSelected());
+            roomTypeModify.setSmokePermission(jRadioButtonYesSmokePermissionModify.isSelected());
+            resetComponentsAndVariablesRoomType();
+        }
+        else
+            JOptionPane.showMessageDialog(this,"Missing Data!","Warning!",
+            JOptionPane.INFORMATION_MESSAGE, warningIcon);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void chargeJListRoomsManageRooms(){
         if(actualHotelManageRooms.getRoomList().size() > 0){
@@ -2227,16 +2277,6 @@ public class AdministratorWindow extends javax.swing.JFrame {
                 model.addElement(temporalRegister.getDateCode());
             });
             jListRoomRegistersManageRooms.setModel(model);
-        }
-    }
-    
-    private void chargeJComboBoxSelectRoomType(){
-        if(actualHotelManageRoomType.getRoomTypesAvailablesList().size() > 0){
-            DefaultListModel model = new DefaultListModel();
-            actualHotelManageRoomType.getRoomTypesAvailablesList().stream().forEach((temporalRoomType) -> {
-                model.addElement(temporalRoomType.getRoomType());
-        });
-            
         }
     }
     
