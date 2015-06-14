@@ -2,6 +2,7 @@ package Logic;
 
 import Logic.Room.SimpleRoom;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Season {
@@ -12,9 +13,9 @@ public class Season {
     private final ArrayList<SimpleRoom> simpleRoomList;
     private int visitsCount;
 
-    public Season(String name, String code, GregorianCalendar startDate, GregorianCalendar endDate) {
+    public Season(String name, GregorianCalendar startDate, GregorianCalendar endDate) {
         this.name = name;
-        this.code = code;
+        this.code = generateSeasonCode(name, startDate, endDate);
         this.startDate = startDate;
         this.endDate = endDate;
         this.simpleRoomList = new ArrayList();
@@ -51,5 +52,19 @@ public class Season {
     
     public void addSimpleRoom(SimpleRoom newSimpleRoom){
         this.simpleRoomList.add(newSimpleRoom);
+    }
+    
+    private String generateSeasonCode(String name, GregorianCalendar startDate,
+    GregorianCalendar endDate){
+        String newCode = "";
+        if(name.length() >= 2)
+            newCode += name.substring(0, 1);
+        else
+            newCode += name.charAt(0);
+        newCode += startDate.get(Calendar.MONTH);
+        newCode += Integer.toString(startDate.get(Calendar.YEAR)).substring(2, 3);
+        newCode += endDate.get(Calendar.MONTH);
+        newCode += Integer.toString(endDate.get(Calendar.YEAR)).substring(2, 3);
+        return newCode;
     }
 }

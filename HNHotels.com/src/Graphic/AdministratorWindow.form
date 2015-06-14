@@ -316,7 +316,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <EmptySpace pref="44" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1119,10 +1119,12 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jButtonDeleteImageManage" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButtonAddPhotograpyManage" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButtonAddPhotograpyManage" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabelImageManage" min="-2" pref="155" max="-2" attributes="0"/>
@@ -1845,7 +1847,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                              <Component id="jSeparator4" pref="439" max="32767" attributes="0"/>
+                              <Component id="jSeparator4" pref="442" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -2031,6 +2033,378 @@
             </Component>
           </SubComponents>
         </Container>
+        <Container class="javax.swing.JPanel" name="jPanel2">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Manage Season">
+                <Property name="tabTitle" type="java.lang.String" value="Manage Season"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jSeparator7" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel45" min="-2" pref="60" max="-2" attributes="0"/>
+                                          <EmptySpace pref="77" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldSeasonName" min="-2" pref="134" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel69" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                                              <Component id="jLabel70" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="dateChooserComboSeasonEndDate" pref="134" max="32767" attributes="0"/>
+                                              <Component id="dateChooserComboSeasonStartDate" pref="134" max="32767" attributes="0"/>
+                                              <Component id="jButtonCreateSeason" alignment="1" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jLabelInfoSeasons" min="-2" pref="332" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabelInfoRoomTypeSeasons" max="32767" attributes="0"/>
+                                          <Component id="jLabelInfoPriceSeasons" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jButtonNextManageSeasons" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelRoomTypeManageSeasons" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldPriceManageSeasons" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jSeparator8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel73" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                                          <Component id="jLabel71" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="jLabel76" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jLabel74" alignment="0" pref="61" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jComboBoxSelectSeason" max="32767" attributes="0"/>
+                                          <Component id="dateChooserComboSeasonEndDateModify" alignment="0" pref="134" max="32767" attributes="0"/>
+                                          <Component id="dateChooserComboSeasonStartDateModify" alignment="0" pref="134" max="32767" attributes="0"/>
+                                          <Component id="jComboBoxAddRooms" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jButtonAddRoomToSeason" min="-2" pref="35" max="-2" attributes="0"/>
+                                          <Component id="jButtonDeleteRoomToSeason" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jButton3" min="-2" pref="102" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel44" min="-2" pref="89" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jComboBoxSelectHotelManageSeason" min="-2" pref="201" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="67" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxSelectHotelManageSeason" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jSeparator7" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                      <Component id="jSeparator8" min="-2" pref="414" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldSeasonName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="dateChooserComboSeasonStartDate" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jLabel70" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="dateChooserComboSeasonEndDate" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jButtonCreateSeason" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="jLabelInfoSeasons" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabelInfoRoomTypeSeasons" max="32767" attributes="0"/>
+                                          <Component id="jLabelRoomTypeManageSeasons" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabelInfoPriceSeasons" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldPriceManageSeasons" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButtonNextManageSeasons" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="354" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel71" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBoxSelectSeason" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel73" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dateChooserComboSeasonStartDateModify" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabel74" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="dateChooserComboSeasonEndDateModify" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel76" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jComboBoxAddRooms" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="jButtonDeleteRoomToSeason" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jButtonAddRoomToSeason" min="-2" pref="24" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JSeparator" name="jSeparator7">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel44">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Select the hotel:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBoxSelectHotelManageSeason">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxSelectHotelManageSeasonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator8">
+              <Properties>
+                <Property name="orientation" type="int" value="1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel45">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Name:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel69">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Start Date:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel70">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="End Date:"/>
+              </Properties>
+            </Component>
+            <Component class="datechooser.beans.DateChooserCombo" name="dateChooserComboSeasonStartDate">
+              <Properties>
+                <Property name="dch_nothingAllowed" type="boolean" value="false"/>
+                <Property name="dch_combo_dateFormat" type="int" value="2"/>
+                <Property name="dch_defaultDates" type="datechooser.model.multiple.PeriodSet" editor="datechooser.beans.editor.dates.PeriodsEditor">
+                  <SerializedValue value="-84,-19,0,5,115,114,0,36,100,97,116,101,99,104,111,111,115,101,114,46,109,111,100,101,108,46,109,117,108,116,105,112,108,101,46,80,101,114,105,111,100,83,101,116,-104,-44,-96,42,-91,51,-90,42,2,0,3,76,0,4,100,97,116,97,116,0,22,76,106,97,118,97,47,117,116,105,108,47,76,105,110,107,101,100,76,105,115,116,59,76,0,9,108,97,115,116,65,100,100,101,100,116,0,35,76,100,97,116,101,99,104,111,111,115,101,114,47,109,111,100,101,108,47,109,117,108,116,105,112,108,101,47,80,101,114,105,111,100,59,76,0,10,112,101,114,105,111,100,67,97,115,104,113,0,126,0,2,120,112,115,114,0,20,106,97,118,97,46,117,116,105,108,46,76,105,110,107,101,100,76,105,115,116,12,41,83,93,74,96,-120,34,3,0,0,120,112,119,4,0,0,0,1,115,114,0,33,100,97,116,101,99,104,111,111,115,101,114,46,109,111,100,101,108,46,109,117,108,116,105,112,108,101,46,80,101,114,105,111,100,29,77,-123,76,95,4,43,-93,2,0,2,76,0,7,101,110,100,68,97,116,101,116,0,20,76,106,97,118,97,47,117,116,105,108,47,67,97,108,101,110,100,97,114,59,76,0,9,115,116,97,114,116,68,97,116,101,113,0,126,0,7,120,112,115,114,0,27,106,97,118,97,46,117,116,105,108,46,71,114,101,103,111,114,105,97,110,67,97,108,101,110,100,97,114,-113,61,-41,-42,-27,-80,-48,-63,2,0,1,74,0,16,103,114,101,103,111,114,105,97,110,67,117,116,111,118,101,114,120,114,0,18,106,97,118,97,46,117,116,105,108,46,67,97,108,101,110,100,97,114,-26,-22,77,30,-56,-36,91,-114,3,0,11,90,0,12,97,114,101,70,105,101,108,100,115,83,101,116,73,0,14,102,105,114,115,116,68,97,121,79,102,87,101,101,107,90,0,9,105,115,84,105,109,101,83,101,116,90,0,7,108,101,110,105,101,110,116,73,0,22,109,105,110,105,109,97,108,68,97,121,115,73,110,70,105,114,115,116,87,101,101,107,73,0,9,110,101,120,116,83,116,97,109,112,73,0,21,115,101,114,105,97,108,86,101,114,115,105,111,110,79,110,83,116,114,101,97,109,74,0,4,116,105,109,101,91,0,6,102,105,101,108,100,115,116,0,2,91,73,91,0,5,105,115,83,101,116,116,0,2,91,90,76,0,4,122,111,110,101,116,0,20,76,106,97,118,97,47,117,116,105,108,47,84,105,109,101,90,111,110,101,59,120,112,1,0,0,0,1,1,1,0,0,0,1,0,0,0,2,0,0,0,1,0,0,1,77,-17,48,-113,-120,117,114,0,2,91,73,77,-70,96,38,118,-22,-78,-91,2,0,0,120,112,0,0,0,17,0,0,0,1,0,0,7,-33,0,0,0,5,0,0,0,24,0,0,0,2,0,0,0,13,0,0,0,-92,0,0,0,7,0,0,0,2,0,0,0,1,0,0,0,5,0,0,0,17,0,0,0,10,0,0,0,46,0,0,2,-104,-2,-74,105,0,0,0,0,0,117,114,0,2,91,90,87,-113,32,57,20,-72,93,-30,2,0,0,120,112,0,0,0,17,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,115,114,0,24,106,97,118,97,46,117,116,105,108,46,83,105,109,112,108,101,84,105,109,101,90,111,110,101,-6,103,93,96,-47,94,-11,-90,3,0,18,73,0,10,100,115,116,83,97,118,105,110,103,115,73,0,6,101,110,100,68,97,121,73,0,12,101,110,100,68,97,121,79,102,87,101,101,107,73,0,7,101,110,100,77,111,100,101,73,0,8,101,110,100,77,111,110,116,104,73,0,7,101,110,100,84,105,109,101,73,0,11,101,110,100,84,105,109,101,77,111,100,101,73,0,9,114,97,119,79,102,102,115,101,116,73,0,21,115,101,114,105,97,108,86,101,114,115,105,111,110,79,110,83,116,114,101,97,109,73,0,8,115,116,97,114,116,68,97,121,73,0,14,115,116,97,114,116,68,97,121,79,102,87,101,101,107,73,0,9,115,116,97,114,116,77,111,100,101,73,0,10,115,116,97,114,116,77,111,110,116,104,73,0,9,115,116,97,114,116,84,105,109,101,73,0,13,115,116,97,114,116,84,105,109,101,77,111,100,101,73,0,9,115,116,97,114,116,89,101,97,114,90,0,11,117,115,101,68,97,121,108,105,103,104,116,91,0,11,109,111,110,116,104,76,101,110,103,116,104,116,0,2,91,66,120,114,0,18,106,97,118,97,46,117,116,105,108,46,84,105,109,101,90,111,110,101,49,-77,-23,-11,119,68,-84,-95,2,0,1,76,0,2,73,68,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,14,65,109,101,114,105,99,97,47,82,101,103,105,110,97,0,54,-18,-128,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,-74,105,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,117,114,0,2,91,66,-84,-13,23,-8,6,8,84,-32,2,0,0,120,112,0,0,0,12,31,28,31,30,31,30,31,31,30,31,30,31,119,10,0,0,0,6,0,0,0,0,0,0,117,113,0,126,0,15,0,0,0,2,0,0,0,0,0,0,0,0,120,115,114,0,26,115,117,110,46,117,116,105,108,46,99,97,108,101,110,100,97,114,46,90,111,110,101,73,110,102,111,36,-47,-45,-50,0,29,113,-101,2,0,8,73,0,8,99,104,101,99,107,115,117,109,73,0,10,100,115,116,83,97,118,105,110,103,115,73,0,9,114,97,119,79,102,102,115,101,116,73,0,13,114,97,119,79,102,102,115,101,116,68,105,102,102,90,0,19,119,105,108,108,71,77,84,79,102,102,115,101,116,67,104,97,110,103,101,91,0,7,111,102,102,115,101,116,115,113,0,126,0,11,91,0,20,115,105,109,112,108,101,84,105,109,101,90,111,110,101,80,97,114,97,109,115,113,0,126,0,11,91,0,11,116,114,97,110,115,105,116,105,111,110,115,116,0,2,91,74,120,113,0,126,0,21,113,0,126,0,24,-92,-11,127,52,0,0,0,0,-2,-74,105,0,0,0,0,0,0,117,113,0,126,0,15,0,0,0,4,-2,-74,105,0,-2,-128,-62,-96,-2,127,122,-128,0,54,-18,-128,112,117,114,0,2,91,74,120,32,4,-75,18,-79,117,-109,2,0,0,120,112,0,0,0,54,-1,-33,-38,-32,29,-64,0,1,-1,-30,116,-24,106,86,0,2,-1,-24,64,22,-36,-88,0,48,-1,-24,127,41,84,-64,0,2,-1,-19,-55,60,4,24,0,48,-1,-19,-6,-55,-54,-80,0,2,-1,-18,62,100,-79,24,0,48,-1,-18,111,-14,119,-80,0,2,-1,-18,-77,-115,94,24,0,48,-1,-18,-27,27,36,-80,0,2,-1,-17,42,-10,-45,88,0,48,-1,-17,90,67,-47,-80,0,2,-1,-17,-96,31,-128,88,0,48,-1,-17,-47,-83,70,-16,0,2,-1,-16,-8,-41,46,-104,0,48,-1,-15,51,104,22,48,0,2,-1,-15,109,-1,-37,-104,0,48,-1,-15,-90,79,-6,-16,0,2,-1,-15,-29,40,-120,-104,0,48,-1,-14,29,-71,112,48,0,2,-1,-14,90,-111,-3,-40,0,48,-1,-14,-107,34,-27,112,0,2,-1,-14,-49,-70,-86,-40,0,48,-1,-13,10,75,-110,112,0,2,-1,-13,48,-11,-111,40,0,48,-1,-12,-36,-76,92,0,0,2,-1,-11,27,-51,-79,-24,0,48,-1,-11,86,94,-103,-128,0,2,-1,-11,-107,119,-17,104,0,48,-1,-11,-57,5,-74,0,0,2,-1,-10,10,-96,-100,104,0,48,-1,-10,60,46,99,0,0,2,-1,-10,127,-55,73,104,0,48,-1,-10,-79,87,16,0,0,2,-1,-10,-9,50,-66,-88,0,48,-1,-9,38,127,-67,0,0,2,-1,-9,108,91,107,-88,0,48,-1,-9,-99,-23,50,64,0,2,-1,-9,-31,-124,24,-88,0,48,-1,-8,19,17,-33,64,0,2,-1,-8,86,-84,-59,-88,0,48,-1,-8,-120,58,-116,64,0,2,-1,-8,-53,-43,114,-88,0,48,-1,-8,-3,99,57,64,0,2,-1,-7,64,-2,31,-88,0,48,-1,-7,114,-117,-26,64,0,2,-1,-7,-72,103,-108,-24,0,48,-1,-7,-23,-11,91,-128,0,2,-1,-6,45,-112,65,-24,0,48,-1,-6,95,30,8,-128,0,2,-1,-5,23,-31,-101,-24,0,48,-1,-5,82,114,-125,-128,0,2,-1,-5,-115,10,72,-24,0,0,0,30,-60,-61,67,112,0,0,120,-1,-1,-12,-30,-7,100,-84,0,115,113,0,126,0,9,1,0,0,0,1,1,1,0,0,0,1,0,0,0,2,0,0,0,1,0,0,1,77,-17,48,-113,-120,117,113,0,126,0,15,0,0,0,17,0,0,0,1,0,0,7,-33,0,0,0,5,0,0,0,24,0,0,0,2,0,0,0,13,0,0,0,-92,0,0,0,7,0,0,0,2,0,0,0,1,0,0,0,5,0,0,0,17,0,0,0,10,0,0,0,46,0,0,2,-104,-2,-74,105,0,0,0,0,0,117,113,0,126,0,17,0,0,0,17,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,115,113,0,126,0,19,113,0,126,0,24,0,54,-18,-128,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,-74,105,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,113,0,126,0,26,119,10,0,0,0,6,0,0,0,0,0,0,117,113,0,126,0,15,0,0,0,2,0,0,0,0,0,0,0,0,120,115,113,0,126,0,28,113,0,126,0,24,-92,-11,127,52,0,0,0,0,-2,-74,105,0,0,0,0,0,0,113,0,126,0,31,112,113,0,126,0,33,120,-1,-1,-12,-30,-7,100,-84,0,120,112,112"/>
+                </Property>
+                <Property name="dch_locale" type="java.util.Locale" editor="datechooser.beans.editor.locale.LocaleEditor">
+                  <SerializedValue value="-84,-19,0,5,115,114,0,16,106,97,118,97,46,117,116,105,108,46,76,111,99,97,108,101,126,-8,17,96,-100,48,-7,-20,3,0,6,73,0,8,104,97,115,104,99,111,100,101,76,0,7,99,111,117,110,116,114,121,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,76,0,10,101,120,116,101,110,115,105,111,110,115,113,0,126,0,1,76,0,8,108,97,110,103,117,97,103,101,113,0,126,0,1,76,0,6,115,99,114,105,112,116,113,0,126,0,1,76,0,7,118,97,114,105,97,110,116,113,0,126,0,1,120,112,-1,-1,-1,-1,116,0,2,67,82,116,0,0,116,0,2,101,115,113,0,126,0,4,113,0,126,0,4,120"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="datechooser.beans.DateChooserCombo" name="dateChooserComboSeasonEndDate">
+              <Properties>
+                <Property name="dch_locale" type="java.util.Locale" editor="datechooser.beans.editor.locale.LocaleEditor">
+                  <SerializedValue value="-84,-19,0,5,115,114,0,16,106,97,118,97,46,117,116,105,108,46,76,111,99,97,108,101,126,-8,17,96,-100,48,-7,-20,3,0,6,73,0,8,104,97,115,104,99,111,100,101,76,0,7,99,111,117,110,116,114,121,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,76,0,10,101,120,116,101,110,115,105,111,110,115,113,0,126,0,1,76,0,8,108,97,110,103,117,97,103,101,113,0,126,0,1,76,0,6,115,99,114,105,112,116,113,0,126,0,1,76,0,7,118,97,114,105,97,110,116,113,0,126,0,1,120,112,-1,-1,-1,-1,116,0,2,67,82,116,0,0,116,0,2,101,115,113,0,126,0,4,113,0,126,0,4,120"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldSeasonName">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel71">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Select  a season:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel73">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Start Date:"/>
+              </Properties>
+            </Component>
+            <Component class="datechooser.beans.DateChooserCombo" name="dateChooserComboSeasonStartDateModify">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel74">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="End Date:"/>
+              </Properties>
+            </Component>
+            <Component class="datechooser.beans.DateChooserCombo" name="dateChooserComboSeasonEndDateModify">
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBoxSelectSeason">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxSelectSeasonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonCreateSeason">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Img/AddIcon.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Create season"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCreateSeasonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton3">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Img/CheckIcon16.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Update"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel76">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Rooms:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBoxAddRooms">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxAddRoomsActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonAddRoomToSeason">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Img/AddIcon.png"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonDeleteRoomToSeason">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Img/CloseIcon.png"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelInfoSeasons">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Please proceed to indicate the price each room type:"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelInfoRoomTypeSeasons">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Room type: "/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelRoomTypeManageSeasons">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelInfoPriceSeasons">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Price (in dollars):"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonNextManageSeasons">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Img/RigthArrow.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Next"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNextManageSeasonsActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldPriceManageSeasons">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldPriceManageSeasonsKeyTyped"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -2124,77 +2498,82 @@
                               <Component id="jSeparator5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel57" min="-2" pref="133" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jComboBoxSelectRoomType" max="32767" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel58" min="-2" pref="59" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jTextFieldFloorModify" min="-2" pref="46" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel62" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="jLabel64" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="jLabel63" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel58" min="-2" pref="59" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jTextFieldFloorModify" min="-2" pref="46" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel59" min="-2" pref="59" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jTextFieldBedTypeModify" min="-2" pref="116" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel60" min="-2" pref="83" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jTextFieldMaxOfPeopleModify" min="-2" pref="47" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel61" min="-2" pref="95" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jTextFieldRoomSizeModify" min="-2" pref="69" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel62" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                      <Component id="jLabel64" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="jLabel63" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jRadioButtonYesSalonModify" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
+                                                      <Component id="jRadioButtonYesTerranceModify" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jRadioButtonYesSeaViewModify" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jRadioButtonYesAllIncludedModify" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jRadioButtonYesSmokePermissionModify" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jRadioButtonNoSalonModify" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
+                                                      <Component id="jRadioButtonNoTerranceModify" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jRadioButtonNoSeaViewModify" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jRadioButtonNoAllIncludedModify" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jRadioButtonNoSmokePermissionModify" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="jTextFieldDescriptionModify" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jRadioButtonYesSalonModify" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
-                                                          <Component id="jRadioButtonYesTerranceModify" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jRadioButtonYesSeaViewModify" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jRadioButtonYesAllIncludedModify" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jRadioButtonYesSmokePermissionModify" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jRadioButtonNoSalonModify" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
-                                                          <Component id="jRadioButtonNoTerranceModify" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jRadioButtonNoSeaViewModify" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jRadioButtonNoAllIncludedModify" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jRadioButtonNoSmokePermissionModify" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
-                                                  </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                                  <Component id="jTextFieldDescriptionModify" min="-2" pref="151" max="-2" attributes="0"/>
                                               </Group>
+                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel61" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="jLabel60" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jTextFieldMaxOfPeopleModify" max="32767" attributes="0"/>
+                                              <Component id="jTextFieldRoomSizeModify" pref="69" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jLabel65" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel66" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel67" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel59" min="-2" pref="59" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel57" max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jComboBoxSelectRoomType" pref="151" max="32767" attributes="0"/>
+                                              <Component id="jTextFieldBedTypeModify" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
-                                  <Component id="jButton2" alignment="1" min="-2" pref="113" max="-2" attributes="0"/>
+                                  <Component id="jLabel65" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel66" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel67" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                                  <Component id="jButton2" min="-2" pref="113" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="117" max="32767" attributes="0"/>
+                      <EmptySpace pref="127" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2285,7 +2664,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jSeparator5" min="-2" pref="410" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="15" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -2356,7 +2735,7 @@
                                   </Group>
                                   <Component id="jRadioButtonNoSalonModify" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -2744,342 +3123,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxSelectRoomTypeActionPerformed"/>
               </Events>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanel2">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Manage Season">
-                <Property name="tabTitle" type="java.lang.String" value="Manage Season"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSeparator7" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel45" min="-2" pref="60" max="-2" attributes="0"/>
-                                          <EmptySpace pref="77" max="32767" attributes="0"/>
-                                          <Component id="jTextFieldSeasonName" min="-2" pref="134" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel68" min="-2" pref="52" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jTextFieldSeasonCode" min="-2" pref="100" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel69" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                              <Component id="jLabel70" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
-                                              <Component id="jLabel75" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jComboBoxSelectSimpleRoom" max="32767" attributes="0"/>
-                                              <Component id="dateChooserComboSeasonEndDate" pref="134" max="32767" attributes="0"/>
-                                              <Component id="dateChooserComboSeasonStartDate" pref="134" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Component id="jButtonCreateSeason" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                              <Component id="jSeparator8" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel72" min="-2" pref="52" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jTextFieldSeasonCodeModify" min="-2" pref="100" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel73" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                                  <Component id="jLabel71" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
-                                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                      <Component id="jLabel76" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="jLabel74" alignment="0" pref="61" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jComboBoxSelectSeason" max="32767" attributes="0"/>
-                                                  <Component id="dateChooserComboSeasonEndDateModify" alignment="0" pref="134" max="32767" attributes="0"/>
-                                                  <Component id="dateChooserComboSeasonStartDateModify" alignment="0" pref="134" max="32767" attributes="0"/>
-                                                  <Component id="jComboBoxAddRooms" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Component id="jComboBoxDeleteRooms" alignment="1" min="-2" pref="134" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jButtonAddRoomToSeason" min="-2" pref="35" max="-2" attributes="0"/>
-                                          <Component id="jButtonDeleteRoomToSeason" pref="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Component id="jButton3" min="-2" pref="102" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel44" min="-2" pref="89" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jComboBoxSelectHotelManageSeason" min="-2" pref="201" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBoxSelectHotelManageSeason" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jSeparator7" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                      <Component id="jSeparator8" min="-2" pref="414" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldSeasonName" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jLabel68" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldSeasonCode" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="dateChooserComboSeasonStartDate" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jLabel70" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="dateChooserComboSeasonEndDate" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jComboBoxSelectSimpleRoom" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel75" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                                      <Component id="jButtonCreateSeason" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
-                                      <Component id="jButtonAddRoomToSeason" min="-2" pref="24" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="354" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel71" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBoxSelectSeason" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel72" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSeasonCodeModify" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel73" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="dateChooserComboSeasonStartDateModify" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jLabel74" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="dateChooserComboSeasonEndDateModify" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel76" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBoxAddRooms" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jComboBoxDeleteRooms" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButtonDeleteRoomToSeason" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JSeparator" name="jSeparator7">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel44">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Select the hotel:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBoxSelectHotelManageSeason">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator8">
-              <Properties>
-                <Property name="orientation" type="int" value="1"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel45">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Name:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel68">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Code:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel69">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Start Date:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel70">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="End Date:"/>
-              </Properties>
-            </Component>
-            <Component class="datechooser.beans.DateChooserCombo" name="dateChooserComboSeasonStartDate">
-            </Component>
-            <Component class="datechooser.beans.DateChooserCombo" name="dateChooserComboSeasonEndDate">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeasonName">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeasonCode">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel71">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Select  a season:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel72">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Code:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldSeasonCodeModify">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel73">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Start Date:"/>
-              </Properties>
-            </Component>
-            <Component class="datechooser.beans.DateChooserCombo" name="dateChooserComboSeasonStartDateModify">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel74">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="End Date:"/>
-              </Properties>
-            </Component>
-            <Component class="datechooser.beans.DateChooserCombo" name="dateChooserComboSeasonEndDateModify">
-            </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBoxSelectSeason">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel75">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Select Room:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBoxSelectSimpleRoom">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonCreateSeason">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Img/AddIcon.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Create season"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Img/CheckIcon16.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Update"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel76">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Rooms:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBoxAddRooms">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBoxDeleteRooms">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonAddRoomToSeason">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Img/AddIcon.png"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonDeleteRoomToSeason">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Img/CloseIcon.png"/>
-                </Property>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>

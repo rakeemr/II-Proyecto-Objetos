@@ -6,10 +6,14 @@ import Logic.Hotel;
 import Logic.Room.Room;
 import Logic.Room.RoomType;
 import Additional.Service;
+import Logic.Room.SimpleRoom;
+import Logic.Season;
 import Logic.User.Administrator;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -17,6 +21,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -29,11 +34,14 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private final ArrayList<Attraction> nearbyAttractionList;
     private final ArrayList<Service> servicesList;
     private final ArrayList<ImageIcon> photographsList;
+    private final ArrayList<SimpleRoom> simpleRoomList;
     private final Global global;
     private Hotel actualHotelManageHotel;
     private Hotel actualHotelManageRooms;
     private Hotel actualHotelManageRoomType;
-    int indexImageCreate = 0, indexImageManage = 0;
+    private Hotel actualHotelManageSeason;
+    private Season seasonToCreate;
+    int indexImageCreate = 0, indexImageManage = 0, simpleRoomCount = 0;
     
     public AdministratorWindow(LogInWindow ancestor, Administrator currentUser) {
         initComponents();
@@ -48,6 +56,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
         this.nearbyAttractionList = new ArrayList();
         this.servicesList = new ArrayList();
         this.photographsList = new ArrayList();
+        this.simpleRoomList = new ArrayList();
         this.global = Global.getInstance();
     }
         
@@ -186,6 +195,35 @@ public class AdministratorWindow extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jListSelectRoomTypeAddRooms = new javax.swing.JList();
         jButtonAddRoomtype = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jLabel44 = new javax.swing.JLabel();
+        jComboBoxSelectHotelManageSeason = new javax.swing.JComboBox();
+        jSeparator8 = new javax.swing.JSeparator();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        dateChooserComboSeasonStartDate = new datechooser.beans.DateChooserCombo();
+        dateChooserComboSeasonEndDate = new datechooser.beans.DateChooserCombo();
+        jTextFieldSeasonName = new javax.swing.JTextField();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel73 = new javax.swing.JLabel();
+        dateChooserComboSeasonStartDateModify = new datechooser.beans.DateChooserCombo();
+        jLabel74 = new javax.swing.JLabel();
+        dateChooserComboSeasonEndDateModify = new datechooser.beans.DateChooserCombo();
+        jComboBoxSelectSeason = new javax.swing.JComboBox();
+        jButtonCreateSeason = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel76 = new javax.swing.JLabel();
+        jComboBoxAddRooms = new javax.swing.JComboBox();
+        jButtonAddRoomToSeason = new javax.swing.JButton();
+        jButtonDeleteRoomToSeason = new javax.swing.JButton();
+        jLabelInfoSeasons = new javax.swing.JLabel();
+        jLabelInfoRoomTypeSeasons = new javax.swing.JLabel();
+        jLabelRoomTypeManageSeasons = new javax.swing.JLabel();
+        jLabelInfoPriceSeasons = new javax.swing.JLabel();
+        jButtonNextManageSeasons = new javax.swing.JButton();
+        jTextFieldPriceManageSeasons = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
@@ -247,36 +285,6 @@ public class AdministratorWindow extends javax.swing.JFrame {
         jTextFieldFloorModify = new javax.swing.JTextField();
         jComboBoxSelectHotelRoomType = new javax.swing.JComboBox();
         jComboBoxSelectRoomType = new javax.swing.JComboBox();
-        jPanel2 = new javax.swing.JPanel();
-        jSeparator7 = new javax.swing.JSeparator();
-        jLabel44 = new javax.swing.JLabel();
-        jComboBoxSelectHotelManageSeason = new javax.swing.JComboBox();
-        jSeparator8 = new javax.swing.JSeparator();
-        jLabel45 = new javax.swing.JLabel();
-        jLabel68 = new javax.swing.JLabel();
-        jLabel69 = new javax.swing.JLabel();
-        jLabel70 = new javax.swing.JLabel();
-        dateChooserComboSeasonStartDate = new datechooser.beans.DateChooserCombo();
-        dateChooserComboSeasonEndDate = new datechooser.beans.DateChooserCombo();
-        jTextFieldSeasonName = new javax.swing.JTextField();
-        jTextFieldSeasonCode = new javax.swing.JTextField();
-        jLabel71 = new javax.swing.JLabel();
-        jLabel72 = new javax.swing.JLabel();
-        jTextFieldSeasonCodeModify = new javax.swing.JTextField();
-        jLabel73 = new javax.swing.JLabel();
-        dateChooserComboSeasonStartDateModify = new datechooser.beans.DateChooserCombo();
-        jLabel74 = new javax.swing.JLabel();
-        dateChooserComboSeasonEndDateModify = new datechooser.beans.DateChooserCombo();
-        jComboBoxSelectSeason = new javax.swing.JComboBox();
-        jLabel75 = new javax.swing.JLabel();
-        jComboBoxSelectSimpleRoom = new javax.swing.JComboBox();
-        jButtonCreateSeason = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel76 = new javax.swing.JLabel();
-        jComboBoxAddRooms = new javax.swing.JComboBox();
-        jComboBoxDeleteRooms = new javax.swing.JComboBox();
-        jButtonAddRoomToSeason = new javax.swing.JButton();
-        jButtonDeleteRoomToSeason = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -616,7 +624,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
                             .addComponent(jLabel14)
                             .addComponent(jLabel10)
                             .addComponent(jLabel13))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Create hotel", jPanelCreateHotels);
@@ -1014,10 +1022,11 @@ public class AdministratorWindow extends javax.swing.JFrame {
                                     .addComponent(jComboBoxDeleteServicesManage)
                                     .addComponent(jButtonDeleteServiceManage))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel37)
-                            .addComponent(jButtonDeleteImageManage)
-                            .addComponent(jButtonAddPhotograpyManage))
+                        .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonDeleteImageManage, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelManageHotelsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel37)
+                                .addComponent(jButtonAddPhotograpyManage)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelImageManage, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1148,7 +1157,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
                 .addGroup(jPanelManageHotelRoomsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelManageHotelRoomsLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE))
                     .addGroup(jPanelManageHotelRoomsLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(jPanelManageHotelRoomsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1177,661 +1186,718 @@ public class AdministratorWindow extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Manage hotel rooms", jPanelManageHotelRooms);
 
-        jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jLabel43.setText("Select the hotel:");
-
-        jTextFieldRoomType.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldRoomTypeKeyTyped(evt);
-            }
-        });
-
-        jLabel46.setText("Insert the room type:");
-
-        jLabel47.setText("Floor:");
-
-        jLabel48.setText("Bed type:");
-
-        jTextFieldBedType.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldBedTypeKeyTyped(evt);
-            }
-        });
-
-        jLabel49.setText("Max of people:");
-
-        jTextFieldMaxOfPeople.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldMaxOfPeopleKeyTyped(evt);
-            }
-        });
-
-        jLabel50.setText("Room size:");
-
-        jTextFieldRoomSize.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldRoomSizeKeyTyped(evt);
-            }
-        });
-
-        jLabel51.setText("Description:");
-
-        jTextFieldDescription.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldDescriptionKeyTyped(evt);
-            }
-        });
-
-        jLabel52.setText("Salon?");
-
-        jLabel53.setText("Terrance?");
-
-        jLabel54.setText("Sea View?");
-
-        jLabel55.setText("All Included?");
-
-        jLabel56.setText("Smoke Permission?");
-
-        buttonGroup1.add(jRadioButtonYesSalon);
-        jRadioButtonYesSalon.setText("Yes");
-
-        buttonGroup2.add(jRadioButtonYesTerrance);
-        jRadioButtonYesTerrance.setText("Yes");
-
-        buttonGroup3.add(jRadioButtonYesSeaView);
-        jRadioButtonYesSeaView.setText("Yes");
-
-        buttonGroup4.add(jRadioButtonYesAllIncluded);
-        jRadioButtonYesAllIncluded.setText("Yes");
-
-        buttonGroup5.add(jRadioButtonYesSmokePermission);
-        jRadioButtonYesSmokePermission.setText("Yes");
-
-        buttonGroup1.add(jRadioButtonNoSalon);
-        jRadioButtonNoSalon.setText("No");
-
-        buttonGroup2.add(jRadioButtonNoTerrance);
-        jRadioButtonNoTerrance.setText("No");
-
-        buttonGroup3.add(jRadioButtonNoSeaView);
-        jRadioButtonNoSeaView.setText("No");
-
-        buttonGroup4.add(jRadioButtonNoAllIncluded);
-        jRadioButtonNoAllIncluded.setText("No");
-
-        buttonGroup5.add(jRadioButtonNoSmokePermission);
-        jRadioButtonNoSmokePermission.setText("No");
-
-        jButtonCreateRoomType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/AddIcon.png"))); // NOI18N
-        jButtonCreateRoomType.setText("Create room type");
-        jButtonCreateRoomType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCreateRoomTypeActionPerformed(evt);
-            }
-        });
-
-        jLabel57.setText("Select the room type:");
-
-        jLabel58.setText("Floor:");
-
-        jLabel59.setText("Bed type:");
-
-        jTextFieldBedTypeModify.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldBedTypeModifyKeyTyped(evt);
-            }
-        });
-
-        jLabel60.setText("Max of people:");
-
-        jTextFieldMaxOfPeopleModify.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldMaxOfPeopleModifyKeyTyped(evt);
-            }
-        });
-
-        jLabel61.setText("Room size:");
-
-        jTextFieldRoomSizeModify.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldRoomSizeModifyKeyTyped(evt);
-            }
-        });
-
-        jLabel62.setText("Description:");
-
-        jTextFieldDescriptionModify.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldDescriptionModifyKeyTyped(evt);
-            }
-        });
-
-        jLabel63.setText("Salon?");
-
-        buttonGroup6.add(jRadioButtonYesSalonModify);
-        jRadioButtonYesSalonModify.setText("Yes");
-
-        buttonGroup6.add(jRadioButtonNoSalonModify);
-        jRadioButtonNoSalonModify.setText("No");
-
-        jLabel64.setText("Terrance?");
-
-        buttonGroup7.add(jRadioButtonYesTerranceModify);
-        jRadioButtonYesTerranceModify.setText("Yes");
-
-        buttonGroup7.add(jRadioButtonNoTerranceModify);
-        jRadioButtonNoTerranceModify.setText("No");
-
-        jLabel65.setText("Sea View?");
-
-        buttonGroup8.add(jRadioButtonYesSeaViewModify);
-        jRadioButtonYesSeaViewModify.setText("Yes");
-
-        buttonGroup8.add(jRadioButtonNoSeaViewModify);
-        jRadioButtonNoSeaViewModify.setText("No");
-
-        jLabel66.setText("All Included?");
-
-        buttonGroup9.add(jRadioButtonYesAllIncludedModify);
-        jRadioButtonYesAllIncludedModify.setText("Yes");
-
-        buttonGroup9.add(jRadioButtonNoAllIncludedModify);
-        jRadioButtonNoAllIncludedModify.setText("No");
-
-        jLabel67.setText("Smoke Permission?");
-
-        buttonGroup10.add(jRadioButtonYesSmokePermissionModify);
-        jRadioButtonYesSmokePermissionModify.setText("Yes");
-
-        buttonGroup10.add(jRadioButtonNoSmokePermissionModify);
-        jRadioButtonNoSmokePermissionModify.setText("No");
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CheckIcon16.png"))); // NOI18N
-        jButton2.setText("Update");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jTextFieldFloor.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFloorKeyTyped(evt);
-            }
-        });
-
-        jTextFieldFloorModify.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldFloorModifyKeyTyped(evt);
-            }
-        });
-
-        jComboBoxSelectHotelRoomType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxSelectHotelRoomTypeActionPerformed(evt);
-            }
-        });
-
-        jComboBoxSelectRoomType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxSelectRoomTypeActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator6)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxSelectHotelRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldFloor, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldBedType, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldMaxOfPeople, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldRoomSize, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jLabel53, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                                            .addComponent(jLabel52, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jTextFieldDescription))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(59, 59, 59)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jRadioButtonYesSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jRadioButtonYesTerrance)
-                                                .addComponent(jRadioButtonYesSeaView)
-                                                .addComponent(jRadioButtonYesAllIncluded)
-                                                .addComponent(jRadioButtonYesSmokePermission))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jRadioButtonNoSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jRadioButtonNoTerrance)
-                                                .addComponent(jRadioButtonNoSeaView)
-                                                .addComponent(jRadioButtonNoAllIncluded)
-                                                .addComponent(jRadioButtonNoSmokePermission))
-                                            .addGap(0, 0, Short.MAX_VALUE)))))
-                            .addComponent(jLabel54)
-                            .addComponent(jLabel55)
-                            .addComponent(jButtonCreateRoomType)
-                            .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(59, 59, 59)
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBoxSelectRoomType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldFloorModify, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldBedTypeModify, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldMaxOfPeopleModify, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldRoomSizeModify, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jLabel64, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel63, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextFieldDescriptionModify))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(59, 59, 59)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jRadioButtonYesSalonModify, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jRadioButtonYesTerranceModify)
-                                                    .addComponent(jRadioButtonYesSeaViewModify)
-                                                    .addComponent(jRadioButtonYesAllIncludedModify)
-                                                    .addComponent(jRadioButtonYesSmokePermissionModify))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jRadioButtonNoSalonModify, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jRadioButtonNoTerranceModify)
-                                                    .addComponent(jRadioButtonNoSeaViewModify)
-                                                    .addComponent(jRadioButtonNoAllIncludedModify)
-                                                    .addComponent(jRadioButtonNoSmokePermissionModify))
-                                                .addGap(0, 28, Short.MAX_VALUE)))))
-                                .addComponent(jLabel65)
-                                .addComponent(jLabel66)
-                                .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(117, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel43)
-                    .addComponent(jComboBoxSelectHotelRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextFieldMaxOfPeople, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel46)
-                                            .addComponent(jTextFieldRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel47)
-                                            .addComponent(jTextFieldFloor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel48)
-                                            .addComponent(jTextFieldBedType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel49)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel50)
-                                    .addComponent(jTextFieldRoomSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel51)
-                                    .addComponent(jTextFieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel52)
-                                            .addComponent(jRadioButtonYesSalon))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel53)
-                                            .addComponent(jRadioButtonYesTerrance)
-                                            .addComponent(jRadioButtonNoTerrance))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel54)
-                                            .addComponent(jRadioButtonYesSeaView)
-                                            .addComponent(jRadioButtonNoSeaView))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel55)
-                                            .addComponent(jRadioButtonYesAllIncluded)
-                                            .addComponent(jRadioButtonNoAllIncluded))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel56)
-                                            .addComponent(jRadioButtonYesSmokePermission)
-                                            .addComponent(jRadioButtonNoSmokePermission)))
-                                    .addComponent(jRadioButtonNoSalon))
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonCreateRoomType)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxSelectRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel57))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel58)
-                                    .addComponent(jTextFieldFloorModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel59)
-                                    .addComponent(jTextFieldBedTypeModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel60))
-                            .addComponent(jTextFieldMaxOfPeopleModify, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel61)
-                            .addComponent(jTextFieldRoomSizeModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel62)
-                            .addComponent(jTextFieldDescriptionModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel63)
-                                    .addComponent(jRadioButtonYesSalonModify))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel64)
-                                    .addComponent(jRadioButtonYesTerranceModify)
-                                    .addComponent(jRadioButtonNoTerranceModify))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel65)
-                                    .addComponent(jRadioButtonYesSeaViewModify)
-                                    .addComponent(jRadioButtonNoSeaViewModify))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel66)
-                                    .addComponent(jRadioButtonYesAllIncludedModify)
-                                    .addComponent(jRadioButtonNoAllIncludedModify))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel67)
-                                    .addComponent(jRadioButtonYesSmokePermissionModify)
-                                    .addComponent(jRadioButtonNoSmokePermissionModify)))
-                            .addComponent(jRadioButtonNoSalonModify))
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-
-        jTabbedPane1.addTab("Manage room type", jPanel1);
-
         jLabel44.setText("Select the hotel:");
+
+        jComboBoxSelectHotelManageSeason.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSelectHotelManageSeasonActionPerformed(evt);
+            }
+        });
 
         jSeparator8.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         jLabel45.setText("Name:");
 
-        jLabel68.setText("Code:");
-
         jLabel69.setText("Start Date:");
 
         jLabel70.setText("End Date:");
 
-        jLabel71.setText("Select  a season:");
+        dateChooserComboSeasonStartDate.setNothingAllowed(false);
+        dateChooserComboSeasonStartDate.setFormat(2);
+        try {
+            dateChooserComboSeasonStartDate.setDefaultPeriods(new datechooser.model.multiple.PeriodSet(new datechooser.model.multiple.Period(new java.util.GregorianCalendar(2015, 5, 13),
+                new java.util.GregorianCalendar(2015, 5, 13))));
+    } catch (datechooser.model.exeptions.IncompatibleDataExeption e1) {
+        e1.printStackTrace();
+    }
+    dateChooserComboSeasonStartDate.setLocale(new java.util.Locale("es", "CR", ""));
 
-        jLabel72.setText("Code:");
+    dateChooserComboSeasonEndDate.setLocale(new java.util.Locale("es", "CR", ""));
 
-        jLabel73.setText("Start Date:");
+    jLabel71.setText("Select  a season:");
 
-        jLabel74.setText("End Date:");
+    jLabel73.setText("Start Date:");
 
-        jLabel75.setText("Select Room:");
+    jLabel74.setText("End Date:");
 
-        jButtonCreateSeason.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/AddIcon.png"))); // NOI18N
-        jButtonCreateSeason.setText("Create season");
+    jComboBoxSelectSeason.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jComboBoxSelectSeasonActionPerformed(evt);
+        }
+    });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CheckIcon16.png"))); // NOI18N
-        jButton3.setText("Update");
+    jButtonCreateSeason.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/AddIcon.png"))); // NOI18N
+    jButtonCreateSeason.setText("Create season");
+    jButtonCreateSeason.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonCreateSeasonActionPerformed(evt);
+        }
+    });
 
-        jLabel76.setText("Rooms:");
+    jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CheckIcon16.png"))); // NOI18N
+    jButton3.setText("Update");
 
-        jButtonAddRoomToSeason.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/AddIcon.png"))); // NOI18N
+    jLabel76.setText("Rooms:");
 
-        jButtonDeleteRoomToSeason.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CloseIcon.png"))); // NOI18N
+    jComboBoxAddRooms.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jComboBoxAddRoomsActionPerformed(evt);
+        }
+    });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator7)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+    jButtonAddRoomToSeason.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/AddIcon.png"))); // NOI18N
+
+    jButtonDeleteRoomToSeason.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CloseIcon.png"))); // NOI18N
+
+    jLabelInfoSeasons.setText("Please proceed to indicate the price each room type:");
+    jLabelInfoSeasons.setEnabled(false);
+
+    jLabelInfoRoomTypeSeasons.setText("Room type: ");
+    jLabelInfoRoomTypeSeasons.setEnabled(false);
+
+    jLabelRoomTypeManageSeasons.setEnabled(false);
+
+    jLabelInfoPriceSeasons.setText("Price (in dollars):");
+    jLabelInfoPriceSeasons.setEnabled(false);
+
+    jButtonNextManageSeasons.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/RigthArrow.png"))); // NOI18N
+    jButtonNextManageSeasons.setText("Next");
+    jButtonNextManageSeasons.setEnabled(false);
+    jButtonNextManageSeasons.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonNextManageSeasonsActionPerformed(evt);
+        }
+    });
+
+    jTextFieldPriceManageSeasons.setEnabled(false);
+    jTextFieldPriceManageSeasons.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextFieldPriceManageSeasonsKeyTyped(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+    jPanel2.setLayout(jPanel2Layout);
+    jPanel2Layout.setHorizontalGroup(
+        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(jSeparator7)
+        .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(23, 23, 23)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                                .addComponent(jTextFieldSeasonName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(66, 66, 66)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(dateChooserComboSeasonEndDate, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                                    .addComponent(dateChooserComboSeasonStartDate, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                                    .addComponent(jButtonCreateSeason, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jLabelInfoSeasons, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabelInfoRoomTypeSeasons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelInfoPriceSeasons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButtonNextManageSeasons)
+                                .addComponent(jLabelRoomTypeManageSeasons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldPriceManageSeasons, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGap(18, 18, 18)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(36, 36, 36)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel76, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel74, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)))
+                            .addGap(35, 35, 35)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jComboBoxSelectSeason, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dateChooserComboSeasonEndDateModify, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                                .addComponent(dateChooserComboSeasonStartDateModify, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                                .addComponent(jComboBoxAddRooms, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButtonAddRoomToSeason, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonDeleteRoomToSeason, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jComboBoxSelectHotelManageSeason, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(67, Short.MAX_VALUE))
+    );
+    jPanel2Layout.setVerticalGroup(
+        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGap(12, 12, 12)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel44)
+                .addComponent(jComboBoxSelectHotelManageSeason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(8, 8, 8)
+                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(24, 24, 24)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel45)
+                                .addComponent(jTextFieldSeasonName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(56, 56, 56)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(dateChooserComboSeasonStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel69))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel70))
+                                .addComponent(dateChooserComboSeasonEndDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButtonCreateSeason)
+                            .addGap(25, 25, 25)
+                            .addComponent(jLabelInfoSeasons)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabelInfoRoomTypeSeasons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelRoomTypeManageSeasons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelInfoPriceSeasons)
+                                .addComponent(jTextFieldPriceManageSeasons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButtonNextManageSeasons)))
+                    .addGap(354, 354, 354))
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(29, 29, 29)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel71)
+                        .addComponent(jComboBoxSelectSeason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(56, 56, 56)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel73)
+                                .addComponent(dateChooserComboSeasonStartDateModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel74))
+                        .addComponent(dateChooserComboSeasonEndDateModify, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldSeasonName, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel76)
+                                    .addGap(17, 17, 17))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldSeasonCode, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(66, 66, 66)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jComboBoxSelectSimpleRoom, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(dateChooserComboSeasonEndDate, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                                        .addComponent(dateChooserComboSeasonStartDate, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))))
-                            .addComponent(jButtonCreateSeason))
-                        .addGap(79, 79, 79)
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldSeasonCodeModify, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jLabel76, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel74, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)))
-                                        .addGap(35, 35, 35)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jComboBoxSelectSeason, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(dateChooserComboSeasonEndDateModify, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                                            .addComponent(dateChooserComboSeasonStartDateModify, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                                            .addComponent(jComboBoxAddRooms, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addComponent(jComboBoxDeleteRooms, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButtonAddRoomToSeason, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonDeleteRoomToSeason, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxSelectHotelManageSeason, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel44)
-                    .addComponent(jComboBoxSelectHotelManageSeason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel45)
-                                    .addComponent(jTextFieldSeasonName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel68)
-                                    .addComponent(jTextFieldSeasonCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel69)
-                                            .addComponent(dateChooserComboSeasonStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel70))
-                                    .addComponent(dateChooserComboSeasonEndDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jComboBoxSelectSimpleRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel75))
-                                .addGap(116, 116, 116)
-                                .addComponent(jButtonCreateSeason))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(170, 170, 170)
-                                .addComponent(jButtonAddRoomToSeason, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(354, 354, 354))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel71)
-                            .addComponent(jComboBoxSelectSeason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel72)
-                            .addComponent(jTextFieldSeasonCodeModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel73)
-                                    .addComponent(dateChooserComboSeasonStartDateModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel74))
-                            .addComponent(dateChooserComboSeasonEndDateModify, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel76)
-                            .addComponent(jComboBoxAddRooms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxDeleteRooms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonDeleteRoomToSeason, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(74, 74, 74)
-                        .addComponent(jButton3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
+                                    .addComponent(jComboBoxAddRooms)
+                                    .addGap(7, 7, 7)))
+                            .addComponent(jButtonDeleteRoomToSeason, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(74, 74, 74)
+                            .addComponent(jButton3))
+                        .addComponent(jButtonAddRoomToSeason, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+    );
 
-        jTabbedPane1.addTab("Manage Season", jPanel2);
+    jTabbedPane1.addTab("Manage Season", jPanel2);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 807, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCloseSession)))
-                .addGap(1, 1, 1))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCloseSession)
-                .addContainerGap())
-        );
+    jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        pack();
+    jLabel43.setText("Select the hotel:");
+
+    jTextFieldRoomType.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextFieldRoomTypeKeyTyped(evt);
+        }
+    });
+
+    jLabel46.setText("Insert the room type:");
+
+    jLabel47.setText("Floor:");
+
+    jLabel48.setText("Bed type:");
+
+    jTextFieldBedType.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextFieldBedTypeKeyTyped(evt);
+        }
+    });
+
+    jLabel49.setText("Max of people:");
+
+    jTextFieldMaxOfPeople.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextFieldMaxOfPeopleKeyTyped(evt);
+        }
+    });
+
+    jLabel50.setText("Room size:");
+
+    jTextFieldRoomSize.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextFieldRoomSizeKeyTyped(evt);
+        }
+    });
+
+    jLabel51.setText("Description:");
+
+    jTextFieldDescription.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextFieldDescriptionKeyTyped(evt);
+        }
+    });
+
+    jLabel52.setText("Salon?");
+
+    jLabel53.setText("Terrance?");
+
+    jLabel54.setText("Sea View?");
+
+    jLabel55.setText("All Included?");
+
+    jLabel56.setText("Smoke Permission?");
+
+    buttonGroup1.add(jRadioButtonYesSalon);
+    jRadioButtonYesSalon.setText("Yes");
+
+    buttonGroup2.add(jRadioButtonYesTerrance);
+    jRadioButtonYesTerrance.setText("Yes");
+
+    buttonGroup3.add(jRadioButtonYesSeaView);
+    jRadioButtonYesSeaView.setText("Yes");
+
+    buttonGroup4.add(jRadioButtonYesAllIncluded);
+    jRadioButtonYesAllIncluded.setText("Yes");
+
+    buttonGroup5.add(jRadioButtonYesSmokePermission);
+    jRadioButtonYesSmokePermission.setText("Yes");
+
+    buttonGroup1.add(jRadioButtonNoSalon);
+    jRadioButtonNoSalon.setText("No");
+
+    buttonGroup2.add(jRadioButtonNoTerrance);
+    jRadioButtonNoTerrance.setText("No");
+
+    buttonGroup3.add(jRadioButtonNoSeaView);
+    jRadioButtonNoSeaView.setText("No");
+
+    buttonGroup4.add(jRadioButtonNoAllIncluded);
+    jRadioButtonNoAllIncluded.setText("No");
+
+    buttonGroup5.add(jRadioButtonNoSmokePermission);
+    jRadioButtonNoSmokePermission.setText("No");
+
+    jButtonCreateRoomType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/AddIcon.png"))); // NOI18N
+    jButtonCreateRoomType.setText("Create room type");
+    jButtonCreateRoomType.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButtonCreateRoomTypeActionPerformed(evt);
+        }
+    });
+
+    jLabel57.setText("Select the room type:");
+
+    jLabel58.setText("Floor:");
+
+    jLabel59.setText("Bed type:");
+
+    jTextFieldBedTypeModify.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextFieldBedTypeModifyKeyTyped(evt);
+        }
+    });
+
+    jLabel60.setText("Max of people:");
+
+    jTextFieldMaxOfPeopleModify.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextFieldMaxOfPeopleModifyKeyTyped(evt);
+        }
+    });
+
+    jLabel61.setText("Room size:");
+
+    jTextFieldRoomSizeModify.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextFieldRoomSizeModifyKeyTyped(evt);
+        }
+    });
+
+    jLabel62.setText("Description:");
+
+    jTextFieldDescriptionModify.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextFieldDescriptionModifyKeyTyped(evt);
+        }
+    });
+
+    jLabel63.setText("Salon?");
+
+    buttonGroup6.add(jRadioButtonYesSalonModify);
+    jRadioButtonYesSalonModify.setText("Yes");
+
+    buttonGroup6.add(jRadioButtonNoSalonModify);
+    jRadioButtonNoSalonModify.setText("No");
+
+    jLabel64.setText("Terrance?");
+
+    buttonGroup7.add(jRadioButtonYesTerranceModify);
+    jRadioButtonYesTerranceModify.setText("Yes");
+
+    buttonGroup7.add(jRadioButtonNoTerranceModify);
+    jRadioButtonNoTerranceModify.setText("No");
+
+    jLabel65.setText("Sea View?");
+
+    buttonGroup8.add(jRadioButtonYesSeaViewModify);
+    jRadioButtonYesSeaViewModify.setText("Yes");
+
+    buttonGroup8.add(jRadioButtonNoSeaViewModify);
+    jRadioButtonNoSeaViewModify.setText("No");
+
+    jLabel66.setText("All Included?");
+
+    buttonGroup9.add(jRadioButtonYesAllIncludedModify);
+    jRadioButtonYesAllIncludedModify.setText("Yes");
+
+    buttonGroup9.add(jRadioButtonNoAllIncludedModify);
+    jRadioButtonNoAllIncludedModify.setText("No");
+
+    jLabel67.setText("Smoke Permission?");
+
+    buttonGroup10.add(jRadioButtonYesSmokePermissionModify);
+    jRadioButtonYesSmokePermissionModify.setText("Yes");
+
+    buttonGroup10.add(jRadioButtonNoSmokePermissionModify);
+    jRadioButtonNoSmokePermissionModify.setText("No");
+
+    jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CheckIcon16.png"))); // NOI18N
+    jButton2.setText("Update");
+    jButton2.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton2ActionPerformed(evt);
+        }
+    });
+
+    jTextFieldFloor.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextFieldFloorKeyTyped(evt);
+        }
+    });
+
+    jTextFieldFloorModify.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTextFieldFloorModifyKeyTyped(evt);
+        }
+    });
+
+    jComboBoxSelectHotelRoomType.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jComboBoxSelectHotelRoomTypeActionPerformed(evt);
+        }
+    });
+
+    jComboBoxSelectRoomType.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jComboBoxSelectRoomTypeActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+    jPanel1.setLayout(jPanel1Layout);
+    jPanel1Layout.setHorizontalGroup(
+        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(jSeparator6)
+        .addGroup(jPanel1Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jComboBoxSelectHotelRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldFloor, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldBedType, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldMaxOfPeople, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldRoomSize, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel53, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                                        .addComponent(jLabel52, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextFieldDescription))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(59, 59, 59)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jRadioButtonYesSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jRadioButtonYesTerrance)
+                                            .addComponent(jRadioButtonYesSeaView)
+                                            .addComponent(jRadioButtonYesAllIncluded)
+                                            .addComponent(jRadioButtonYesSmokePermission))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jRadioButtonNoSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jRadioButtonNoTerrance)
+                                            .addComponent(jRadioButtonNoSeaView)
+                                            .addComponent(jRadioButtonNoAllIncluded)
+                                            .addComponent(jRadioButtonNoSmokePermission))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addComponent(jLabel54)
+                        .addComponent(jLabel55)
+                        .addComponent(jButtonCreateRoomType)
+                        .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(59, 59, 59)
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(36, 36, 36)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldFloorModify, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel64, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel63, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(59, 59, 59)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jRadioButtonYesSalonModify, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jRadioButtonYesTerranceModify)
+                                            .addComponent(jRadioButtonYesSeaViewModify)
+                                            .addComponent(jRadioButtonYesAllIncludedModify)
+                                            .addComponent(jRadioButtonYesSmokePermissionModify))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jRadioButtonNoSalonModify, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jRadioButtonNoTerranceModify)
+                                            .addComponent(jRadioButtonNoSeaViewModify)
+                                            .addComponent(jRadioButtonNoAllIncludedModify)
+                                            .addComponent(jRadioButtonNoSmokePermissionModify)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(50, 50, 50)
+                                        .addComponent(jTextFieldDescriptionModify, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldMaxOfPeopleModify)
+                                    .addComponent(jTextFieldRoomSizeModify, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(15, 15, 15)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBoxSelectRoomType, 0, 151, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldBedTypeModify))))
+                        .addComponent(jLabel65)
+                        .addComponent(jLabel66)
+                        .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addContainerGap(127, Short.MAX_VALUE))
+    );
+    jPanel1Layout.setVerticalGroup(
+        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel43)
+                .addComponent(jComboBoxSelectHotelRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(18, 18, 18)
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(27, 27, 27)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jTextFieldMaxOfPeople, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel46)
+                                        .addComponent(jTextFieldRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel47)
+                                        .addComponent(jTextFieldFloor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel48)
+                                        .addComponent(jTextFieldBedType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel49)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel50)
+                                .addComponent(jTextFieldRoomSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel51)
+                                .addComponent(jTextFieldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel52)
+                                        .addComponent(jRadioButtonYesSalon))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel53)
+                                        .addComponent(jRadioButtonYesTerrance)
+                                        .addComponent(jRadioButtonNoTerrance))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel54)
+                                        .addComponent(jRadioButtonYesSeaView)
+                                        .addComponent(jRadioButtonNoSeaView))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel55)
+                                        .addComponent(jRadioButtonYesAllIncluded)
+                                        .addComponent(jRadioButtonNoAllIncluded))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel56)
+                                        .addComponent(jRadioButtonYesSmokePermission)
+                                        .addComponent(jRadioButtonNoSmokePermission)))
+                                .addComponent(jRadioButtonNoSalon))
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonCreateRoomType)
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(15, Short.MAX_VALUE))))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(40, 40, 40)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBoxSelectRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel57))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel58)
+                                .addComponent(jTextFieldFloorModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel59)
+                                .addComponent(jTextFieldBedTypeModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel60))
+                        .addComponent(jTextFieldMaxOfPeopleModify, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel61)
+                        .addComponent(jTextFieldRoomSizeModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel62)
+                        .addComponent(jTextFieldDescriptionModify, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel63)
+                                .addComponent(jRadioButtonYesSalonModify))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel64)
+                                .addComponent(jRadioButtonYesTerranceModify)
+                                .addComponent(jRadioButtonNoTerranceModify))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel65)
+                                .addComponent(jRadioButtonYesSeaViewModify)
+                                .addComponent(jRadioButtonNoSeaViewModify))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel66)
+                                .addComponent(jRadioButtonYesAllIncludedModify)
+                                .addComponent(jRadioButtonNoAllIncludedModify))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel67)
+                                .addComponent(jRadioButtonYesSmokePermissionModify)
+                                .addComponent(jRadioButtonNoSmokePermissionModify)))
+                        .addComponent(jRadioButtonNoSalonModify))
+                    .addGap(18, 18, 18)
+                    .addComponent(jButton2)
+                    .addGap(0, 0, Short.MAX_VALUE))))
+    );
+
+    jTabbedPane1.addTab("Manage room type", jPanel1);
+
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+    getContentPane().setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+        .addGroup(layout.createSequentialGroup()
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 807, Short.MAX_VALUE)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCloseSession)))
+            .addGap(1, 1, 1))
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jButtonCloseSession)
+            .addContainerGap())
+    );
+
+    pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCloseSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseSessionActionPerformed
@@ -1847,8 +1913,8 @@ public class AdministratorWindow extends javax.swing.JFrame {
         chargeComboBoxSelectHotel(jComboBoxSelectHotelManageRooms);
         chargeComboBoxSelectHotel(jComboBoxSelectHotelRoomType);
         chargeComboBoxSelectHotel(jComboBoxSelectHotelManageSeason);
-        chargeComboBoxSelectRoomType();
         resetComponentsAndVariablesRoomType();
+        jComboBoxSelectRoomTypeActionPerformed(new ActionEvent(evt,0,null));
     }//GEN-LAST:event_formWindowOpened
 
     private void chargeYears(JComboBox toCharge){
@@ -2027,8 +2093,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private void chargeComboBoxSelectRoomType(){
         if(jComboBoxSelectHotelRoomType.getSelectedItem() != null){
             jComboBoxSelectRoomType.removeAllItems();
-            global.searchHotel(jComboBoxSelectHotelRoomType.getSelectedItem()
-            .toString().split(",")[0]).getRoomTypesAvailablesList().forEach((temporalRoomtype) -> {
+            actualHotelManageRoomType.getRoomTypesAvailablesList().forEach((temporalRoomtype) -> {
                 jComboBoxSelectRoomType.addItem(temporalRoomtype.getRoomType());
             });
         }
@@ -2132,6 +2197,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
             Hotel selectedHotel = global.searchHotel(jComboBoxSelectHotelRoomType.getSelectedItem()
             .toString().split(",")[0]);
             actualHotelManageRoomType = selectedHotel;
+            chargeComboBoxSelectRoomType();
         }    
     }//GEN-LAST:event_jComboBoxSelectHotelRoomTypeActionPerformed
 
@@ -2181,9 +2247,6 @@ public class AdministratorWindow extends javax.swing.JFrame {
 
     private void jComboBoxSelectRoomTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelectRoomTypeActionPerformed
         if(jComboBoxSelectHotelRoomType.getSelectedItem() != null){
-            Hotel selectedHotel = global.searchHotel(jComboBoxSelectHotelManageHotel.getSelectedItem()
-            .toString().split(",")[0]);
-            actualHotelManageRoomType = selectedHotel;
             if(jComboBoxSelectRoomType.getSelectedItem() != null){
                 RoomType roomType = actualHotelManageRoomType.searchRoomType(
                 jComboBoxSelectRoomType.getSelectedItem().toString());
@@ -2192,10 +2255,27 @@ public class AdministratorWindow extends javax.swing.JFrame {
                 jTextFieldMaxOfPeopleModify.setText(String.valueOf(roomType.getMaxOfPeople()));
                 jTextFieldRoomSizeModify.setText(roomType.getRoomSize());
                 jTextFieldDescriptionModify.setText(roomType.getDescription());
+                setRadioButtons(roomType.isHasSalon(),jRadioButtonYesSalonModify,
+                jRadioButtonNoSalonModify);
+                setRadioButtons(roomType.isHasTerrace(),jRadioButtonYesTerranceModify,
+                jRadioButtonNoTerranceModify);
+                setRadioButtons(roomType.isHasSeaview(),jRadioButtonYesSeaViewModify,
+                jRadioButtonNoSeaViewModify);
+                setRadioButtons(roomType.isAllIncluded(),jRadioButtonYesAllIncludedModify,
+                jRadioButtonNoAllIncludedModify);
+                setRadioButtons(roomType.isSmokePermission(),jRadioButtonYesSmokePermissionModify,
+                jRadioButtonYesSmokePermissionModify);
             }
         }
     }//GEN-LAST:event_jComboBoxSelectRoomTypeActionPerformed
 
+    private void setRadioButtons(boolean accion, JRadioButton yesRadio, JRadioButton noRadio){
+        if(accion == true)
+            yesRadio.setSelected(true);
+        else
+            noRadio.setSelected(true);
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(!jTextFieldFloorModify.getText().isEmpty() && !jTextFieldBedTypeModify.getText().isEmpty()
         && !jTextFieldMaxOfPeopleModify.getText().isEmpty() && !jTextFieldRoomSizeModify.getText().isEmpty()
@@ -2325,8 +2405,8 @@ public class AdministratorWindow extends javax.swing.JFrame {
         }
         catch(IOException ex){
             JOptionPane.showMessageDialog(this, "Image not supported, please choose another one",
-                "Error!", JOptionPane.INFORMATION_MESSAGE, warningIcon);
-        }
+            "Error!", JOptionPane.INFORMATION_MESSAGE, warningIcon);
+            }
         }
     }//GEN-LAST:event_jButtonAddPhotograpyManageActionPerformed
 
@@ -2389,61 +2469,141 @@ public class AdministratorWindow extends javax.swing.JFrame {
         //Loading hotel information requested.
         if(jComboBoxSelectHotelManageHotel.getSelectedItem() != null){
             Hotel selectedHotel = global.searchHotel(jComboBoxSelectHotelManageHotel.getSelectedItem()
-                .toString().split(",")[0]);
+            .toString().split(",")[0]);
             actualHotelManageHotel = selectedHotel;
             jTextFieldNameManage.setText(selectedHotel.getName());
             jTextFieldAddressManage.setText(selectedHotel.getAddress());
             //For the countries jComboBox.
             int cont = 0;
             while(!jComboBoxCountryManage.getItemAt(cont).toString().equals(selectedHotel
-                .getCountry()))
-        cont++;
-        jComboBoxCountryManage.setSelectedIndex(cont);
-        jTextFieldPhoneNumberManage.setText(selectedHotel.getPhoneNumber());
-        jComboBoxStarsNumberManage.setSelectedIndex(selectedHotel.getStarsNumber()-1);
-        //For the loading type jComboBox.
-        cont = 0;
-        while(!jComboBoxLodgingTypeManage.getItemAt(cont).toString()
+            .getCountry()))
+                cont++;
+            jComboBoxCountryManage.setSelectedIndex(cont);
+            jTextFieldPhoneNumberManage.setText(selectedHotel.getPhoneNumber());
+            jComboBoxStarsNumberManage.setSelectedIndex(selectedHotel.getStarsNumber()-1);
+            //For the loading type jComboBox.
+            cont = 0;
+            while(!jComboBoxLodgingTypeManage.getItemAt(cont).toString()
             .equals(selectedHotel.getLodgingType()))
-        cont++;
-        jComboBoxLodgingTypeManage.setSelectedIndex(cont);
-        jTextFieldHotelSizeManage.setText(selectedHotel.getHotelSize());
-        jComboBoxBuiltYearManage.setSelectedIndex(2015 - Integer.parseInt(selectedHotel
+                cont++;
+            jComboBoxLodgingTypeManage.setSelectedIndex(cont);
+            jTextFieldHotelSizeManage.setText(selectedHotel.getHotelSize());
+            jComboBoxBuiltYearManage.setSelectedIndex(2015 - Integer.parseInt(selectedHotel
             .getBuiltYear()));
-    //For check in hour.
-    jComboBoxCheckInHoursManage.setSelectedIndex(Integer.parseInt(selectedHotel
-        .getCheckInTime().split(":")[0]) - 10);
-        //For check in minutes.
-        jComboBoxCheckInMinManage.setSelectedIndex(Integer.parseInt(selectedHotel
+            //For check in hour.
+            jComboBoxCheckInHoursManage.setSelectedIndex(Integer.parseInt(selectedHotel
+            .getCheckInTime().split(":")[0]) - 10);
+            //For check in minutes.
+            jComboBoxCheckInMinManage.setSelectedIndex(Integer.parseInt(selectedHotel
             .getCheckInTime().split(":")[1]) / 15);
-    //For check out hour.
-    jComboBoxCheckOutHoursManage.setSelectedIndex(Integer.parseInt(selectedHotel
-        .getCheckOutTime().split(":")[0]) - 10);
-        //For check out minutes.
-        jComboBoxCheckOutMinManage.setSelectedIndex(Integer.parseInt(selectedHotel
+            //For check out hour.
+            jComboBoxCheckOutHoursManage.setSelectedIndex(Integer.parseInt(selectedHotel
+            .getCheckOutTime().split(":")[0]) - 10);
+            //For check out minutes.
+            jComboBoxCheckOutMinManage.setSelectedIndex(Integer.parseInt(selectedHotel
             .getCheckOutTime().split(":")[1]) / 15);
-    //For check in requirements.
-    jComboBoxCheckInRequirementsManage.removeAllItems();
-    actualHotelManageHotel.getCheckInRequirementsList().stream().forEach((temporalRequirement) -> {
-        jComboBoxCheckInRequirementsManage.addItem(temporalRequirement);
-        });
-        //For near attractions.
-        jComboBoxDeleteNearAttraction.removeAllItems();
-        actualHotelManageHotel.getNearbyAttractionList().stream().forEach((temporalAttraction) -> {
-            jComboBoxDeleteNearAttraction.addItem(temporalAttraction.getName() +
-                "-" + temporalAttraction.getCode());
-        });
-        //For services.
-        chargeComboBoxServicesManage();
-        chargeComboBoxDeleteServiceManage();
-        indexImageManage = 0;
-        setGraphicImageManage(actualHotelManageHotel.getPhotographsList().get(indexImageManage));
+            //For check in requirements.
+            jComboBoxCheckInRequirementsManage.removeAllItems();
+            actualHotelManageHotel.getCheckInRequirementsList().stream().forEach((temporalRequirement) -> {
+            jComboBoxCheckInRequirementsManage.addItem(temporalRequirement);
+            });
+            //For near attractions.
+            jComboBoxDeleteNearAttraction.removeAllItems();
+            actualHotelManageHotel.getNearbyAttractionList().stream().forEach((temporalAttraction) -> {
+                jComboBoxDeleteNearAttraction.addItem(temporalAttraction.getName() +
+                    "-" + temporalAttraction.getCode());
+            });
+            //For services.
+            chargeComboBoxServicesManage();
+            chargeComboBoxDeleteServiceManage();
+            indexImageManage = 0;
+            setGraphicImageManage(actualHotelManageHotel.getPhotographsList().get(indexImageManage));
         }
     }//GEN-LAST:event_jComboBoxSelectHotelManageHotelActionPerformed
 
     private void jComboBoxSelectHotelManageHotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxSelectHotelManageHotelMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxSelectHotelManageHotelMouseClicked
+
+    private void jButtonCreateSeasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateSeasonActionPerformed
+        if(!jTextFieldSeasonName.getText().isEmpty()){
+            String[] splitList = dateChooserComboSeasonStartDate.getText().split("/");
+            GregorianCalendar startDate = new GregorianCalendar(Integer.parseInt(splitList[2]),
+            Integer.parseInt(splitList[1]),Integer.parseInt(splitList[0]));
+            splitList = dateChooserComboSeasonEndDate.getText().split("/");
+            GregorianCalendar endDate = new GregorianCalendar(Integer.parseInt(splitList[2]),
+            Integer.parseInt(splitList[1]),Integer.parseInt(splitList[0]));
+            seasonToCreate = new Season(jTextFieldSeasonName.getText(),startDate,
+            endDate);
+            jTextFieldSeasonName.setText("");
+            manageSeasonComponents(true);
+            if(!actualHotelManageSeason.getRoomTypesAvailablesList().isEmpty()){
+                manageSeasonComponents(true);
+                jLabelRoomTypeManageSeasons.setText(actualHotelManageSeason
+                .getRoomTypesAvailablesList().get(0).getRoomType());
+                JOptionPane.showMessageDialog(this,"You will then be prompted to "
+                + "enter the prices for each room\ntype for the season in question, "
+                + "should this information not\nfill the new season will be discarded.",
+                "Information",JOptionPane.INFORMATION_MESSAGE,warningIcon);
+            }
+            else
+                JOptionPane.showMessageDialog(this,"Season successfully saved.",
+                "Information",JOptionPane.INFORMATION_MESSAGE,checkIcon);
+        }
+        else
+            JOptionPane.showMessageDialog(this,"It is necessary that the season"
+            + " possesses a name.","Warning",JOptionPane.INFORMATION_MESSAGE,warningIcon);
+    }//GEN-LAST:event_jButtonCreateSeasonActionPerformed
+
+    private void manageSeasonComponents(boolean action){
+        jLabelInfoSeasons.setEnabled(action);
+        jLabelInfoRoomTypeSeasons.setEnabled(action);
+        jLabelRoomTypeManageSeasons.setEnabled(action);
+        jLabelInfoPriceSeasons.setEnabled(action);
+        jTextFieldPriceManageSeasons.setEnabled(action);
+        jButtonNextManageSeasons.setEnabled(action);
+    }
+    
+    private void jComboBoxSelectHotelManageSeasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelectHotelManageSeasonActionPerformed
+        if(jComboBoxSelectHotelManageSeason.getSelectedItem() != null){
+            Hotel selectedHotel = global.searchHotel(jComboBoxSelectHotelManageSeason.getSelectedItem()
+            .toString().split(",")[0]);
+            actualHotelManageSeason = selectedHotel;
+        }
+    }//GEN-LAST:event_jComboBoxSelectHotelManageSeasonActionPerformed
+
+    private void jButtonNextManageSeasonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNextManageSeasonsActionPerformed
+        if(!jTextFieldPriceManageSeasons.getText().isEmpty()){
+            seasonToCreate.addSimpleRoom(new SimpleRoom(actualHotelManageSeason
+            .getRoomTypesAvailablesList().get(simpleRoomCount).getRoomType(),
+            Integer.parseInt(jTextFieldPriceManageSeasons.getText())));
+            simpleRoomCount++;
+            if(simpleRoomCount == actualHotelManageSeason.getRoomTypesAvailablesList().size()){
+                manageSeasonComponents(false);
+                actualHotelManageSeason.addSeason(seasonToCreate);
+                JOptionPane.showMessageDialog(this,"Season successfully saved.",
+                "Information",JOptionPane.INFORMATION_MESSAGE,checkIcon);
+                simpleRoomCount = 0;
+                jLabelRoomTypeManageSeasons.setText("");
+            }
+            else
+                jLabelRoomTypeManageSeasons.setText(actualHotelManageSeason
+                .getRoomTypesAvailablesList().get(simpleRoomCount).getRoomType());
+            jTextFieldPriceManageSeasons.setText("");
+        }
+    }//GEN-LAST:event_jButtonNextManageSeasonsActionPerformed
+
+    private void jTextFieldPriceManageSeasonsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPriceManageSeasonsKeyTyped
+        jTextFieldNumberValidation(evt);
+    }//GEN-LAST:event_jTextFieldPriceManageSeasonsKeyTyped
+
+    private void jComboBoxSelectSeasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelectSeasonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSelectSeasonActionPerformed
+
+    private void jComboBoxAddRoomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAddRoomsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxAddRoomsActionPerformed
 
     private void chargeJListRoomsManageRooms(){
         if(actualHotelManageRooms.getRoomList().size() > 0){
@@ -2648,6 +2808,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDeleteServiceManage;
     private javax.swing.JButton jButtonNextImageCreate;
     private javax.swing.JButton jButtonNextImageManage;
+    private javax.swing.JButton jButtonNextManageSeasons;
     private javax.swing.JButton jButtonPreviousImageCreate;
     private javax.swing.JButton jButtonPreviousImageManage;
     private javax.swing.JButton jButtonSee;
@@ -2669,7 +2830,6 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxCountryCreate;
     private javax.swing.JComboBox jComboBoxCountryManage;
     private javax.swing.JComboBox jComboBoxDeleteNearAttraction;
-    private javax.swing.JComboBox jComboBoxDeleteRooms;
     private javax.swing.JComboBox jComboBoxDeleteServicesManage;
     private javax.swing.JComboBox jComboBoxLodgingTypeCreate;
     private javax.swing.JComboBox jComboBoxLodgingTypeManage;
@@ -2679,7 +2839,6 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxSelectHotelRoomType;
     private javax.swing.JComboBox jComboBoxSelectRoomType;
     private javax.swing.JComboBox jComboBoxSelectSeason;
-    private javax.swing.JComboBox jComboBoxSelectSimpleRoom;
     private javax.swing.JComboBox jComboBoxServicesCreate;
     private javax.swing.JComboBox jComboBoxServicesManage;
     private javax.swing.JComboBox jComboBoxStarsNumberCreate;
@@ -2748,20 +2907,21 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
-    private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
-    private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelImageCreate;
     private javax.swing.JLabel jLabelImageManage;
+    private javax.swing.JLabel jLabelInfoPriceSeasons;
+    private javax.swing.JLabel jLabelInfoRoomTypeSeasons;
+    private javax.swing.JLabel jLabelInfoSeasons;
+    private javax.swing.JLabel jLabelRoomTypeManageSeasons;
     private javax.swing.JList jListRoomRegistersManageRooms;
     private javax.swing.JList jListRoomTypeManageRooms;
     private javax.swing.JList jListRoomsManageRooms;
@@ -2823,13 +2983,12 @@ public class AdministratorWindow extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNearAttractionsManage;
     private javax.swing.JTextField jTextFieldPhoneNumberCreate;
     private javax.swing.JTextField jTextFieldPhoneNumberManage;
+    private javax.swing.JTextField jTextFieldPriceManageSeasons;
     private javax.swing.JTextField jTextFieldRequirementsCreate;
     private javax.swing.JTextField jTextFieldRequirementsManage;
     private javax.swing.JTextField jTextFieldRoomSize;
     private javax.swing.JTextField jTextFieldRoomSizeModify;
     private javax.swing.JTextField jTextFieldRoomType;
-    private javax.swing.JTextField jTextFieldSeasonCode;
-    private javax.swing.JTextField jTextFieldSeasonCodeModify;
     private javax.swing.JTextField jTextFieldSeasonName;
     // End of variables declaration//GEN-END:variables
 }
