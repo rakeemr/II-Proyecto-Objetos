@@ -6,5 +6,4 @@ public class Administrator extends User{
     char[] password) {
         super(name, lastName, gender, email, password);
     }
-    
 }

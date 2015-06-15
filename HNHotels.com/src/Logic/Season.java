@@ -67,4 +67,11 @@ public class Season {
         newCode += Integer.toString(endDate.get(Calendar.YEAR)).substring(2, 3);
         return newCode;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + ", code: " + code + ", start date: " + startDate
+        .get(Calendar.DAY_OF_MONTH) + "/" + startDate.get(Calendar.MONTH) + ", end date: "
+        + endDate.get(Calendar.DAY_OF_MONTH) + "/" + endDate.get(Calendar.MONTH);
+    }
 }

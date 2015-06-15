@@ -357,15 +357,15 @@ public class LogInWindow extends javax.swing.JFrame {
         .getPassword().length != 0 && jPasswordFieldPasswordConfirmation.getPassword().length != 0){
             if(Arrays.equals(jPasswordFieldPasswordSignIn.getPassword(),jPasswordFieldPasswordConfirmation
             .getPassword())){
-                Client newClient = new Client(jTextFieldNameSignIn.getText(),
+                Client newClient = (Client)UserCreator.createUser(jTextFieldNameSignIn.getText(),
                 jTextFieldLastNameSignIn.getText(),jComboBoxGenderSignIn.getSelectedItem().toString(),
-                jTextFieldEmailSignIn.getText(),jPasswordFieldPasswordSignIn.getPassword());
+                jTextFieldEmailSignIn.getText(),jPasswordFieldPasswordSignIn.getPassword(),"Client");
                 global.addUser(newClient);
                 new ClientWindow(this,newClient).setVisible(true);
                 this.dispose();
                 JOptionPane.showMessageDialog(this,"Welcome to our hotel search system",
                 "Welcome",JOptionPane.INFORMATION_MESSAGE,
-                new ImageIcon(getClass().getResource("/Images/HotelIcon.png")));
+                new ImageIcon(getClass().getResource("/Img/HotelIcon.png")));
             }
             else
                JOptionPane.showMessageDialog(this,"The password and password confirmation are different",
