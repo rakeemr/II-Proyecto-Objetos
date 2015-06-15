@@ -192,4 +192,107 @@ public class Global {
     public Categorie getCategorie(int stars){
         return instance.generalCategorieList.get(stars - 1);
     }
+    
+    public ArrayList<String> searchHotelsByCriterion(String criterion, String order,
+    String description){
+        ArrayList<Hotel> results;
+        if(criterion.equals("Name"))
+            results = searchByName(description);
+        else if(criterion.equals("Country"))
+            results = searchByCountry(description);
+        else
+            results = searchByAddress(description);
+        if(order.equals("Popularity"))
+            return orderByPopularity(results);
+        else if(order.equals("Stars Number"))
+            return orderByStartsNumber(results);
+        else
+            return orderByHostageType(results);
+    }
+    
+    private ArrayList<String> orderByHostageType(ArrayList<Hotel> toOrder){
+        ArrayList<String> results = new ArrayList();
+        Hotel highter;
+        while(toOrder.size() > 0){
+            int i = 0;
+            int max = 0;
+            for(Hotel temporalHotel : toOrder){
+                if(toOrder.get(max).getLodgingType().compareTo(temporalHotel
+                .getLodgingType()) < 0)
+                    max = i;
+                i++;
+            }
+            highter = toOrder.get(max);
+            results.add(highter.getName() + "--->Lodging type: " + highter.getLodgingType());
+            toOrder.remove(max);
+        }
+        return results;
+    }
+    
+    private ArrayList<String> orderByStartsNumber(ArrayList<Hotel> toOrder){
+        ArrayList<String> results = new ArrayList();
+        Hotel highter;
+        while(toOrder.size() > 0){
+            int i = 0;
+            int max = 0;
+            for(Hotel temporalHotel : toOrder){
+                if(toOrder.get(max).getStarsNumber() < temporalHotel.getStarsNumber())
+                    max = i;
+                i++;
+            }
+            highter = toOrder.get(max);
+            results.add(highter.getName() + "--->Starts: " + highter.getStarsNumber());
+            toOrder.remove(max);
+        }
+        return results;
+    }
+    
+    private ArrayList<String> orderByPopularity(ArrayList<Hotel> toOrder){
+        ArrayList<String> results = new ArrayList();
+        Hotel highter;
+        while(toOrder.size() > 0){
+            int i = 0;
+            int max = 0;
+            for(Hotel temporalHotel : toOrder){
+                if(toOrder.get(max).getReservationCount() < temporalHotel.getReservationCount())
+                    max = i;
+                i++;
+            }
+            highter = toOrder.get(max);
+            results.add(highter.getName() + "--->Popularity: " + highter
+            .getReservationCount() * 1000 + "pts.");
+            toOrder.remove(max);
+        }
+        return results;
+    }
+    
+    private ArrayList<Hotel> searchByName(String name){
+        ArrayList<Hotel> results = new ArrayList();
+        instance.generalHotelList.stream().filter((temporalHotel) -> 
+        (temporalHotel.getName().toLowerCase().contains(name.toLowerCase())))
+         .forEach((temporalHotel) -> {
+            results.add(temporalHotel);
+        });
+        return results;
+    }
+    
+    private ArrayList<Hotel> searchByCountry(String country){
+        ArrayList<Hotel> results = new ArrayList();
+        instance.generalHotelList.stream().filter((temporalHotel) -> 
+        (temporalHotel.getCountry().toLowerCase().contains(country.toLowerCase())))
+        .forEach((temporalHotel) -> {
+            results.add(temporalHotel);
+        });
+        return results;
+    }
+    
+    private ArrayList<Hotel> searchByAddress(String address){
+        ArrayList<Hotel> results = new ArrayList();
+        instance.generalHotelList.stream().filter((temporalHotel) -> 
+        (temporalHotel.getAddress().toLowerCase().contains(address.toLowerCase())))
+        .forEach((temporalHotel) -> {
+            results.add(temporalHotel);
+        });
+        return results;
+    }
 }

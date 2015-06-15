@@ -4,7 +4,9 @@ import Logic.Global;
 import Logic.User.Client;
 import Logic.User.User;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -34,26 +36,20 @@ public class ClientWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroupCriterion = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextFieldEntryDate = new javax.swing.JFormattedTextField();
-        jTextFieldDepartureDate = new javax.swing.JFormattedTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jTextFieldRoomsRaft = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jTextFieldAdultNumber = new javax.swing.JTextField();
-        jTextFieldChildNumber = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jRadioButtonPrice = new javax.swing.JRadioButton();
         jRadioButtonStarsNumber = new javax.swing.JRadioButton();
         jRadioButtonHostageType = new javax.swing.JRadioButton();
-        jButtonSearch = new javax.swing.JButton();
-        jTextFieldHotelSearch = new javax.swing.JTextField();
+        jButtonSearchHotel = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBoxSearchCriterion = new javax.swing.JComboBox();
+        jLabelCriterion = new javax.swing.JLabel();
+        jTextFieldCriterion = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jListHotelsResults = new javax.swing.JList();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldNameModify = new javax.swing.JTextField();
@@ -88,150 +84,101 @@ public class ClientWindow extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Hotel name:");
-
-        jLabel10.setText("Entry Date:");
-
-        jLabel11.setText("Departure Date:");
-
-        jTextFieldEntryDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("MM/dd/yyyy"))));
-        jTextFieldEntryDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEntryDateActionPerformed(evt);
-            }
-        });
-        jTextFieldEntryDate.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldEntryDateKeyTyped(evt);
-            }
-        });
-
-        jTextFieldDepartureDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("MM/dd/yyyy"))));
-        jTextFieldDepartureDate.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldDepartureDateKeyTyped(evt);
-            }
-        });
-
-        jLabel13.setText("Rooms Raft:");
-
-        jTextFieldRoomsRaft.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldRoomsRaftKeyTyped(evt);
-            }
-        });
-
-        jLabel14.setText("Adult Number:");
-
-        jLabel15.setText("Child Number:");
-
-        jTextFieldAdultNumber.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldAdultNumberKeyTyped(evt);
-            }
-        });
-
-        jTextFieldChildNumber.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldChildNumberKeyTyped(evt);
-            }
-        });
-
         jLabel16.setText("Ordered By:");
 
-        buttonGroup1.add(jRadioButtonPrice);
-        jRadioButtonPrice.setText("Price");
-
-        buttonGroup1.add(jRadioButtonStarsNumber);
-        jRadioButtonStarsNumber.setText("Stars Number");
-
-        buttonGroup1.add(jRadioButtonHostageType);
-        jRadioButtonHostageType.setText("Hostage Type");
-
-        jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/SearchIcon.png"))); // NOI18N
-        jButtonSearch.setText("Search");
-
-        jTextFieldHotelSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldHotelSearchKeyTyped(evt);
+        buttonGroupCriterion.add(jRadioButtonPrice);
+        jRadioButtonPrice.setText("Popularity");
+        jRadioButtonPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonPriceActionPerformed(evt);
             }
         });
+
+        buttonGroupCriterion.add(jRadioButtonStarsNumber);
+        jRadioButtonStarsNumber.setText("Stars Number");
+        jRadioButtonStarsNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonStarsNumberActionPerformed(evt);
+            }
+        });
+
+        buttonGroupCriterion.add(jRadioButtonHostageType);
+        jRadioButtonHostageType.setText("Lodging Type");
+
+        jButtonSearchHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/SearchIcon.png"))); // NOI18N
+        jButtonSearchHotel.setText("Search");
+        jButtonSearchHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchHotelActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Search criterion:");
+
+        jComboBoxSearchCriterion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Name", "Country", "Address" }));
+        jComboBoxSearchCriterion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSearchCriterionActionPerformed(evt);
+            }
+        });
+
+        jLabelCriterion.setText("Name:");
+
+        jScrollPane1.setViewportView(jListHotelsResults);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButtonPrice)
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButtonPrice)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonHostageType, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jRadioButtonStarsNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonSearchHotel))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButtonStarsNumber)
-                            .addComponent(jRadioButtonHostageType, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextFieldAdultNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                                .addComponent(jTextFieldRoomsRaft, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jTextFieldChildNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButtonSearch)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextFieldEntryDate, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldDepartureDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jTextFieldHotelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(196, Short.MAX_VALUE))
+                        .addComponent(jComboBoxSearchCriterion, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabelCriterion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldCriterion))
+                    .addComponent(jScrollPane1))
+                .addContainerGap(356, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextFieldHotelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextFieldEntryDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextFieldDepartureDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jTextFieldRoomsRaft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jTextFieldAdultNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jTextFieldChildNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel16)
-                .addGap(4, 4, 4)
-                .addComponent(jRadioButtonPrice)
+                    .addComponent(jComboBoxSearchCriterion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonSearch)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jRadioButtonStarsNumber)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButtonHostageType)))
-                .addGap(76, 76, 76))
+                    .addComponent(jLabelCriterion, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCriterion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButtonPrice)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jRadioButtonStarsNumber)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonHostageType)
+                    .addComponent(jButtonSearchHotel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Hotel Reservation", jPanel3);
+        jTabbedPane1.addTab("Hotel Search", jPanel3);
 
         jLabel4.setText("Name:");
 
@@ -582,36 +529,46 @@ public class ClientWindow extends javax.swing.JFrame {
         new LogInWindow().setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
-    private void jTextFieldEntryDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEntryDateActionPerformed
+    private void jComboBoxSearchCriterionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSearchCriterionActionPerformed
+        jLabelCriterion.setText(jComboBoxSearchCriterion.getSelectedItem().toString() + ":");
+    }//GEN-LAST:event_jComboBoxSearchCriterionActionPerformed
+
+    private void jRadioButtonStarsNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonStarsNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEntryDateActionPerformed
+    }//GEN-LAST:event_jRadioButtonStarsNumberActionPerformed
 
-    private void jTextFieldHotelSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldHotelSearchKeyTyped
-        char scan = evt.getKeyChar();
-        if((scan < 'a' || scan > 'z') && (scan < 'A' || scan > 'Z') && 
-        (scan != KeyEvent.VK_SPACE))
-            evt.consume();
-    }//GEN-LAST:event_jTextFieldHotelSearchKeyTyped
+    private void jButtonSearchHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchHotelActionPerformed
+        if(!jTextFieldCriterion.getText().isEmpty()){
+            String order;
+            if(jRadioButtonPrice.isSelected())
+                order = jRadioButtonPrice.getText();
+            else if(jRadioButtonStarsNumber.isSelected())
+                order = jRadioButtonStarsNumber.getText();
+            else if(jRadioButtonHostageType.isSelected())
+                order = jRadioButtonHostageType.getText();
+            else{
+                JOptionPane.showMessageDialog(this,"You must select a order the "
+                + "the list of hotels results.","Warning",JOptionPane.INFORMATION_MESSAGE,
+                warningIcon);
+                return;    
+            }
+            ArrayList<String> results = global.searchHotelsByCriterion(jComboBoxSearchCriterion
+            .getSelectedItem().toString(),order,jTextFieldCriterion.getText());
+            chargeJListResults(results);
+        }
+    }//GEN-LAST:event_jButtonSearchHotelActionPerformed
 
-    private void jTextFieldEntryDateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldEntryDateKeyTyped
-        jTextFieldNumberValidation(evt, jTextFieldEntryDate);
-    }//GEN-LAST:event_jTextFieldEntryDateKeyTyped
-
-    private void jTextFieldDepartureDateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDepartureDateKeyTyped
-        jTextFieldNumberValidation(evt, jTextFieldDepartureDate);
-    }//GEN-LAST:event_jTextFieldDepartureDateKeyTyped
-
-    private void jTextFieldRoomsRaftKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldRoomsRaftKeyTyped
-        jTextFieldNumberValidation(evt, jTextFieldRoomsRaft);
-    }//GEN-LAST:event_jTextFieldRoomsRaftKeyTyped
-
-    private void jTextFieldAdultNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAdultNumberKeyTyped
-        jTextFieldNumberValidation(evt, jTextFieldAdultNumber);
-    }//GEN-LAST:event_jTextFieldAdultNumberKeyTyped
-
-    private void jTextFieldChildNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldChildNumberKeyTyped
-        jTextFieldNumberValidation(evt, jTextFieldChildNumber);
-    }//GEN-LAST:event_jTextFieldChildNumberKeyTyped
+    private void chargeJListResults(ArrayList<String> results){
+        DefaultListModel model = new DefaultListModel();
+        results.stream().forEach((temporalString) -> {
+            model.addElement(temporalString);
+        });
+        jListHotelsResults.setModel(model);
+    }
+    
+    private void jRadioButtonPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonPriceActionPerformed
 
     private void chargeClientData(){
         jTextFieldNameModify.setText(currentUser.getName());
@@ -694,19 +651,15 @@ public class ClientWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroupCriterion;
     private javax.swing.JButton jButtonCloseSession;
     private javax.swing.JButton jButtonSave;
-    private javax.swing.JButton jButtonSearch;
+    private javax.swing.JButton jButtonSearchHotel;
     private javax.swing.JComboBox jComboBoxCountriesModify;
     private javax.swing.JComboBox jComboBoxGenderModify;
+    private javax.swing.JComboBox jComboBoxSearchCriterion;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -716,8 +669,10 @@ public class ClientWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelCriterion;
     private javax.swing.JLabel jLabelWarningInfoEmail;
     private javax.swing.JLabel jLabelWarningInfoPassword;
+    private javax.swing.JList jListHotelsResults;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordFieldPasswordConfirmationModify;
@@ -725,17 +680,13 @@ public class ClientWindow extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonHostageType;
     private javax.swing.JRadioButton jRadioButtonPrice;
     private javax.swing.JRadioButton jRadioButtonStarsNumber;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextFieldAdultNumber;
-    private javax.swing.JTextField jTextFieldChildNumber;
-    private javax.swing.JFormattedTextField jTextFieldDepartureDate;
+    private javax.swing.JTextField jTextFieldCriterion;
     private javax.swing.JTextField jTextFieldEmailModify;
-    private javax.swing.JFormattedTextField jTextFieldEntryDate;
-    private javax.swing.JTextField jTextFieldHotelSearch;
     private javax.swing.JTextField jTextFieldLastNameModify;
     private javax.swing.JTextField jTextFieldNameModify;
     private javax.swing.JTextField jTextFieldPhoneNumberModify;
     private javax.swing.JTextField jTextFieldPreferenceMoneyModify;
-    private javax.swing.JTextField jTextFieldRoomsRaft;
     // End of variables declaration//GEN-END:variables
 }
