@@ -6,6 +6,8 @@ import Additional.Categorie;
 import Logic.Room.RoomType;
 import Logic.Room.Room;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.ImageIcon;
 
 public class Hotel {
@@ -282,5 +284,25 @@ public class Hotel {
                 return temporalRoomType;
         }
         return null;
+    }
+    
+    public boolean checkAvailabilityDates(Season newSeason){
+        int startDay = newSeason.getStartDate().get(Calendar.DAY_OF_YEAR);
+        int endDay = newSeason.getEndDate().get(Calendar.DAY_OF_YEAR);
+        int temporalStartDay;
+        int temporalEndDay;
+        for(Season temporalSeason : this.seasonList){
+            temporalStartDay = temporalSeason.getStartDate().get(Calendar.DAY_OF_YEAR);
+            temporalEndDay = temporalSeason.getEndDate().get(Calendar.DAY_OF_YEAR);
+            if((startDay == temporalStartDay) || (startDay == temporalEndDay) ||
+            (endDay == temporalStartDay) || (endDay == temporalEndDay))
+                return false;
+            else if((temporalStartDay < startDay && startDay < temporalEndDay) || 
+            (temporalStartDay < endDay && endDay < temporalEndDay) || 
+            (startDay < temporalStartDay && temporalStartDay < endDay) || 
+            (startDay < temporalEndDay && temporalEndDay < endDay))
+                return false;
+        }
+        return true;
     }
 }
