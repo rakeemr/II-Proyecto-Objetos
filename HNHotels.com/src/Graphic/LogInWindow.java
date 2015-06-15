@@ -2,6 +2,7 @@ package Graphic;
 
 import Logic.Global;
 import Logic.User.*;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import javax.swing.ImageIcon;
@@ -17,6 +18,7 @@ public class LogInWindow extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(Color.LIGHT_GRAY);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/HotelIcon.png")).getImage());
         this.global = Global.getInstance();
         this.warningIcon = new ImageIcon(getClass().getResource("/Img/WarningIcon.png"));

@@ -1,6 +1,7 @@
 package Graphic;
 
 import Logic.Room.Register;
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -13,6 +14,7 @@ public class RegisterViewer extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/HotelIcon.png")).getImage());
         this.setLocationRelativeTo(ancestor);
         this.setResizable(false);
+        this.getContentPane().setBackground(Color.LIGHT_GRAY);
         this.ancestor = ancestor;
         this.register = register;
     }
