@@ -2939,12 +2939,10 @@
                                           <Component id="jLabelRoomTypeManageSeasons" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabelInfoPriceSeasons" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldPriceManageSeasons" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jButtonNextManageSeasons" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabelInfoPriceSeasons" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldPriceManageSeasons" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>

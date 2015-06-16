@@ -21,7 +21,6 @@ public class ClientWindow extends javax.swing.JFrame {
     
     public ClientWindow(LogInWindow ancestor, Client currentUser) {
         initComponents();
-        this.setTitle("Client view");
         this.setResizable(false);
         this.setLocationRelativeTo(ancestor);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/HotelIcon.png")).getImage());
@@ -125,11 +124,6 @@ public class ClientWindow extends javax.swing.JFrame {
 
         jLabelCriterion.setText("Name:");
 
-        jListHotelsResults.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jListHotelsResultsMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(jListHotelsResults);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -575,15 +569,6 @@ public class ClientWindow extends javax.swing.JFrame {
     private void jRadioButtonPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonPriceActionPerformed
-
-    private void jListHotelsResultsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListHotelsResultsMouseClicked
-        if(evt.getClickCount() == 2){
-            new HotelViewWindow(this,global.searchHotel(jListHotelsResults.getModel()
-            .getElementAt(jListHotelsResults.getSelectedIndex()).toString().split("--->")[0]),
-            currentUser).setVisible(true);
-            this.setEnabled(false);
-        }
-    }//GEN-LAST:event_jListHotelsResultsMouseClicked
 
     private void chargeClientData(){
         jTextFieldNameModify.setText(currentUser.getName());

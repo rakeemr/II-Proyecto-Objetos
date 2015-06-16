@@ -305,14 +305,4 @@ public class Hotel {
         }
         return true;
     }
-    
-    public Season searchSeason(GregorianCalendar date){
-        for(Season temporalSeason : this.getSeasonList()){
-            if(temporalSeason.getStartDate().after(date) && temporalSeason.getEndDate()
-            .before(date) || date.equals(temporalSeason.getStartDate()) || date
-            .equals(temporalSeason.getEndDate()))
-                return temporalSeason;
-        }
-        return null;
-    }
 }

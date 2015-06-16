@@ -51,7 +51,6 @@ public class AdministratorWindow extends javax.swing.JFrame {
     
     public AdministratorWindow(LogInWindow ancestor, Administrator currentUser) {
         initComponents();
-        this.setTitle("Administrator view");
         this.setResizable(false);
         this.setLocationRelativeTo(ancestor);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/HotelIcon.png")).getImage());
@@ -1873,11 +1872,10 @@ public class AdministratorWindow extends javax.swing.JFrame {
                                 .addComponent(jLabelInfoRoomTypeSeasons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabelRoomTypeManageSeasons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanelManageSeasonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButtonNextManageSeasons, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanelManageSeasonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelInfoPriceSeasons)
-                                    .addComponent(jTextFieldPriceManageSeasons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanelManageSeasonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelInfoPriceSeasons)
+                                .addComponent(jTextFieldPriceManageSeasons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonNextManageSeasons, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGap(354, 354, 354))
                 .addGroup(jPanelManageSeasonLayout.createSequentialGroup()
                     .addGap(34, 34, 34)

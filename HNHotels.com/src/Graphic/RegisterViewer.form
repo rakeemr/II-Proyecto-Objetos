@@ -39,10 +39,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabelChildrenCount" pref="200" max="32767" attributes="0"/>
-                  <Component id="jLabelCheckInDate" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jLabelCheckOutDate" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jLabelResponsiblePerson" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jLabelAdultsCount" alignment="0" pref="200" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabelCheckInDate" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabelCheckOutDate" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabelResponsiblePerson" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabelAdultsCount" alignment="0" pref="200" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>

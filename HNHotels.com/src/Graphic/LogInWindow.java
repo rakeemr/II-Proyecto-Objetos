@@ -15,7 +15,6 @@ public class LogInWindow extends javax.swing.JFrame {
     
     public LogInWindow() {
         initComponents();
-        this.setTitle("Log in");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/HotelIcon.png")).getImage());
