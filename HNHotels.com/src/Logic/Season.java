@@ -74,4 +74,12 @@ public class Season {
         .get(Calendar.DAY_OF_MONTH) + "/" + startDate.get(Calendar.MONTH) + ", end date: "
         + endDate.get(Calendar.DAY_OF_MONTH) + "/" + endDate.get(Calendar.MONTH);
     }
+    
+    public SimpleRoom searchSimpleRoom(String name){
+        for(SimpleRoom temporalSimpleRoom : this.simpleRoomList){
+            if(temporalSimpleRoom.getRoomType().equals(name))
+                return temporalSimpleRoom;
+        }
+        return null;
+    }
 }

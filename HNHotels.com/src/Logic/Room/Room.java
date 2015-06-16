@@ -2,6 +2,8 @@ package Logic.Room;
 
 import Logic.Hotel;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Room {
     private final int number;
@@ -35,5 +37,27 @@ public class Room {
     
     public void addRegister(Register newRegister){
         this.registerList.add(newRegister);
+    }
+    
+    public boolean checkAvailability(GregorianCalendar checkInDate, GregorianCalendar
+    checkOutDate){
+        int startDay = checkInDate.get(Calendar.DAY_OF_YEAR);
+        int endDay = checkOutDate.get(Calendar.DAY_OF_YEAR);
+        int temporalStartDay, temporalEndDay;
+        for(Register temporalRegister : this.registerList){
+            if(temporalRegister.isCanceled()){
+                temporalStartDay = temporalRegister.getCheckInDate().get(Calendar.DAY_OF_YEAR);
+                temporalEndDay = temporalRegister.getCheckOutDate().get(Calendar.DAY_OF_YEAR);
+                if((startDay == temporalStartDay) || (startDay == temporalEndDay) ||
+                (endDay == temporalStartDay) || (endDay == temporalEndDay))
+                    return false;
+                else if((temporalStartDay < startDay && startDay < temporalEndDay) || 
+                (temporalStartDay < endDay && endDay < temporalEndDay) || 
+                (startDay < temporalStartDay && temporalStartDay < endDay) || 
+                (startDay < temporalEndDay && temporalEndDay < endDay))
+                    return false;
+            }
+        }
+        return true;
     }
 }

@@ -10,6 +10,7 @@ public class Register {
     private int adultsCount;
     private int childrenCount;
     private final String dateCode;
+    private boolean canceled;
 
     public Register(GregorianCalendar checkInDate, GregorianCalendar checkOutDate,
     String responsiblePerson, int adultsCount, int childrenCount) {
@@ -19,6 +20,7 @@ public class Register {
         this.adultsCount = adultsCount;
         this.childrenCount = childrenCount;
         this.dateCode = generateCode(checkInDate, checkOutDate);
+        this.canceled = false;
     }
 
     public GregorianCalendar getCheckInDate() {
@@ -51,6 +53,14 @@ public class Register {
 
     public String getDateCode() {
         return dateCode;
+    }
+
+    public boolean isCanceled() {
+        return canceled;
+    }
+
+    public void setCanceled(boolean canceled) {
+        this.canceled = canceled;
     }
     
     private String generateCode(GregorianCalendar checkInDate, GregorianCalendar checkOutDate){

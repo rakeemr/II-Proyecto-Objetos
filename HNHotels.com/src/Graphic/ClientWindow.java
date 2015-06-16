@@ -3,7 +3,6 @@ package Graphic;
 import Logic.Global;
 import Logic.User.Client;
 import Logic.User.User;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,11 +21,9 @@ public class ClientWindow extends javax.swing.JFrame {
     
     public ClientWindow(LogInWindow ancestor, Client currentUser) {
         initComponents();
+        this.setTitle("Client view");
         this.setResizable(false);
         this.setLocationRelativeTo(ancestor);
-        this.getContentPane().setBackground(Color.LIGHT_GRAY);
-        jPanel2.setBackground(Color.LIGHT_GRAY);
-        jPanel3.setBackground(Color.LIGHT_GRAY);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/HotelIcon.png")).getImage());
         this.ancestor = ancestor;
         this.currentUser = currentUser;
@@ -128,6 +125,12 @@ public class ClientWindow extends javax.swing.JFrame {
 
         jLabelCriterion.setText("Name:");
 
+        jListHotelsResults.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jListHotelsResults.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListHotelsResultsMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jListHotelsResults);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -551,7 +554,7 @@ public class ClientWindow extends javax.swing.JFrame {
             else if(jRadioButtonHostageType.isSelected())
                 order = jRadioButtonHostageType.getText();
             else{
-                JOptionPane.showMessageDialog(this,"You must select an order for "
+                JOptionPane.showMessageDialog(this,"You must select a order the "
                 + "the list of hotels results.","Warning",JOptionPane.INFORMATION_MESSAGE,
                 warningIcon);
                 return;    
@@ -573,6 +576,15 @@ public class ClientWindow extends javax.swing.JFrame {
     private void jRadioButtonPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonPriceActionPerformed
+
+    private void jListHotelsResultsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListHotelsResultsMouseClicked
+        if(evt.getClickCount() == 2){
+            new HotelViewWindow(this,global.searchHotel(jListHotelsResults.getModel()
+            .getElementAt(jListHotelsResults.getSelectedIndex()).toString().split("--->")[0]),
+            currentUser).setVisible(true);
+            this.setEnabled(false);
+        }
+    }//GEN-LAST:event_jListHotelsResultsMouseClicked
 
     private void chargeClientData(){
         jTextFieldNameModify.setText(currentUser.getName());

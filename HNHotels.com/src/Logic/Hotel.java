@@ -305,4 +305,26 @@ public class Hotel {
         }
         return true;
     }
+    
+    public Season searchSeason(GregorianCalendar date){
+        int actualDay = date.get(Calendar.DAY_OF_YEAR) + 30;
+        for(Season temporalSeason : this.getSeasonList()){
+            if(temporalSeason.getStartDate().get(Calendar.DAY_OF_YEAR) <= actualDay
+            && actualDay <= temporalSeason.getEndDate().get(Calendar.DAY_OF_YEAR))
+                return temporalSeason;
+        }
+        return null;
+    }
+    
+    public ArrayList<Room> checkForAvailablesRooms(int roomTypeIndex, 
+    GregorianCalendar checkInDate, GregorianCalendar checkOutDate){
+        RoomType selectedRoomType = this.roomTypesAvailablesList.get(roomTypeIndex);
+        ArrayList<Room> results = new ArrayList();
+        this.roomList.stream().filter((temporalRoom) -> (temporalRoom.getType()
+        .getRoomType().equals(selectedRoomType.getRoomType()) && temporalRoom
+        .checkAvailability(checkInDate, checkOutDate))).forEach((temporalRoom) -> {
+            results.add(temporalRoom);
+        });
+        return results;
+    }
 }

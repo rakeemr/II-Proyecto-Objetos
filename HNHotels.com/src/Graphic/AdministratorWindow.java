@@ -11,7 +11,6 @@ import Logic.Season;
 import Logic.User.Administrator;
 import Logic.User.User;
 import Logic.User.UserCreator;
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -52,15 +51,9 @@ public class AdministratorWindow extends javax.swing.JFrame {
     
     public AdministratorWindow(LogInWindow ancestor, Administrator currentUser) {
         initComponents();
+        this.setTitle("Administrator view");
         this.setResizable(false);
         this.setLocationRelativeTo(ancestor);
-        this.getContentPane().setBackground(Color.LIGHT_GRAY);
-        jPanel1.setBackground(Color.LIGHT_GRAY);
-        jPanelCreateHotels.setBackground(Color.LIGHT_GRAY);
-        jPanelManageHotels.setBackground(Color.LIGHT_GRAY);
-        jPanelManageHotelRooms.setBackground(Color.LIGHT_GRAY);
-        jPanelManageSeason.setBackground(Color.LIGHT_GRAY);
-        jPanelRoomType.setBackground(Color.LIGHT_GRAY);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/HotelIcon.png")).getImage());
         this.ancestor = ancestor;
         this.currentUser = currentUser;
@@ -1099,6 +1092,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jListRoomsManageRooms);
 
+        jListRoomTypeManageRooms.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         jScrollPane3.setViewportView(jListRoomTypeManageRooms);
 
         jLabel41.setText("Room registers:");
@@ -1124,6 +1118,7 @@ public class AdministratorWindow extends javax.swing.JFrame {
 
         jLabel42.setText("Select the room type:");
 
+        jListSelectRoomTypeAddRooms.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         jScrollPane5.setViewportView(jListSelectRoomTypeAddRooms);
 
         jButtonAddRoomtype.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/AddIcon.png"))); // NOI18N
@@ -1750,6 +1745,9 @@ public class AdministratorWindow extends javax.swing.JFrame {
     } catch (datechooser.model.exeptions.IncompatibleDataExeption e1) {
         e1.printStackTrace();
     }
+    dateChooserComboSeasonStartDate.setLocale(new java.util.Locale("es", "CR", ""));
+
+    dateChooserComboSeasonEndDate.setLocale(new java.util.Locale("es", "CR", ""));
 
     jButtonCreateSeason.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/AddIcon.png"))); // NOI18N
     jButtonCreateSeason.setText("Create season");
