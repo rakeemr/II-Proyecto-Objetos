@@ -9,11 +9,12 @@ public class PictureViewer extends javax.swing.JFrame {
     
     public PictureViewer(ImageIcon image,JFrame ancestor) {
         initComponents();
+        this.setTitle("Picture view");
         this.setResizable(false);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/HotelIcon.png")).getImage());
         this.image = image;
         this.ancestor = ancestor;
-        showPicture();
+        this.showPicture();
     }
 
     @SuppressWarnings("unchecked")

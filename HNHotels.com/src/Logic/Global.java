@@ -2,7 +2,6 @@ package Logic;
 
 import Additional.Categorie;
 import Additional.Service;
-import Logic.Room.RoomType;
 import Logic.User.User;
 import java.util.ArrayList;
 import java.util.Random;

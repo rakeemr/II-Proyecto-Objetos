@@ -10,6 +10,7 @@ public class RegisterViewer extends javax.swing.JFrame {
 
     public RegisterViewer(JFrame ancestor, Register register) {
         initComponents();
+        this.setTitle("Register view");
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/HotelIcon.png")).getImage());
         this.setLocationRelativeTo(ancestor);
         this.setResizable(false);
