@@ -5,6 +5,8 @@
  */
 package Graphic;
 
+import java.awt.Color;
+
 /**
  *
  * @author Raquel Mora
@@ -16,6 +18,8 @@ public class HotelViewWindow extends javax.swing.JFrame {
      */
     public HotelViewWindow() {
         initComponents();
+        this.getContentPane().setBackground(Color.LIGHT_GRAY);
+        jTable1.setBackground(Color.LIGHT_GRAY);
     }
 
     /**

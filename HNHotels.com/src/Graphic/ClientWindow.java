@@ -3,6 +3,7 @@ package Graphic;
 import Logic.Global;
 import Logic.User.Client;
 import Logic.User.User;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +24,9 @@ public class ClientWindow extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(ancestor);
+        this.getContentPane().setBackground(Color.LIGHT_GRAY);
+        jPanel2.setBackground(Color.LIGHT_GRAY);
+        jPanel3.setBackground(Color.LIGHT_GRAY);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/HotelIcon.png")).getImage());
         this.ancestor = ancestor;
         this.currentUser = currentUser;
@@ -547,7 +551,7 @@ public class ClientWindow extends javax.swing.JFrame {
             else if(jRadioButtonHostageType.isSelected())
                 order = jRadioButtonHostageType.getText();
             else{
-                JOptionPane.showMessageDialog(this,"You must select a order the "
+                JOptionPane.showMessageDialog(this,"You must select an order for "
                 + "the list of hotels results.","Warning",JOptionPane.INFORMATION_MESSAGE,
                 warningIcon);
                 return;    
