@@ -31,6 +31,7 @@ public class Hotel {
     private final ArrayList<Room> roomList;
     private final ArrayList<RoomType> roomTypesAvailablesList;
     private final ArrayList<Season> seasonList;
+    private final ArrayList<Reservation> reservationList;
 
     public Hotel(String name, String address, String country, String phoneNumber, 
     int starsNumber, String lodgingType, String hotelSize, String builtYear, 
@@ -57,6 +58,7 @@ public class Hotel {
         this.roomList = new ArrayList();
         this.roomTypesAvailablesList = new ArrayList();
         this.seasonList = new ArrayList();
+        this.reservationList = new ArrayList();
     }
 
     public String getName() {
@@ -191,8 +193,13 @@ public class Hotel {
     public ArrayList<Season> getSeasonList() {
         return seasonList;
     }
+
+    public ArrayList<Reservation> getReservationList() {
+        return reservationList;
+    }
     
-    public void addToReservationCount(){
+    public void addReservation(Reservation newReservation){
+        this.reservationList.add(newReservation);
         this.reservationCount += 1;
     }
     

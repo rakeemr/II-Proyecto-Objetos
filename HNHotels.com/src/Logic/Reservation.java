@@ -12,9 +12,12 @@ public class Reservation {
     private int totalRooms;
     private final String hotelName;
     private String state;
+    private final int adultsCount;
+    private final int childrenCount;
 
     public Reservation(ArrayList<Room> selectedRooms, GregorianCalendar checkInDate,
-    GregorianCalendar checkOutDate, int nightsNumber, String hotelName) {
+    GregorianCalendar checkOutDate, int nightsNumber, String hotelName, int adultsCount,
+    int childrenCount) {
         this.selectedRooms = selectedRooms;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
@@ -22,6 +25,8 @@ public class Reservation {
         this.totalRooms = selectedRooms.size();
         this.hotelName = hotelName;
         this.state = "Pending";
+        this.adultsCount = adultsCount;
+        this.childrenCount = childrenCount;
     }
 
     public ArrayList<Room> getSelectedRooms() {
@@ -62,6 +67,14 @@ public class Reservation {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public int getAdultsCount() {
+        return adultsCount;
+    }
+
+    public int getChildrenCount() {
+        return childrenCount;
     }
     
     public void addRoom(Room newRoom){
